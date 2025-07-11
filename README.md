@@ -185,6 +185,3 @@ To run the module, execute:
 ```bash
 python rag_query.py
 
-
-
-# Query Samples: Analyze heuristic code 20 (Ping flood) event and provide supporting anomaly evidence with source IPs.
