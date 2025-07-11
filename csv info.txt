@@ -1,0 +1,67 @@
+﻿Simple heuristic
+The heuristic inspects the port number, TCP flags and ICMP codes of anomalous traffic and assigns a code to each anomaly. If the code value is lower than 500 it means the anomalous traffic is using well known suspicious ports or it contains an abnormally high number of packets with SYN, RST or FIN flag:
+* 1:Sasser worm
+* 2:Netbios attack
+* 3:RPC attack
+* 4:SMB attack
+* 10:SYN attack
+* 11:RST attack
+* 12:FIN attack
+* 20:Ping flood
+* 51:FTP attack
+* 52:SSH attack
+* 53:HTTP attack
+* 54:HTTPS attack
+* else:Other
+If the value is between 500 and 900 it means the anomaly is seen on well known ports:
+* 501:FTP traffic
+* 502:SSH traffic
+* 503:HTTP traffic
+* 504:HTTPS traffic
+* else:Other
+If the value is higher than 900 it means the anomaly is seen on unknown ports.
+* 901:Unknown
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Anomaly taxonomy
+Mazel et al. (TRAC 2014) presented a taxonomy that reveals the nature of backbone traffic anomalies. MAWILab takes advantage of this taxonomy to provide more insights into the identified anomalies. The taxonomy consists of more than one hundred labels and corresponding signatures to classify events identified in backbone traffic. The details of labels and signatures are available at http://www.fukuda-lab.org/mawilab/classification/ .
+Since MAWILab v1.1, the plots depicting the byte and packet breakdown in the data set webpages (e.g. http://www.fukuda-lab.org/mawilab/v1.1/index.html) are also based on this taxonomy. Each class in the plots corresponds to labels with a certain prefix:
+* Unknown are labels starting with the prefixes "unk" and "empty"
+* Other are labels starting with the prefixes "ttl_error","hostout","netout", and "icmp_error"
+* HTTP are labels starting with the prefixes "alphflHTTP","ptmpHTTP","mptpHTTP","ptmplaHTTP" and "mptplaHTTP"
+* Multi. points are labels starting with the prefixes "ptmp","mptp" and "mptmp"
+* Alpha flow are labels starting with the prefixes "alphfl","malphfl","salphfl","point_to_point" and "heavy_hitter"
+* IPv6 tunneling are labels starting with the prefixes "ipv4gretun" and "ipv46tun"
+* Port scan are labels starting with the prefixes "posca" and "ptpposca"
+* Network scan ICMP are labels starting with the prefixes "ntscIC" and "dntscIC"
+* Network scan UDP are labels starting with the prefixes "ntscUDP" and "ptpposcaUDP"
+* Network scan TCP are labels starting with the prefixes "ntscACK","ntscSYN","sntscSYN","ntscTCP","ntscnull","ntscXmas","ntscFIN" and "dntscSYN"
+* DoS are labels starting with the prefixes "DoS","distributed_dos","ptpDoS","sptpDoS","DDoS" and "rflat"
