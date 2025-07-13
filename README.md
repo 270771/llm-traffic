@@ -3,13 +3,13 @@
 
 ## About
 
-This repository provides a fully working pipeline to build a semantic anomaly knowledge base using [MAWILab](http://www.fukuda-lab.org/mawilab/) backbone traffic anomaly logs, ChromaDB as a vector database, and sentence-transformer embeddings for semantic retrieval. The prepared knowledge base will be integrated into a Retrieval-Augmented Generation (RAG) system for advanced anomaly analysis and explanation.
+This repository provides a pipeline to build a semantic anomaly knowledge base using [MAWILab](http://www.fukuda-lab.org/mawilab/) backbone traffic anomaly logs, ChromaDB as a vector database, and sentence-transformer embeddings for semantic retrieval. The prepared knowledge base will be integrated into a Retrieval-Augmented Generation (RAG) system for advanced anomaly analysis and explanation.
 
 ---
 
 ## Features
 
-- Ingest raw anomaly logs from MAWILab CSV files.
+- Ingest raw anomaly logs from MAWILab files.
 - Automatically summarize each anomaly into descriptive text.
 - Generate semantic embeddings using Sentence Transformers (`all-MiniLM-L6-v2`).
 - Store embeddings, summaries, IDs, and metadata in ChromaDB.
