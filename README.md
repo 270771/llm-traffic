@@ -1,4 +1,4 @@
-# LLM-Driven Backbone Traffic Analysis for Anomaly Detection and Generating Explanations
+# LLM-Driven Traffic Analysis
 
 
 ## About
