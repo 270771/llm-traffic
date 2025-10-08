@@ -48,29 +48,20 @@ def extract_prediction(text):
     if not text:
         return None
     
-    # Check for explicit UNDECIDABLE response
+    # Check for explicit UNDECIDABLE response (abstention feature)
     if "UNDECIDABLE" in text.upper():
         return None
     
-    # Protect against "conn.log" splitting issues
+    # Protect against "conn.log" splitting issues by temporarily replacing it
     protected_text = text.replace("conn.log", "conn_log")
     sentences = protected_text.split(".")
     first_sentence = sentences[0].replace("conn_log", "conn.log").lower()
     
-    # Look for negative indicators in first sentence
-    if "no ping flood" in first_sentence or "no attack" in first_sentence:
+    # If the first sentence contains "no" or "not", interpret as a negative prediction
+    if "no" in first_sentence or "not" in first_sentence:
         return False
-    if "not detected" in first_sentence or "not a ping flood" in first_sentence:
-        return False
-    
-    # Look for positive indicators
-    if "ping flood" in first_sentence and "detected" in first_sentence:
+    else:
         return True
-    if "attack" in first_sentence:
-        return True
-    
-    # Default to True if uncertain (can adjust based on evaluation needs)
-    return True
 
 
 # Compare ground truth to predictions in RAG output files
