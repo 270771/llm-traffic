@@ -1,6 +1,7 @@
 # === Import necessary libraries ===
 import os
 import re
+from dotenv import load_dotenv
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chat_models import ChatOpenAI
@@ -8,8 +9,10 @@ from langchain.retrievers import EnsembleRetriever
 from langchain.prompts import PromptTemplate
 from langchain.schema import Document
 
-# === Set API Key and environment settings ===
-os.environ["OPENAI_API_KEY"] = ""  # <-- You should put your actual OpenAI API key here for ChatOpenAI to work
+# === Load environment variables from .env file ===
+load_dotenv()
+
+# === Set environment settings ===
 os.environ["TOKENIZERS_PARALLELISM"] = "false"  # Disable parallelism in tokenizers to avoid warning messages
 
 # Embeddings
@@ -25,7 +28,7 @@ ping_flood_store = Chroma(
 anomaly_csv_store = Chroma(
     persist_directory="./chroma_db",
     embedding_function=embedding_model,
-    collection_name="anomaly_csv_logs4"
+    collection_name="anomaly_csv_logsc01"
 )
 
 heuristic_txt_store = Chroma(
