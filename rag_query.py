@@ -8,6 +8,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.retrievers import EnsembleRetriever
 from langchain.prompts import PromptTemplate
 from langchain.schema import Document
+from sentence_transformers import CrossEncoder
 
 # === Load environment variables from .env file ===
 load_dotenv()
@@ -17,6 +18,9 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"  # Disable parallelism in tokeniz
 
 # Embeddings
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
+# Cross-Encoder for reranking (more accurate than bi-encoder for relevance scoring)
+cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
 
 # === Load Chroma Collections ===
 ping_flood_store = Chroma(
@@ -90,28 +94,140 @@ def extract_ips(text):
     return re.findall(r'\b(?:\d{1,3}\.){3}\d{1,3}\b', text)
 
 
+# === Utility: Parse metadata filters from query ===
+def parse_metadata_filter(query_text):
+    """
+    Extract optional metadata filters from user query text.
+    Supports patterns like: "protocol tcp", "port 443", "taxonomy DoS", etc.
+
+    Args:
+        query_text (str): User query text.
+
+    Returns:
+        dict: Metadata filter dictionary for ChromaDB, or None if no filters found.
+    """
+    filter_dict = {}
+    
+    # Extract protocol filter (e.g., "protocol tcp", "icmp traffic")
+    if re.search(r'\b(tcp|udp|icmp)\b', query_text, re.IGNORECASE):
+        proto = re.search(r'\b(tcp|udp|icmp)\b', query_text, re.IGNORECASE).group(1).lower()
+        # Note: protocol not stored in anomaly metadata, but we can filter by label/taxonomy
+    
+    # Extract port filter (e.g., "port 443", "port 80")
+    port_match = re.search(r'\bport\s+(\d+)', query_text, re.IGNORECASE)
+    if port_match:
+        filter_dict["dstPort"] = port_match.group(1)
+    
+    # Extract taxonomy filter (e.g., "DoS", "PortScan", "HTTP")
+    taxonomy_keywords = ["DoS", "DDoS", "PortScan", "HTTP", "NetworkScan", "AlphaFlow", "MultiPoints"]
+    for keyword in taxonomy_keywords:
+        if keyword.lower() in query_text.lower():
+            filter_dict["taxonomy"] = keyword
+            break
+    
+    # Extract label filter (e.g., "suspicious", "anomalous")
+    if "suspicious" in query_text.lower():
+        filter_dict["label"] = "suspicious"
+    elif "anomalous" in query_text.lower():
+        filter_dict["label"] = "anomalous"
+    
+    return filter_dict if filter_dict else None
+
+
+# === Utility: Cross-Encoder Reranking ===
+def rerank_with_cross_encoder(query, documents, top_k=None):
+    """
+    Rerank documents using a cross-encoder model for improved relevance scoring.
+    Cross-encoders jointly encode (query, document) pairs for more accurate scoring
+    than bi-encoders which encode them separately.
+
+    Args:
+        query (str): The user query.
+        documents (list): List of document strings to rerank.
+        top_k (int): Number of top documents to return after reranking (default: all).
+
+    Returns:
+        list: Reranked documents in order of relevance (highest score first).
+    """
+    if not documents:
+        return []
+    
+    # Create (query, document) pairs
+    pairs = [[query, doc] for doc in documents]
+    
+    # Score all pairs with cross-encoder
+    scores = cross_encoder.predict(pairs)
+    
+    # Combine documents with scores and sort by score (descending)
+    doc_score_pairs = list(zip(documents, scores))
+    doc_score_pairs.sort(key=lambda x: x[1], reverse=True)
+    
+    # Extract just the documents (now reranked)
+    reranked_docs = [doc for doc, score in doc_score_pairs]
+    
+    # Return top_k if specified, otherwise all
+    if top_k:
+        return reranked_docs[:top_k]
+    return reranked_docs
+
+
 # === Utility: Match anomalies using IPs ===
-def match_anomaly_docs(ip_list, store, k=6):
+def match_anomaly_docs(ip_list, store, k=6, threshold=0.3, metadata_filter=None):
     """
     Given a list of IP addresses, search for related anomaly documents in the vector store.
+    Uses MMR (Maximal Marginal Relevance) to retrieve diverse, non-redundant results.
+    Filters out results below similarity threshold.
+    Supports optional metadata filtering (e.g., protocol, port, taxonomy).
 
     Args:
         ip_list (list): List of IP addresses (str) to look up.
         store (Chroma): Chroma vector store object.
         k (int): Number of top similar documents to retrieve per IP.
+        threshold (float): Minimum similarity score (0-1) to accept a result.
+        metadata_filter (dict): Optional ChromaDB filter for metadata (e.g., {"taxonomy": "DoS"}).
 
     Returns:
-        list: Deduplicated list of anomaly document contents (strings) that mention the IPs.
+        tuple: (list of matched documents, max_similarity_score)
     """
     matched_docs = []
+    max_similarity = 0.0
+    
     for ip in ip_list:
-        results = store.similarity_search(ip, k=k)
-        for doc in results:
-            # Double-check that IP really appears in the document text
-            if ip in doc.page_content:
+        # Build filter: combine metadata_filter with IP search
+        # ChromaDB filter syntax: {"field": "value"} or {"field": {"$eq": "value"}}
+        filter_dict = metadata_filter.copy() if metadata_filter else {}
+        
+        # Step 1: Use MMR for diverse retrieval (fetch more candidates than needed)
+        # Note: MMR doesn't return scores directly, so we'll get scores separately
+        if filter_dict:
+            # Get diverse results with MMR and metadata filtering
+            mmr_results = store.max_marginal_relevance_search(ip, k=k, fetch_k=k*3, filter=filter_dict)
+            # Get scores for the same query to calculate similarity
+            results_with_scores = store.similarity_search_with_score(ip, k=k*3, filter=filter_dict)
+        else:
+            # Get diverse results with MMR
+            mmr_results = store.max_marginal_relevance_search(ip, k=k, fetch_k=k*3)
+            # Get scores for the same query
+            results_with_scores = store.similarity_search_with_score(ip, k=k*3)
+        
+        # Create a mapping of document content to similarity scores
+        score_map = {}
+        for doc, score in results_with_scores:
+            # Convert distance to similarity (ChromaDB returns L2 distance, lower = more similar)
+            similarity = 1.0 - (score / 2.0)
+            score_map[doc.page_content] = similarity
+            max_similarity = max(max_similarity, similarity)
+        
+        # Step 2: Filter MMR results by threshold and IP presence
+        for doc in mmr_results:
+            similarity = score_map.get(doc.page_content, 0.0)
+            
+            # Only include if above threshold and IP appears in document
+            if similarity >= threshold and ip in doc.page_content:
                 matched_docs.append(doc.page_content)
+    
     # Remove duplicates
-    return list(set(matched_docs))
+    return list(set(matched_docs)), max_similarity
 
 
 # === Utility: Get prefix → taxonomy category map ===
@@ -172,8 +288,9 @@ def match_heuristic_docs(anomaly_docs, store, k=3):
     matched_docs = []
 
     # For each heuristic ID found, search in the store to retrieve heuristic documents
+    # Use MMR for diversity
     for hid in heuristic_ids:
-        results = store.similarity_search(hid, k=k)
+        results = store.max_marginal_relevance_search(hid, k=k, fetch_k=10)
         # Add contents if heuristic ID actually appears in the document text
         matched_docs.extend([doc.page_content for doc in results if hid in doc.page_content])
 
@@ -190,26 +307,74 @@ def match_heuristic_docs(anomaly_docs, store, k=3):
     return list(set(matched_docs))
 
 # === RAG Analysis ===
-def generate_rag_analysis(query_text):
+def generate_rag_analysis(query_text, similarity_threshold=0.3):
     """
     Main function that performs Retrieval-Augmented Generation (RAG) analysis for a given user query.
     It integrates evidence from Chroma vector stores and generates a reasoned explanation using an LLM.
+    Abstains from answering if evidence quality is below threshold.
+    Supports metadata filtering for forensic precision.
 
     Args:
         query_text (str): User-provided summary or description of a ping flood alert.
+        similarity_threshold (float): Minimum similarity score to proceed with analysis (default: 0.3).
 
     Returns:
-        str: LLM-generated analytical response with justification and recommended action.
+        str: LLM-generated analytical response with justification and recommended action,
+             or abstention message if evidence is insufficient.
     """
 
     # Extract any IP addresses mentioned in the query text
     alert_ips = extract_ips(query_text)
+    
+    # Parse optional metadata filters from query (e.g., "port 443", "DoS taxonomy")
+    metadata_filter = parse_metadata_filter(query_text)
+    
+    # If no IPs found, search semantically for relevant alerts
+    if not alert_ips:
+        # Fallback: semantic search on the query itself
+        anomaly_contents = []
+        max_similarity = 0.0
+    else:
+        # Find anomaly records in the CSV store that mention these IPs (with threshold check and metadata filtering)
+        anomaly_contents, max_similarity = match_anomaly_docs(
+            alert_ips, 
+            anomaly_csv_store, 
+            threshold=similarity_threshold,
+            metadata_filter=metadata_filter
+        )
 
-    # Find anomaly records in the CSV store that mention these IPs
-    anomaly_contents = match_anomaly_docs(alert_ips, anomaly_csv_store)
+    # Check if evidence quality is sufficient
+    if max_similarity < similarity_threshold and len(anomaly_contents) == 0:
+        missing_info = []
+        if not alert_ips:
+            missing_info.append("no specific IP addresses identified")
+        else:
+            missing_info.append(f"no anomaly records found for IPs: {', '.join(alert_ips)}")
+        
+        if metadata_filter:
+            missing_info.append(f"with filters: {metadata_filter}")
+        
+        return (
+            f"⚠️ **UNDECIDABLE** - Insufficient evidence to provide reliable analysis.\n\n"
+            f"**Reason:** Maximum similarity score ({max_similarity:.2f}) is below threshold ({similarity_threshold}).\n"
+            f"**Missing context:** {'; '.join(missing_info)}.\n\n"
+            f"**Recommendation:** Please provide:\n"
+            f"  - More specific IP addresses or timestamps\n"
+            f"  - Additional context about the suspicious activity\n"
+            f"  - Relevant log entries or anomaly records\n"
+        )
 
     # Retrieve heuristic/taxonomy context that matches the anomaly records
     heuristic_contents = match_heuristic_docs(anomaly_contents, heuristic_txt_store)
+
+    # === Cross-Encoder Reranking for improved relevance ===
+    # Rerank anomaly documents using cross-encoder for better precision
+    if anomaly_contents:
+        anomaly_contents = rerank_with_cross_encoder(query_text, anomaly_contents, top_k=6)
+    
+    # Rerank heuristic documents as well
+    if heuristic_contents:
+        heuristic_contents = rerank_with_cross_encoder(query_text, heuristic_contents, top_k=5)
 
     # Treat the user query itself as the main ping flood alert content
     ping_flood_contents = [query_text]
