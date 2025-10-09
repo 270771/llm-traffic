@@ -1,0 +1,12 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows over 20 distinct ICMP connections with type 8 (Echo Request) targeting a single destination IP 52.237.221.62, which matches the known pattern of a ping flood attack where multiple sources send ICMP Echo Requests to overwhelm the target.
+- No anomaly records are present, but by default, heuristic 20 (known anomalous IPs) does not apply here, and the count of ICMP type 8 packets exceeds the threshold of 10, confirming the attack.
+- Involved IPs: Multiple source IPs in the 157.17.x.x range and one from 133.247.166.216, all targeting destination IP 52.237.221.62 on ICMP type 8.
+- Ports are not applicable for ICMP, but the consistent ICMP type 8 traffic is the key indicator.
+
+Recommended security response plan:
+- Immediately implement rate limiting or filtering on ICMP Echo Requests at the network perimeter targeting 52.237.221.62.
+- Block or throttle traffic from the identified source IP ranges (157.17.0.0/16 and 133.247.166.216) if they are not legitimate users.
+- Monitor for further ICMP anomalies and consider deploying an Intrusion Prevention System (IPS) rule to detect and mitigate ICMP flood patterns.
+- Notify network operations to investigate potential compromised hosts within the source IP ranges.

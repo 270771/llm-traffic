@@ -1,0 +1,22 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows multiple ICMP connections targeting the same destination IP (3.197.247.113) with ICMP type 8, which corresponds to Echo Request (ping).
+- The source IPs are numerous and distinct (e.g., 157.206.125.185, 157.206.157.52, 157.206.125.174, etc.), all sending ICMP Echo Requests in rapid succession within the same second (timestamp 1641013230).
+- This pattern of many hosts sending ICMP Echo Requests to a single target in a short time frame matches the classic distributed ICMP ping flood attack, aiming to overwhelm the target with ping traffic.
+
+Heuristics and Taxonomy:
+- Since no explicit anomaly or heuristic data is provided, assign heuristic number **H1: High volume ICMP Echo Requests from multiple sources**.
+- Taxonomy class: **Network Denial of Service (DoS) - ICMP Flood**.
+
+Involved IPs and Ports:
+- Target IP: 3.197.247.113 (no port for ICMP)
+- Source IPs: Multiple, including 157.206.125.185, 157.206.157.52, 157.206.125.174, 157.206.157.32, 157.206.50.169, 157.206.18.119, 157.206.111.107, 157.206.9.6, 157.206.154.208, 157.206.241.78, 157.206.81.128, 157.206.133.235, 157.206.241.93, 157.206.112.156, 157.206.113.85, 157.206.156.16, 157.206.116.138, 157.206.113.12, 157.206.115.14, 157.206.172.208, 157.206.153.159, 157.206.115.8, 157.206.133.192.
+
+Security Response Plan:
+- Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests destined for 3.197.247.113.
+- Deploy or update intrusion prevention system (IPS) signatures to detect and mitigate ICMP flood patterns.
+- Coordinate with upstream ISPs to filter or block malicious traffic sources if possible.
+- Monitor the target host for service degradation or outages and prepare to isolate it if the attack escalates.
+- Conduct a forensic analysis of source IPs to determine if they are spoofed or compromised hosts.
+- Consider deploying ICMP flood-specific mitigation tools such as scrubbing services or DDoS protection appliances.

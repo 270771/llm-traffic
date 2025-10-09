@@ -1,0 +1,12 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows at least 10 distinct ICMP connections with type 8 (Echo Request) targeting the same destination IP 3.115.224.159 from multiple different source IPs within a very short time frame. This pattern matches a classic distributed ICMP ping flood, where many hosts send echo requests to overwhelm the target.
+- Although no explicit heuristics or taxonomy data is provided, the behavior aligns with common heuristic 20 (multiple ICMP echo requests from diverse sources) typically associated with ICMP flood attacks.
+- Involved IPs: multiple source IPs in the 157.17.x.x range (e.g., 157.17.197.36, 157.17.106.193, 157.17.114.193, etc.) targeting destination IP 3.115.224.159 on ICMP type 8.
+- Ports are not applicable for ICMP, but the consistent ICMP type 8 confirms echo requests.
+
+Security response plan:
+- Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP echo requests destined for 3.115.224.159.
+- Investigate the source IPs for potential compromise or misuse; consider blacklisting or blocking suspicious sources.
+- Monitor for further ICMP flood activity and correlate with other network logs to detect possible coordinated attacks.
+- Notify the affected system owner to prepare for potential service degradation and apply host-based protections such as ICMP rate limiting or firewall rules.

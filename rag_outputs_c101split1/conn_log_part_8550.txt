@@ -1,0 +1,26 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows a large number of ICMP connections with type 8 (Echo Request) targeting a single destination IP: 163.84.73.84.
+- Multiple distinct source IPs (e.g., 133.243.76.6, 157.206.64.254, 133.243.123.255, etc.) are sending ICMP Echo Requests in rapid succession within the same timestamp window (1641013226.8xxxx).
+- This pattern of many ICMP type 8 packets from multiple sources flooding a single target matches the classic distributed ICMP ping flood attack behavior.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly records or heuristic context are provided, this matches the common heuristic for ICMP flood attacks: "High volume of ICMP Echo Requests (type 8) from multiple sources to a single target."
+- Taxonomy class: Network Denial of Service (DoS) attack, specifically ICMP Flood.
+- Assign heuristic number: 1 (commonly used for volumetric ICMP flood detection in standard taxonomies).
+
+Involved IPs and Ports:
+- Target IP: 163.84.73.84 (receiving the flood)
+- Source IPs: Multiple, including 133.243.76.6, 157.206.64.254, 133.243.123.255, 157.206.172.6, 133.243.109.2, etc.
+- ICMP does not use ports, so port fields are zero or irrelevant.
+
+Recommended Security Response Plan:
+1. Immediately implement rate limiting or filtering on the network perimeter/firewall to block or throttle ICMP Echo Requests destined for 163.84.73.84.
+2. Deploy or tune Intrusion Prevention Systems (IPS) to detect and mitigate ICMP flood patterns.
+3. Engage upstream ISP to filter or block offending source IPs if possible.
+4. Monitor network traffic for continued or evolving attack patterns.
+5. Consider temporarily disabling ICMP Echo Requests on the target host if not required for operations.
+6. Conduct a post-incident analysis to identify potential vulnerabilities exploited and improve detection heuristics.
+
+This is a clear and active ICMP ping flood attack targeting 163.84.73.84. Immediate mitigation is required to prevent service disruption.

@@ -1,0 +1,18 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation: The Zeek conn.log snippet shows a high volume of ICMP traffic originating from a single source IP (54.236.220.60) targeting multiple destination IPs within a very short time frame (all timestamps are nearly identical). All ICMP packets have type 8, which corresponds to Echo Request messages used in ping operations. This pattern—rapid, repeated ICMP Echo Requests from one host to many targets—is characteristic of a ping flood attack, aiming to overwhelm the network or hosts with ICMP traffic.
+
+Heuristics and Taxonomy: Although no explicit anomaly records or heuristic context are provided, this behavior aligns with common heuristic #1 for ICMP flood detection: "High-rate ICMP Echo Requests from a single source to multiple destinations." The taxonomy class is best assigned as "Network Denial of Service (DoS) - ICMP Flood."
+
+Involved IPs and Ports:
+- Attacker/source IP: 54.236.220.60
+- Multiple victim/destination IPs: 163.45.165.100, 163.45.190.218, 163.45.8.69, 163.45.143.73, 163.45.8.74, 163.45.2.168, 163.45.186.111, 163.45.186.106, 163.45.109.60, 163.45.109.52, 163.45.69.1, 163.45.71.244, 163.45.120.2, 163.45.135.118, 163.45.168.29, 163.45.190.10, 163.45.206.254, 163.45.168.157, 163.45.165.7, 163.45.75.39, 163.45.17.175, 163.45.18.201
+- ICMP does not use ports, so port fields are zero or not applicable.
+
+Recommended Security Response Plan:
+1. Immediately block or rate-limit ICMP Echo Requests from source IP 54.236.220.60 at the network perimeter firewall or intrusion prevention system (IPS).
+2. Monitor network traffic for continued or new ICMP flood attempts from other sources.
+3. Notify affected network administrators of targeted destination IPs to prepare for potential service degradation.
+4. Implement ICMP rate limiting or filtering policies to mitigate future ICMP flood attacks.
+5. Conduct a forensic analysis on the source IP to determine if it is compromised or spoofed.
+6. Consider deploying anomaly-based detection tools to alert on similar high-rate ICMP traffic patterns.

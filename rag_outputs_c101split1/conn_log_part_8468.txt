@@ -1,0 +1,23 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows numerous ICMP connections with ICMP type 8 (Echo Request), which is the correct type for ping requests.
+- Multiple source IPs (notably 18.114.215.35 and various 133.243.x.x addresses) are sending a high volume of ICMP Echo Requests to multiple destination IPs, including 203.78.x.x and 54.196.70.79.
+- The rapid succession and volume of these ICMP Echo Requests from multiple sources to single or multiple targets is consistent with a distributed ICMP ping flood attack pattern, aiming to overwhelm the target(s) with ICMP traffic.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly records or heuristic context are provided, this behavior aligns with a classic ICMP flood heuristic, which is typically assigned heuristic number 1 (ICMP Flood Detection).
+- The taxonomy class is "Denial of Service (DoS)" attack, as ping floods aim to degrade or deny network service availability.
+
+Involved IPs and Ports:
+- Attackers: 18.114.215.35 and multiple 133.243.x.x IP addresses.
+- Targets: 203.78.129.22, 203.78.139.108, 203.78.139.114, 203.78.139.129, 203.78.139.133, 203.78.141.185, 203.78.149.114, 203.78.149.119, 203.78.152.1, and 54.196.70.79.
+- ICMP does not use ports, but the ICMP type is 8 (Echo Request).
+
+Recommended Security Response Plan:
+- Immediately implement rate limiting or filtering on network devices (firewalls, routers) to block or throttle ICMP Echo Requests from the identified source IPs.
+- Deploy or update intrusion prevention system (IPS) signatures to detect and block ICMP flood patterns.
+- Monitor network traffic for continued or escalating ICMP traffic from these sources.
+- Consider blacklisting or geo-blocking the attacking IP ranges if they are not legitimate users.
+- Notify affected network owners and coordinate with upstream providers to mitigate the attack.
+- Review and harden network perimeter defenses to prevent similar volumetric ICMP attacks in the future.

@@ -1,0 +1,17 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The Zeek conn.log snippet shows at least 22 ICMP connections from source IP 163.76.120.97 to multiple destination IPs, all with ICMP type 8 (Echo Request), which is the exact type used in ping floods.
+- The volume and rapid succession of these ICMP type 8 packets from a single source to many destinations matches the known pattern of a ping flood attack, where an attacker overwhelms targets with ICMP echo requests.
+- According to the heuristic context, heuristic 20 corresponds to a ping flood attack, which fits this scenario perfectly.
+- No anomalies in the provided anomaly CSV match these IPs or ports, but the heuristic 20 is the most appropriate classification here.
+- Involved IP addresses: Source IP 163.76.120.97 is the attacker; multiple destination IPs include 203.65.116.190, 203.65.118.82, 163.21.190.223, 203.65.116.65, 163.21.220.3, 202.44.240.8, and others.
+- Ports are irrelevant here since ICMP does not use ports.
+
+**Recommended security response plan:**
+1. Immediately block or rate-limit ICMP Echo Requests from source IP 163.76.120.97 at the perimeter firewall or intrusion prevention system.
+2. Monitor network traffic for further ICMP anomalies from this or other sources.
+3. Notify network operations and incident response teams to investigate the source host for compromise or misuse.
+4. Implement ICMP flood detection and mitigation tools if not already in place.
+5. Review and update firewall rules to restrict unnecessary ICMP traffic to critical assets.
+
+This is a clear case of a ping flood attack (heuristic 20, taxonomy class: Ping Flood).

@@ -1,0 +1,21 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows multiple ICMP connections targeting the same destination IP (107.102.62.64) with ICMP type 8, which corresponds to Echo Request packets used in ping operations. The rapid succession of these ICMP type 8 packets from different source IPs (157.206.12.129, 157.206.21.70, 157.206.117.62) to a single target IP strongly matches the pattern of a ping flood attack, where an attacker overwhelms a target with numerous ICMP Echo Requests.
+
+Heuristics and Taxonomy:  
+- Since no explicit anomaly records or heuristic context are provided, assign the heuristic number as **H1: High volume ICMP Echo Requests to a single target**.  
+- Taxonomy class: **T1: ICMP Flooding / Denial of Service Attack**.
+
+Involved IPs and Ports:  
+- Source IPs: 157.206.12.129, 157.206.21.70, 157.206.117.62  
+- Destination IP: 107.102.62.64  
+- ICMP type: 8 (Echo Request)  
+- Ports: ICMP does not use ports, so ports are not applicable.
+
+Security Response Plan:  
+- Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from the identified source IPs.  
+- Deploy or update intrusion prevention system (IPS) signatures to detect and mitigate ICMP flood patterns.  
+- Monitor the target host (107.102.62.64) for signs of service degradation or resource exhaustion.  
+- Consider blacklisting or geo-blocking the source IPs if they are known malicious or from suspicious regions.  
+- Conduct a network-wide scan for similar ICMP flood patterns to identify if this is part of a larger distributed attack.

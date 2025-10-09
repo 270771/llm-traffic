@@ -1,0 +1,20 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows numerous ICMP connections with type 8 (Echo Request) targeting a single destination IP (3.203.247.100) within a very short timestamp window (all around 1641013223.6). Multiple distinct source IPs (e.g., 133.243.102.174, 133.243.204.216, 133.243.204.251, etc.) are sending ICMP Echo Requests simultaneously, which matches the classic pattern of a distributed ICMP ping flood attack aimed at overwhelming the target with excessive ping traffic.
+
+Heuristics and Taxonomy:  
+- Since no explicit anomaly or heuristic data is provided, assign heuristic number **H1: High volume ICMP Echo Requests from multiple sources**.  
+- Taxonomy class: **Network DoS Attack - ICMP Flood**.
+
+Involved IPs and Ports:  
+- Victim IP: 3.203.247.100 (destination)  
+- Multiple attacker/source IPs: 133.243.102.174, 133.243.204.216, 133.243.204.251, 133.243.253.35, 133.243.120.241, 133.243.253.119, 133.243.29.179, 133.243.69.131, 133.243.225.249, 133.243.213.85, 133.243.247.110, 133.243.120.193, 133.243.240.3, 133.243.136.236, 133.243.182.205, 133.243.29.118, 133.243.124.77, 133.243.73.146, 133.243.227.252, 133.243.177.105, 133.243.242.160, 133.243.182.122  
+- ICMP does not use ports, so ports are not applicable.
+
+Recommended Security Response Plan:  
+1. Immediately implement rate limiting or filtering on the network perimeter firewall or intrusion prevention system (IPS) to block or throttle ICMP Echo Requests directed at 3.203.247.100.  
+2. Deploy or tune DDoS mitigation tools to detect and mitigate ICMP flood traffic.  
+3. Identify and block or quarantine the attacking source IPs if they are internal or known compromised hosts. If external, coordinate with upstream providers or ISPs for source filtering or blackholing.  
+4. Monitor network traffic continuously for further ICMP flood attempts or other related anomalies.  
+5. Review and harden the target host’s ICMP handling policies, possibly disabling ICMP Echo Replies if not required.

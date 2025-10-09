@@ -1,0 +1,14 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows over 20 distinct ICMP connections from a single source IP (54.254.250.38) to multiple destination IPs, all with ICMP type 8 (Echo Request), which is the exact type used in ping floods.
+- The volume and rapid succession of these ICMP type 8 packets to many different targets strongly matches the known pattern of a distributed ping flood attack.
+- Although no explicit anomaly records or heuristic context are provided, the behavior aligns with a classic ICMP ping flood heuristic (commonly heuristic 20 in many taxonomies), which flags high-volume ICMP Echo Requests from a single source to multiple destinations.
+- Involved IP addresses: Source IP 54.254.250.38; Destination IPs include 163.252.212.33, 163.252.90.244, 163.252.101.198, and many others in the 163.252.x.x range.
+- Ports are irrelevant here since ICMP does not use ports.
+
+Recommended security response plan:
+- Immediately block or rate-limit ICMP Echo Requests from source IP 54.254.250.38 at the network perimeter firewall or intrusion prevention system.
+- Monitor for any further ICMP traffic spikes from this or related IPs.
+- Conduct a network-wide scan to identify any compromised hosts that may be launching or relaying the attack.
+- Notify upstream ISP or hosting provider to take action against the attacker’s infrastructure.
+- Implement ICMP traffic anomaly detection rules to alert on similar future events.

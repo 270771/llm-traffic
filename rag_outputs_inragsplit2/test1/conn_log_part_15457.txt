@@ -1,0 +1,20 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation: The Zeek conn.log snippet shows over 20 ICMP connections with type 8 (Echo Request) directed at the single destination IP 16.161.126.169 from multiple distinct source IPs. This pattern of numerous ICMP Echo Requests in a short time frame matches the known behavior of a ping flood attack, which aims to overwhelm the target with ICMP Echo Requests.
+
+Heuristics and Taxonomy:  
+- Since no explicit anomaly or heuristic data is provided, the most likely heuristic number is **20**, which corresponds to suspicious ICMP flood activity.  
+- The taxonomy class is **Denial of Service (DoS)** attack, as ping floods are a classic DoS vector.
+
+Involved IPs and Ports:  
+- Target IP: 16.161.126.169  
+- Source IPs: Multiple, including 157.17.50.10, 157.17.44.116, 157.17.54.136, 157.17.66.100, 157.17.96.86, 157.17.115.147, 157.17.161.111, 157.17.98.16, 157.17.159.54, 157.17.175.226, 157.17.221.217, 157.17.50.31, 157.17.96.201, 157.17.2.198, 157.17.254.17, 157.17.221.242, 157.17.236.111, 157.17.58.74, 157.17.230.129, among others.  
+- ICMP does not use ports, so ports are not applicable.
+
+Recommended Security Response Plan:  
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests targeting 16.161.126.169.  
+2. Deploy or update intrusion prevention system (IPS) signatures to detect and mitigate ICMP flood patterns.  
+3. Investigate the source IPs for potential spoofing or compromise; consider blacklisting or geo-blocking if appropriate.  
+4. Monitor network traffic for continued or escalating ICMP flood activity.  
+5. Coordinate with upstream providers or ISPs to filter malicious traffic closer to the source if possible.  
+6. Ensure critical services on 16.161.126.169 have redundancy or failover to mitigate impact.

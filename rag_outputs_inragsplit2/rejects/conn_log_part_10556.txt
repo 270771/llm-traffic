@@ -1,0 +1,15 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Reasoning:  
+- The Zeek conn.log snippet shows only TCP and UDP connections; there are no ICMP entries present.  
+- No ICMP type 8 (Echo Request) packets are logged, which are required to identify a ping flood.  
+- The anomaly CSV does not list any anomalies related to ICMP or heuristic 20 (Ping flood). The anomalies present are heuristic 12 (FIN attack) and heuristic 999 (mptmp), neither related to ICMP or ping floods.  
+
+Heuristic and taxonomy clarification:  
+- Heuristic 20 corresponds specifically to ping flood detection, which requires multiple ICMP type 8 packets.  
+- The anomalies found (heuristic 12 = FIN attack, heuristic 999 = mptmp) indicate other types of suspicious TCP traffic, not ICMP flooding.  
+
+Next steps:  
+- Investigate the TCP FIN attack anomaly (heuristic 12) further by reviewing connection patterns and source/destination IPs for potential reconnaissance or scanning activity.  
+- Enable or verify ICMP logging to capture ICMP traffic for future detection of ping floods.  
+- Monitor for any sudden increase in ICMP Echo Requests to detect emerging ping flood attacks.

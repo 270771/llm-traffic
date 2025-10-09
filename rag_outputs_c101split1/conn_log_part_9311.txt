@@ -1,0 +1,21 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows multiple ICMP connections targeting the same destination IP (100.84.99.85) with ICMP type 8 (Echo Request), which is the standard ping request. The rapid succession of these requests from many different source IPs within the same second strongly matches the pattern of a distributed ICMP ping flood attack, where numerous hosts send echo requests to overwhelm the target.
+
+Heuristics and Taxonomy:  
+- Since no explicit heuristics or anomaly taxonomy are provided, the most likely heuristic is a volumetric ICMP flood detection (commonly heuristic #1 in many IDS systems).  
+- The taxonomy class is "Denial of Service (DoS)" attack, specifically an ICMP flood.
+
+Involved IPs and Ports:  
+- Target IP: 100.84.99.85  
+- Source IPs: Multiple (e.g., 133.227.157.54, 133.227.182.253, 133.227.100.0, etc.)  
+- Ports: ICMP does not use ports, but ICMP type is 8 (Echo Request).
+
+Recommended Security Response Plan:  
+1. Immediately implement rate limiting or filtering on the network perimeter/firewall to block or throttle ICMP Echo Requests to 100.84.99.85.  
+2. Deploy or tune intrusion prevention systems (IPS) to detect and block ICMP flood patterns.  
+3. Investigate the source IPs for potential compromise or spoofing; consider blacklisting or geo-blocking if appropriate.  
+4. Monitor network traffic for continued or escalating attack patterns.  
+5. Coordinate with upstream providers or ISPs to filter attack traffic closer to the source if possible.  
+6. Ensure critical services on 100.84.99.85 have redundancy or failover to mitigate impact.

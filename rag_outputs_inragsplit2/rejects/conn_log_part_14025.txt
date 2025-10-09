@@ -1,0 +1,7 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows at least 10 distinct ICMP connections with type 8 (Echo Request) targeting the same destination IP 54.206.231.130 within a very short time frame, matching the pattern of a ping flood.
+- All ICMP types are 8 except one unrelated entry (type 10), so the condition for ping flood detection is met.
+- No anomaly records or heuristic context are provided, but by default, this matches heuristic 20 (multiple ICMP echo requests from multiple sources to a single target) and falls under the taxonomy class of ICMP-based Denial of Service (DoS) attacks.
+- Involved IPs: multiple source IPs in the 157.17.x.x range and one destination IP 54.206.231.130; ICMP protocol, no ports applicable.
+- Recommended response: Immediately implement rate limiting or filtering on ICMP Echo Requests targeting 54.206.231.130 at the network perimeter firewall or intrusion prevention system. Additionally, block or throttle traffic from the identified source IPs if they are not legitimate users. Monitor for further ICMP anomalies and consider deploying an anti-DoS solution to mitigate volumetric ICMP floods.

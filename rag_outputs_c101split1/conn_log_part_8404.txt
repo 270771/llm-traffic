@@ -1,0 +1,21 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows numerous ICMP connections targeting a single destination IP (163.84.73.84) with ICMP type 8, which corresponds to Echo Request (ping).
+- The volume of distinct source IPs sending ICMP type 8 packets in a very short time frame (all timestamps around 1641013225.57) indicates a distributed flood of ping requests.
+- This pattern matches a classic ICMP ping flood attack, where multiple hosts send rapid ICMP Echo Requests to overwhelm the target.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly records or heuristic context are provided, this behavior aligns with heuristic #1: "High volume ICMP Echo Requests to a single target."
+- Taxonomy class: "Network Denial of Service (DoS) - ICMP Flood."
+
+Involved IPs and Ports:
+- Target IP: 163.84.73.84 (port 8 for ICMP is not applicable but shown as 8 in the log for ICMP type)
+- Multiple source IPs including but not limited to: 157.206.73.32, 133.243.99.229, 157.206.88.17, 157.206.159.2, 133.243.213.226, 133.243.92.233, 133.243.112.253, 157.206.254.250, 157.206.123.16, 157.206.2.254, 157.206.122.3, 157.206.162.242, 157.206.225.17, 133.243.154.121, 157.206.88.27, 133.243.18.229, 133.243.220.18, 157.206.146.218, 133.243.123.253, 130.187.122.249, 133.243.5.2.
+
+Security Response Plan:
+- Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests destined for 163.84.73.84.
+- Deploy an Intrusion Prevention System (IPS) rule to detect and block excessive ICMP Echo Requests from the identified source IP ranges.
+- Engage upstream ISP or cloud provider to filter or block traffic from the attacking IPs if possible.
+- Monitor the target host for service degradation or outages and prepare for potential escalation to a broader DDoS mitigation service.
+- Conduct a post-incident analysis to identify if any internal hosts are compromised and participating in the attack.

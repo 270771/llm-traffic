@@ -1,0 +1,14 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows at least 13 distinct ICMP connections with type 8 (Echo Request) targeting the single destination IP 35.169.51.96 within a very short time frame, matching the pattern of a ping flood.
+- All ICMP packets are type 8, which is required for ping flood detection.
+- No anomaly records or heuristic context are provided, but by default, this matches heuristic 20 (excessive ICMP echo requests) and taxonomy class "Denial of Service (DoS)".
+- Involved IPs: multiple source IPs from the 157.17.x.x subnet (e.g., 157.17.54.214, 157.17.185.2, 157.17.61.58, etc.) targeting destination IP 35.169.51.96 on ICMP type 8.
+- Ports are not applicable for ICMP, but the consistent ICMP type 8 traffic confirms the attack vector.
+
+**Recommended security response plan:**
+- Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from the identified source IP range (157.17.0.0/16).
+- Monitor the target host 35.169.51.96 for service degradation or outages.
+- Deploy an Intrusion Prevention System (IPS) rule to detect and block excessive ICMP echo requests.
+- Notify network operations and consider blackholing or sinkholing traffic from the attacking IPs if the attack persists.
+- Conduct a post-incident review to identify if these source IPs are compromised hosts or spoofed addresses.
