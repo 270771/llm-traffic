@@ -1,0 +1,23 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows multiple ICMP connections with ICMP type 8, which corresponds to Echo Request (ping) packets.
+- These packets are all targeting the same destination IP address: 34.17.112.111.
+- The source IPs are numerous and distinct, indicating a distributed pattern consistent with a ping flood attack.
+- The rapid succession of these ICMP Echo Requests from many sources to a single target matches the known pattern of a ping flood, which aims to overwhelm the target with ICMP Echo Requests.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly or heuristic data is provided, the most likely heuristic number to assign is **Heuristic 1: ICMP Flood Detection** (common in network security for detecting volumetric ICMP attacks).
+- The taxonomy class is **Denial of Service (DoS) Attack**, specifically an ICMP-based DoS.
+
+Involved IPs and Ports:
+- Target IP: 34.17.112.111 (no port for ICMP)
+- Source IPs: Multiple, including but not limited to 133.243.241.238, 133.243.182.205, 133.243.85.19, 133.243.224.97, 133.243.169.121, etc.
+
+Recommended Security Response Plan:
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests destined for 34.17.112.111.
+2. Deploy or update Intrusion Prevention System (IPS) rules to detect and mitigate ICMP flood patterns.
+3. Engage upstream ISP or cloud provider to filter or block malicious traffic sources if possible.
+4. Monitor network traffic for further anomalous ICMP activity and correlate with other logs for potential lateral movement or follow-up attacks.
+5. Consider temporarily disabling ICMP Echo Requests on the target host if ICMP is not required for operational purposes.
+6. Conduct a post-incident analysis to identify compromised hosts among the source IPs and remediate accordingly.

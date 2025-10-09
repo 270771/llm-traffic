@@ -1,0 +1,14 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Explanation:  
+- The ICMP types observed in the conn.log snippet are 3, 8, 11, and 0. Only ICMP type 8 (Echo Request) is relevant for ping floods.  
+- There is only one instance of ICMP type 8 (157.17.39.165 → 16.161.126.169), which is below the threshold of at least 10 instances required to indicate a ping flood.  
+- No anomaly records or heuristic context are provided to suggest known suspicious IPs or exceptions (heuristic 20) that would lower the threshold.  
+- Other ICMP types (3 = Destination Unreachable, 11 = Time Exceeded, 0 = Echo Reply) do not indicate ping flood activity.
+
+No other attack type is clearly indicated by this data. The presence of ICMP type 3 and 11 messages may relate to normal network diagnostics or routing issues, not an attack.
+
+Next steps:  
+- Monitor for increased frequency of ICMP type 8 packets from the same source IPs.  
+- Investigate the source IP 157.17.39.165 if it repeatedly sends ICMP Echo Requests in a short time frame.  
+- Collect more anomaly data and heuristic context to improve detection accuracy.

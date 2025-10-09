@@ -1,0 +1,78 @@
+================================================================================
+  ReGAIN Evaluation Results Summary
+================================================================================
+
+
+Figure 3(b): Known-Ground Truth
+--------------------------------------------------------------------------------
+Ground Truth: ./data/processed/inragsplit/ping_flood_labels.json
+RAG Outputs:  ./data/processed/rag_outputs_inragsplit2
+
+Total Evaluated: 2149
+Accuracy:        0.9926 (99.26%)
+Precision:       0.9874 (98.74%)
+Recall:          0.9924 (99.24%)
+F1 Score:        0.9899 (98.99%)
+
+Confusion Matrix:
+  TP: 785    TN: 1348  
+  FP: 10     FN: 6     
+
+
+Figure 3(c): Unknown-Ground Truth
+--------------------------------------------------------------------------------
+Ground Truth: ./data/processed/c101split/test1/ping_flood_labels.json
+RAG Outputs:  ./data/processed/rag_outputs_c101split1
+
+Total Evaluated: 5000
+Accuracy:        0.9756 (97.56%)
+Precision:       0.7448 (74.48%)
+Recall:          1.0000 (100.00%)
+F1 Score:        0.8537 (85.37%)
+
+Confusion Matrix:
+  TP: 356    TN: 4522  
+  FP: 122    FN: 0     
+
+
+Figure 4(b): Known-Expert
+--------------------------------------------------------------------------------
+Ground Truth: ./data/ground_truth/manual_gt_labels.txt
+RAG Outputs:  ./data/processed/rag_outputs_inragsplit2
+
+Total Evaluated: 2148
+Accuracy:        0.9800 (98.00%)
+Precision:       0.9912 (99.12%)
+Recall:          0.9563 (95.63%)
+F1 Score:        0.9734 (97.34%)
+
+Confusion Matrix:
+  TP: 788    TN: 1317  
+  FP: 7      FN: 36    
+
+
+Figure 4(c): Unknown-Expert
+--------------------------------------------------------------------------------
+Ground Truth: ./data/ground_truth/c101_manual_gt_labels.txt
+RAG Outputs:  ./data/processed/rag_outputs_c101split1
+
+Total Evaluated: 5000
+Accuracy:        0.9774 (97.74%)
+Precision:       0.7636 (76.36%)
+Recall:          1.0000 (100.00%)
+F1 Score:        0.8660 (86.60%)
+
+Confusion Matrix:
+  TP: 365    TN: 4522  
+  FP: 113    FN: 0     
+
+
+================================================================================
+Summary Table
+================================================================================
+Scenario                  Acc      Prec     Rec      F1      
+--------------------------------------------------------------------------------
+fig3b_known_gt            0.9926  0.9874  0.9924  0.9899
+fig3c_unknown_gt          0.9756  0.7448  1.0000  0.8537
+fig4b_known_expert        0.9800  0.9912  0.9563  0.9734
+fig4c_unknown_expert      0.9774  0.7636  1.0000  0.8660

@@ -1,0 +1,24 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows a high volume of ICMP traffic originating from a single source IP (54.254.197.94) targeting multiple destination IPs within the 163.45.x.x subnet.
+- All these ICMP packets have type 8, which corresponds to Echo Request messages, the core component of a ping flood.
+- The rapid succession of these ICMP Echo Requests with very short intervals (~0.007 to 0.017 seconds) strongly matches the known pattern of a ping flood attack, where an attacker overwhelms targets with ICMP Echo Requests to degrade network performance or cause denial of service.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly or heuristic data is provided, the behavior aligns with a classic ICMP Echo Request flood.
+- Assign heuristic number: 1 (ICMP Flood Detection).
+- Assign taxonomy class: Network Denial of Service (DoS) Attack.
+
+Involved IPs and Ports:
+- Attacker/source IP: 54.254.197.94 (ICMP type 8 packets sent).
+- Multiple victim/destination IPs: 163.45.20.15, 163.45.53.9, 163.45.177.1, 163.45.57.5, 163.45.53.90, 163.45.20.135, 163.45.20.174, 163.45.222.237, 163.45.253.33, 163.45.14.220, 163.45.222.236, 163.45.180.162.
+- ICMP does not use ports, so port fields are zero or irrelevant here.
+
+Recommended Security Response Plan:
+- Immediately block or rate-limit ICMP Echo Requests from source IP 54.254.197.94 at the network perimeter firewall or intrusion prevention system.
+- Monitor network traffic for additional ICMP floods or other DoS vectors from this or related IPs.
+- Notify upstream providers or ISPs about the malicious traffic source for potential upstream filtering.
+- Implement ICMP rate limiting on critical network infrastructure to mitigate impact.
+- Conduct a forensic review of affected hosts for any collateral impact or compromise.
+- Consider deploying anomaly-based detection rules to alert on sudden spikes in ICMP Echo Requests in the future.

@@ -1,0 +1,22 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows multiple ICMP connections with ICMP type 8 (Echo Request) targeting the same destination IP 107.102.62.64 from numerous distinct source IPs within a very short time frame (timestamps nearly identical). This pattern of many ICMP Echo Requests flooding a single target is characteristic of a ping flood attack.
+
+Heuristics and Taxonomy:  
+- Since no explicit heuristics or anomaly taxonomy records are provided, the most likely heuristic is a high-volume ICMP Echo Request flood (commonly heuristic #1 in many IDS taxonomies).  
+- The taxonomy class is a Denial of Service (DoS) attack via ICMP flooding.
+
+Involved IPs and Ports:  
+- Attackers: Multiple source IPs in the 130.187.x.x range (e.g., 130.187.239.200, 130.187.239.199, 130.187.44.170, etc.)  
+- Victim: 107.102.62.64  
+- ICMP type: 8 (Echo Request)  
+- Ports: ICMP does not use ports, so ports are irrelevant here.
+
+Recommended Security Response Plan:  
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from the identified source IP range (130.187.0.0/16 or more specific subnets).  
+2. Deploy an Intrusion Prevention System (IPS) rule to detect and drop excessive ICMP Echo Requests targeting 107.102.62.64.  
+3. Notify the network operations team to monitor the victim host for service degradation or outages.  
+4. Consider blackholing or sinkholing traffic from the attacking IPs if they are confirmed malicious and not legitimate users.  
+5. Review firewall and router configurations to ensure ICMP traffic is controlled according to organizational policy.  
+6. Conduct a post-incident analysis to identify if these source IPs are part of a botnet or compromised hosts for further remediation.

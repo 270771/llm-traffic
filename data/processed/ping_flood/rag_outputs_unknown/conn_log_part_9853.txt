@@ -1,0 +1,13 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Explanation:
+- All ICMP traffic entries would be identifiable by protocol number 1 (ICMP), but the provided Zeek conn.log snippet shows only UDP (protocol 17) and TCP (protocol 6) traffic.
+- No entries indicate ICMP type 8 (Echo Request), which is required to confirm a ping flood.
+- The UDP traffic from 45.121.95.154 to port 5060 appears repeatedly but is not ICMP and thus unrelated to ping floods.
+- The TCP entries show single SYN attempts (S0 state) with no flooding pattern or ICMP involvement.
+
+Since no anomaly records or heuristic context are available, no heuristic or taxonomy can be assigned here.
+
+Next steps:
+- Investigate the repeated UDP traffic on port 5060 from 45.121.95.154, as it may indicate SIP-related scanning or UDP flood attempts.
+- Enable ICMP-specific logging or packet capture to detect potential ping floods in future monitoring.

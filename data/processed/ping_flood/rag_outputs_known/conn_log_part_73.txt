@@ -1,0 +1,22 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The Zeek conn.log snippet shows over 20 ICMP connections with ICMP type 8 (Echo Request), which is the correct type for ping floods.
+- The majority of these originate from source IP 143.224.94.6 targeting multiple destination IPs in the 133.26.144.x subnet, indicating a high volume of ICMP echo requests sent rapidly to many hosts, consistent with a ping flood pattern.
+- Additionally, source IP 133.16.14.149 also sends multiple ICMP type 8 packets to various destinations.
+- The anomaly CSV identifies source IP 133.16.14.149 as suspicious under heuristic 20, which corresponds to "Ping flood" in the heuristic context.
+- The taxonomy class associated with this anomaly is "icmp_error," which aligns with abnormal ICMP traffic patterns typical in ping flood attacks.
+
+**Involved IP addresses and ports:**
+- Source IPs: 143.224.94.6 (primary attacker), 133.16.14.149 (also suspicious)
+- Destination IPs: Multiple in 133.26.144.42–63 range, plus others like 23.213.191.3, 2.214.106.3, 104.121.90.6
+- Ports: ICMP does not use ports, but the log shows port fields as 0 or unknown, which is expected.
+
+**Recommended security response plan:**
+1. Immediately implement rate limiting or filtering on ICMP Echo Requests from source IP 143.224.94.6 and 133.16.14.149 at the network perimeter firewall or intrusion prevention system (IPS).
+2. Block or throttle ICMP traffic from these IPs to prevent network degradation.
+3. Monitor network traffic for further ICMP anomalies and correlate with other logs to detect potential distributed attacks.
+4. Investigate the source IPs for possible compromise or misuse.
+5. Notify upstream providers or ISPs about the suspicious traffic for potential upstream filtering.
+6. Review and update ICMP handling policies to restrict unnecessary ICMP traffic.
+
+This attack matches heuristic 20 (Ping flood) and taxonomy class "icmp_error," confirming a classic ICMP Echo Request flood attack.

@@ -1,0 +1,14 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows at least 12 distinct ICMP connections with type 8 (Echo Request) directed at the same destination IP 157.187.159.183 within a very short time window, matching the pattern of a ping flood.
+- ICMP type 8 is the only type relevant for ping floods, and the count exceeds the threshold of 10 instances.
+- No anomaly records or heuristic context are provided, but by default, this matches heuristic 20 (high volume ICMP echo requests) and taxonomy class "Denial of Service (DoS)".
+- Involved IPs: Multiple source IPs from the 133.247.x.x subnet (e.g., 133.247.15.195, 133.247.182.29, 133.247.189.36, etc.) targeting destination IP 157.187.159.183 on ICMP type 8.
+- Ports are not applicable for ICMP, but the consistent ICMP echo requests indicate coordinated flooding.
+
+Security response plan:
+- Immediately rate-limit or block ICMP echo requests from the identified source IP range (133.247.0.0/16) at the perimeter firewall.
+- Monitor the destination host 157.187.159.183 for service degradation or outages.
+- Deploy or tune intrusion detection/prevention systems (IDS/IPS) to alert on high-volume ICMP echo requests.
+- Conduct network traffic analysis to identify if these sources are compromised hosts or part of a botnet.
+- Consider blackholing or sinkholing traffic from persistent offenders to protect critical infrastructure.

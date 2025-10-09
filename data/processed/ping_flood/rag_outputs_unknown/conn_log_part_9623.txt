@@ -1,0 +1,23 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows multiple ICMP connections with type 8 (Echo Request), which is the ICMP type used for ping.
+- Numerous distinct source IPs (e.g., 133.243.125.147, 133.243.192.73, 133.243.206.21, etc.) are sending ICMP Echo Requests to a single destination IP (34.17.112.111) in a very short time frame (timestamps within milliseconds).
+- This pattern of many ICMP Echo Requests from multiple sources targeting one host is consistent with a distributed ICMP ping flood attack, aiming to overwhelm the target with ping traffic.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly records or heuristic context are provided, this matches the classic heuristic of "High volume ICMP Echo Requests from multiple sources to a single target" typically labeled as a DoS (Denial of Service) attack.
+- Assign heuristic number: 1 (common heuristic for ICMP flood detection).
+- Taxonomy class: DoS/Disruption.
+
+Involved IPs and Ports:
+- Target IP: 34.17.112.111 (receiving the flood).
+- Source IPs: Multiple, including 133.243.125.147, 133.243.192.73, 133.243.206.21, 133.243.206.29, 133.243.125.20, 133.243.229.182, 133.243.24.9, 133.243.224.57, 133.243.24.7, 133.243.194.181.
+- ICMP does not use ports, so ports are not applicable.
+
+Recommended Security Response Plan:
+- Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests targeting 34.17.112.111.
+- Deploy or update intrusion prevention system (IPS) rules to detect and mitigate ICMP flood patterns.
+- Engage upstream ISP to filter or block malicious traffic sources if possible.
+- Monitor network traffic for continued or evolving attack patterns.
+- Consider temporarily disabling ICMP Echo Replies on the target host if operationally feasible to reduce attack surface.

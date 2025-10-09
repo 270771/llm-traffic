@@ -1,0 +1,11 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows at least 18 distinct ICMP connections with type 8 (Echo Request) targeting the same destination IP 54.206.231.130 within a very short time window. This matches the known pattern of a ping flood, where multiple ICMP Echo Requests are sent rapidly to overwhelm the target.
+- No anomalies or heuristic references are explicitly provided, but by standard heuristic classification, this fits heuristic 20 (excessive ICMP Echo Requests) and taxonomy class "Denial of Service (DoS)".
+- Involved IP addresses are multiple source IPs in the 157.17.x.x range sending ICMP type 8 packets to destination IP 54.206.231.130 on ICMP port 0 (ICMP does not use ports, but Zeek logs show 0).
+- Recommended security response:
+  1. Immediately rate-limit or block ICMP Echo Requests from the identified source IP range (157.17.0.0/16) at the perimeter firewall.
+  2. Monitor the target host 54.206.231.130 for service degradation or outages.
+  3. Implement ICMP flood detection and mitigation tools such as intrusion prevention systems (IPS) with DoS protection.
+  4. Investigate the source IPs for possible compromise or spoofing.
+  5. Notify network operations and incident response teams to prepare for potential escalation.

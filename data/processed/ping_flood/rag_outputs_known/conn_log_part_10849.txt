@@ -1,0 +1,13 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The Zeek conn.log snippet shows at least 10 distinct ICMP connections with ICMP type 8 (Echo Request) targeting the same destination IP 69.47.68.29 from multiple source IPs within a very short time frame. This pattern matches a classic ping flood, where numerous ICMP Echo Requests overwhelm a target.
+- No anomaly CSV records or heuristic context are provided, but by standard heuristic practice, this matches heuristic 1 (ICMP Echo Request flood) and taxonomy class "Denial of Service (DoS)".
+- Involved IPs: Multiple sources from the 130.197.x.x subnet (e.g., 130.197.23.195, 130.197.172.147, 130.197.144.133, etc.) are flooding the destination IP 69.47.68.29 on ICMP type 8.
+- Ports are not applicable for ICMP, but the consistent ICMP type 8 confirms the ping flood nature.
+
+**Recommended security response plan:**
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from the identified source IP range (130.197.0.0/16).
+2. Deploy an Intrusion Prevention System (IPS) rule to detect and block excessive ICMP Echo Requests targeting 69.47.68.29.
+3. Notify the network operations team to monitor the affected host for service degradation or outages.
+4. Conduct a forensic analysis to determine if the source IPs are compromised or spoofed.
+5. Consider blackholing or sinkholing traffic from persistent offenders if mitigation at the firewall level is insufficient.

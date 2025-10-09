@@ -1,0 +1,18 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation: The Zeek conn.log snippet shows a single source IP (13.24.95.251) sending numerous ICMP packets with type 8 (Echo Request) to multiple destination IPs within a very short time frame (~0.007–0.008 seconds per packet). This pattern of rapid, repeated ICMP Echo Requests to many targets is characteristic of a ping flood attack, which aims to overwhelm the network or hosts with ICMP traffic.
+
+Heuristics and Taxonomy: Although no explicit anomaly or heuristic data is provided, this behavior aligns with common heuristic #1 for ICMP flood detection—high volume of ICMP Echo Requests from one source to multiple destinations in a short time. The taxonomy class is "Denial of Service (DoS) - ICMP Flood."
+
+Involved IPs and Ports:
+- Attacker/source IP: 13.24.95.251
+- Multiple victim/destination IPs: 163.45.202.249, 163.45.22.136, 163.45.19.168, 163.45.40.216, 163.45.19.79, 163.45.116.249, 163.45.130.9, 163.45.183.53, 163.45.19.187, 163.45.183.8, 163.45.114.146, 163.45.183.55, 163.45.12.110, 163.45.188.171, 163.45.188.6, 163.45.114.68, 163.45.130.219, 163.45.130.184, 163.45.188.250, 163.45.191.43, 163.45.12.182, 163.45.12.214
+- ICMP does not use ports, so port fields are zero or irrelevant.
+
+Recommended Security Response Plan:
+1. Immediately block or rate-limit ICMP Echo Requests from source IP 13.24.95.251 at the network perimeter firewall or intrusion prevention system (IPS).
+2. Monitor network traffic for further ICMP flood attempts from this or other IPs.
+3. Notify affected network administrators of the targeted IPs to prepare for potential service degradation.
+4. Implement ICMP flood detection and mitigation rules in network security devices.
+5. Consider blacklisting or applying geo-IP restrictions if the source IP is from an untrusted region.
+6. Conduct a post-incident analysis to identify if the source IP is part of a botnet or compromised host.

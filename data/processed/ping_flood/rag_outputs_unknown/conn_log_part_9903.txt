@@ -1,0 +1,26 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows a high volume of ICMP traffic with ICMP type 8 (Echo Request), which is the specific type used in ping floods.
+- Multiple source IPs, notably 35.211.173.188 and 3.241.1.60, are sending numerous ICMP Echo Requests to a wide range of destination IPs within a very short time frame (timestamps clustered around 1641013236).
+- The rapid succession and volume of ICMP type 8 packets match the known pattern of a ping flood attack, where an attacker overwhelms targets with ICMP Echo Requests to degrade network performance or cause denial of service.
+
+Heuristic and Taxonomy:
+- Since no explicit heuristics or taxonomy are provided, assign:
+  - Heuristic: 1 (High volume ICMP Echo Requests indicating DoS)
+  - Taxonomy: Network Denial of Service (DoS) via ICMP Flood
+
+Involved IP addresses and ports:
+- Attackers (sources): 35.211.173.188, 3.241.1.60, 172.23.68.231, 133.227.8.71 (less frequent)
+- Targets (destinations): Multiple IPs in the 163.45.x.x range, including 163.45.79.133, 163.45.185.246, 163.45.159.132, 163.45.222.250, etc.
+- ICMP does not use ports, so ports are 0 or not applicable.
+
+Recommended Security Response Plan:
+1. Immediately implement rate limiting or filtering on network devices (firewalls, routers) to block or throttle ICMP Echo Requests from the identified source IPs (35.211.173.188, 3.241.1.60).
+2. Deploy or update Intrusion Prevention Systems (IPS) signatures to detect and block ICMP flood patterns.
+3. Notify upstream providers or ISPs about the malicious traffic sources for possible upstream filtering.
+4. Monitor network traffic continuously for residual or new ICMP flood attempts.
+5. Consider blackholing or sinkholing traffic from persistent attacker IPs if mitigation at the perimeter is insufficient.
+6. Review and harden internal network policies to restrict unnecessary ICMP traffic.
+
+This targeted response will mitigate the ongoing ping flood and reduce the risk of network disruption.

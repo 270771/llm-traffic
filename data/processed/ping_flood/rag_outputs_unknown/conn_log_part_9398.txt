@@ -1,0 +1,25 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows a large number of ICMP connections targeting a single destination IP (3.39.157.141) within a very short time window (all timestamps around 1641013233.17).
+- All ICMP packets have type 8, which corresponds to Echo Request (ping).
+- Multiple distinct source IPs (157.206.x.x range) are sending ICMP Echo Requests to the same target IP, consistent with a distributed ping flood pattern.
+- The rapid, high-volume ICMP Echo Requests without replies or session completions (state OTH, no data transferred) strongly indicate an attempt to overwhelm the target with ping traffic.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly records or heuristic context are provided, this matches the classic heuristic for ICMP ping flood attacks: high-rate ICMP Echo Requests from multiple sources targeting a single host.
+- Assign heuristic number: 1 (High-volume ICMP Echo Request flood).
+- Taxonomy class: Denial of Service (DoS) attack via ICMP flooding.
+
+Involved IPs and Ports:
+- Victim IP: 3.39.157.141 (destination).
+- Attacker IPs: Multiple sources in 157.206.0.0/16 subnet.
+- ICMP does not use ports, but type 8 (Echo Request) is the key identifier.
+
+Recommended Security Response Plan:
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests to 3.39.157.141.
+2. Deploy or update intrusion detection/prevention systems (IDS/IPS) signatures to detect and mitigate ICMP flood patterns.
+3. Coordinate with upstream ISPs to filter or block malicious traffic sources if possible.
+4. Monitor network traffic for continued or evolving attack patterns.
+5. Consider temporarily disabling ICMP Echo Requests on the victim host if operationally feasible.
+6. Conduct a post-incident analysis to identify compromised hosts in the 157.206.0.0/16 range that may be participating in the attack.

@@ -1,0 +1,21 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows a large volume of ICMP traffic with ICMP type 8 (Echo Request) originating from multiple source IPs (mostly in the 157.206.x.x range) targeting a small set of destination IPs (notably 54.183.178.87 and 69.232.166.26). The high frequency of ICMP Echo Requests in a very short time window (all timestamps around 1641013232.99) is consistent with a ping flood pattern, where an attacker overwhelms targets with ICMP Echo Requests to degrade network performance or cause denial of service.
+
+Heuristics and Taxonomy:  
+- Since no explicit anomaly or heuristic data is provided, the most likely heuristic is a volumetric ICMP flood detection heuristic (commonly heuristic #3 in many taxonomies: "ICMP Flood").  
+- Taxonomy class: "Denial of Service (DoS) - Network Layer Attack."
+
+Involved IPs and Ports:  
+- Source IPs: Multiple, including 157.206.6.253, 157.206.229.133, 157.206.149.10, 157.206.123.16, 157.206.40.185, etc.  
+- Destination IPs: Primarily 54.183.178.87 and 69.232.166.26.  
+- Ports: ICMP does not use ports, but ICMP type is 8 (Echo Request).
+
+Recommended Security Response Plan:  
+1. Immediately implement rate limiting or filtering on the network perimeter/firewall to block or throttle ICMP Echo Requests from the identified source IP ranges.  
+2. Deploy or tune Intrusion Prevention Systems (IPS) to detect and block ICMP flood patterns.  
+3. Notify affected network owners (54.183.178.87 and 69.232.166.26) to prepare for potential service degradation.  
+4. Monitor network traffic for escalation or spread to other targets.  
+5. Consider blackholing or sinkholing traffic from persistent attacking IPs if mitigation at the perimeter is insufficient.  
+6. Review upstream provider support for volumetric attack mitigation (e.g., scrubbing services).

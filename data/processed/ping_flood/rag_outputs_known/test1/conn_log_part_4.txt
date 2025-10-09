@@ -1,0 +1,7 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows at least 20 instances of ICMP type 8 (Echo Request) originating predominantly from source IP 133.16.14.149 to multiple destination IPs within a very short time frame, matching the pattern of a ping flood attack.
+- ICMP type 8 is the only type relevant for ping floods, and the volume here exceeds the threshold of 10 instances.
+- No anomaly records or heuristic context are provided, but by standard practice, this matches heuristic 1 (ICMP Echo Request flood) and taxonomy class "Denial of Service (DoS)".
+- Involved IP: Source IP 133.16.14.149 sending ICMP Echo Requests to multiple destination IPs on ICMP port 0 (ICMP does not use ports, but Zeek logs 0 here).
+- Recommended response: Immediately block or rate-limit ICMP Echo Requests from 133.16.14.149 at the network perimeter firewall or intrusion prevention system. Conduct further investigation on the source host for compromise or misconfiguration. Monitor for collateral impact on network performance and consider alerting the SOC for potential escalation.

@@ -1,0 +1,22 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows multiple ICMP connections from different source IPs (130.187.235.248, 130.187.239.200, 130.187.239.203, 130.187.235.218, 130.187.239.206) all targeting the same destination IP (52.45.247.73) with ICMP type 8, which corresponds to Echo Request packets. The rapid succession of these echo requests from multiple sources to a single target is consistent with a distributed ICMP ping flood pattern.
+
+Heuristics and Taxonomy:  
+- Although no explicit anomaly records or heuristic context are provided, this behavior aligns with common heuristic #1: "High volume of ICMP Echo Requests targeting a single host."  
+- Taxonomy class: "Network Denial of Service (DoS) - ICMP Flood."
+
+Involved IPs and Ports:  
+- Source IPs: 130.187.235.248, 130.187.239.200, 130.187.239.203, 130.187.235.218, 130.187.239.206  
+- Destination IP: 52.45.247.73  
+- ICMP type: 8 (Echo Request)  
+- Ports: ICMP does not use ports, so none are applicable.
+
+Recommended Security Response Plan:  
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from the identified source IPs.  
+2. Deploy or update intrusion prevention system (IPS) rules to detect and mitigate ICMP flood patterns.  
+3. Monitor the target host (52.45.247.73) for performance degradation and potential service impact.  
+4. Engage upstream providers or ISPs to assist in filtering or blocking malicious traffic closer to the source.  
+5. Conduct a forensic analysis to determine if these IPs are compromised hosts or part of a botnet.  
+6. Consider temporarily disabling ICMP Echo Requests on the target host if operationally feasible.

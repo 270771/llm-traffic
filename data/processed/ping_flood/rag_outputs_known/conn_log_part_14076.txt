@@ -1,0 +1,13 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows multiple ICMP connections with type 8 (Echo Request), which is the ICMP type used for ping. There are well over 10 instances targeting the same destination IP 18.11.193.42 from multiple source IPs, consistent with a ping flood pattern.
+- No anomaly records or heuristic context are provided, but by default, this matches heuristic 20 (known anomalous src or dst IPs) absence and meets the threshold of at least 10 ICMP type 8 packets.
+- Involved IPs: Multiple source IPs including 133.247.27.166, 133.247.172.148, 133.247.50.155, 130.197.147.202, 130.197.151.24, 133.247.27.245, 130.197.190.249, 133.247.50.177, 133.247.7.17, 133.247.34.142, 133.247.139.251, 133.247.139.240, 133.247.34.244, 133.247.135.205, 133.247.42.254, 133.247.42.126, 133.247.83.148, 133.247.24.59 targeting destination IP 18.11.193.42 on ICMP port 0 (ICMP does not use ports, but Zeek logs show 0).
+- Recommended response:
+  1. Immediately implement rate limiting or filtering on ICMP Echo Requests to 18.11.193.42 at the network perimeter firewall or intrusion prevention system.
+  2. Block or throttle traffic from the identified source IPs if they are not legitimate users.
+  3. Monitor for continued ICMP flood activity and correlate with network performance degradation.
+  4. Conduct a deeper investigation into the source IPs to determine if they are part of a botnet or compromised hosts.
+  5. Notify network operations and incident response teams to prepare for potential escalation.
+
+This is a clear case of an ICMP ping flood attack based on the volume and type of ICMP traffic observed.
