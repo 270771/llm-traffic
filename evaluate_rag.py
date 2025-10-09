@@ -1,99 +1,253 @@
 # Evaluates the RAG-based detection system by comparing extracted predictions from
-# text outputs against ground truth labels, calculating classification metrics,
+# text outputs against JSON ground truth labels/human expert labels, calculating classification metrics,
 # and visualizing performance with a confusion matrix and ROC curve
 
+# Note: comment/uncomment the respective code based on which comparison you want to make
+##################################################################################################
+
+# Evaluate RAG against Ground Truth Code
+# import os
+# import json
+# import matplotlib.pyplot as plt
+# from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, roc_curve, auc
+#
+# def load_ground_truth(json_path):
+#     with open(json_path, "r") as f:
+#         data = json.load(f)
+#     # Strip ".log" extension from keys for matching filenames without extension
+#     return {k.rsplit(".", 1)[0]: v.get("ping_flood_detected", False) for k, v in data.items()}
+#
+#
+# def extract_prediction(text):
+#     text = text.strip()
+#     if not text:
+#         return None  # Handle empty text
+#
+#     # Protect "conn.log" from splitting
+#     protected_text = text.replace("conn.log", "conn_log")
+#
+#     # Split into sentences
+#     sentences = protected_text.split(".")
+#
+#     # Restore the original conn.log if needed (not used here but can be if needed downstream)
+#     first_sentence = sentences[0].replace("conn_log", "conn.log").lower()
+#
+#     # If 'no' or 'not' appears in the first sentence, assume no attack
+#     if "no" in first_sentence or "not" in first_sentence:
+#         return False
+#     else:
+#         return True
+#
+#
+# # Evaluate RAG output predictions against ground truth labels
+# def evaluate(ground_truth, rag_folder):
+#     # Initialize counts for TP, TN, FP, FN
+#     tp = tn = fp = fn = 0
+#     missing = []          # files not found
+#     undecided = []        # predictions not extractable
+#     false_positives_list = []  # to track false positive filenames
+#     false_negatives_list = []
+#
+#     # Loop through each ground truth label
+#     for fname_no_ext, true_label in ground_truth.items():
+#         rag_path = os.path.join(rag_folder, fname_no_ext + ".txt")
+#
+#         # If the RAG output file doesn't exist
+#         if not os.path.exists(rag_path):
+#             missing.append(fname_no_ext)
+#             continue
+#
+#         # Read the RAG-generated output
+#         with open(rag_path, "r", encoding="utf-8") as f:
+#             rag_output = f.read()
+#
+#         # Extract the predicted label
+#         pred = extract_prediction(rag_output)
+#
+#         # If prediction could not be extracted
+#         if pred is None:
+#             undecided.append(fname_no_ext)
+#             continue
+#
+#         # Compare prediction to ground truth
+#         if pred == true_label:
+#             if pred:  # both are True
+#                 tp += 1
+#             else:     # both are False
+#                 tn += 1
+#         else:
+#             if true_label and not pred:  # missed a true case
+#                 fn += 1
+#                 false_negatives_list.append(fname_no_ext)
+#             elif not true_label and pred:  # incorrectly flagged
+#                 fp += 1
+#                 false_positives_list.append(fname_no_ext)
+#
+#     # Calculate metrics
+#     total = tp + tn + fp + fn
+#     accuracy = (tp + tn) / total if total > 0 else 0
+#     precision = tp / (tp + fp) if (tp + fp) > 0 else 0
+#     recall = tp / (tp + fn) if (tp + fn) > 0 else 0
+#     f1_score = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
+#
+#     # Return detailed metrics
+#     return {
+#         "total_evaluated": total,
+#         "true_positives": tp,
+#         "true_negatives": tn,
+#         "false_positives": fp,
+#         "false_negatives": fn,
+#         "accuracy": accuracy,
+#         "precision": precision,
+#         "recall": recall,
+#         "f1_score": f1_score,
+#         "missing_files": missing,
+#         "undecided_outputs": undecided,
+#         "false_positive_files": false_positives_list,
+#         "false_negative_files": false_negatives_list
+#     }
+#
+#
+# # Run evaluation with specified file paths
+# if __name__ == "__main__":
+#     # Path to ground truth JSON
+#     # gt_json_path = "./c101split/test3/ping_flood_labels.json"
+#     gt_json_path = "./c101split/test1/ping_flood_labels.json"
+#     # gt_json_path = "./fc110split/ping_flood_labels.json"
+#     # gt_json_path = "./inragsplit/ping_flood_labels.json"
+#     # Folder containing RAG-generated text outputs
+#     rag_outputs_folder = "./rag_outputs_c101split1"
+#     # rag_outputs_folder = "./rag_outputs_c101split3withanom"
+#     # rag_outputs_folder = "./rag_outputs_fc110split"
+#     # rag_outputs_folder = "./rag_outputs_inragsplit2"
+#     # Load ground truth and evaluate
+#     ground_truth = load_ground_truth(gt_json_path)
+#     results = evaluate(ground_truth, rag_outputs_folder)
+#
+#     # Print summary of evaluation metrics
+#     print("=== Evaluation Results ===")
+#     print(f"Total evaluated: {results['total_evaluated']}")
+#     print(f"Accuracy: {results['accuracy']:.2%}")
+#     print(f"Precision: {results['precision']:.2%}")
+#     print(f"Recall: {results['recall']:.2%}")
+#     print(f"F1 Score: {results['f1_score']:.2%}")
+#     print(f"True Positives: {results['true_positives']}")
+#     print(f"True Negatives: {results['true_negatives']}")
+#     print(f"False Positives: {results['false_positives']}")
+#     print(f"False Negatives: {results['false_negatives']}")
+#
+#     # Print info about missing or undecided predictions
+#     if results["missing_files"]:
+#         print(f"\nMissing RAG output files for: {results['missing_files']}")
+#     if results["undecided_outputs"]:
+#         print(f"\nUndecided RAG outputs for: {results['undecided_outputs']}")
+#     if results["false_positive_files"]:
+#         print(f"\nFalse Positives ({len(results['false_positive_files'])}):")
+#         for fp_file in results["false_positive_files"]:
+#             print(f" - {fp_file}")
+#     if results["false_negative_files"]:
+#         print(f"\nFalse Negatives ({len(results['false_negative_files'])}):")
+#         for fp_file in results["false_negative_files"]:
+#             print(f" - {fp_file}")
+#
+#
+# # Build y_true and y_pred lists from ground truth and predictions
+# y_true = []
+# y_pred = []
+#
+# for fname_no_ext, true_label in ground_truth.items():
+#     rag_path = os.path.join(rag_outputs_folder, fname_no_ext + ".txt")
+#     if not os.path.exists(rag_path):
+#         continue
+#     with open(rag_path, "r", encoding="utf-8") as f:
+#         rag_output = f.read()
+#     pred = extract_prediction(rag_output)
+#     if pred is None:
+#         continue
+#     y_true.append(1 if true_label else 0)
+#     y_pred.append(1 if pred else 0)
+#
+# # Confusion matrix
+# cm = confusion_matrix(y_true, y_pred)
+# disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Attack", "Ping Flood"])
+# disp.plot(cmap=plt.cm.Blues)
+# plt.title("Confusion Matrix")
+# plt.show()
+#
+# # ROC curve and AUC
+# fpr, tpr, _ = roc_curve(y_true, y_pred)
+# roc_auc = auc(fpr, tpr)
+#
+# plt.figure()
+# plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {roc_auc:.2f})")
+# plt.plot([0, 1], [0, 1], "k--")
+# plt.xlabel("False Positive Rate")
+# plt.ylabel("True Positive Rate")
+# plt.title("Receiver Operating Characteristic (ROC) Curve")
+# plt.legend(loc="lower right")
+# plt.grid(True)
+# plt.show()
+
+##################################################################################################
+# Evaluate RAG against Human Expert
 import os
-import json
 import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, roc_curve, auc, classification_report
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, roc_curve, auc
 
-# Load ground truth labels from JSON (automated detection from label_ping_flood_logs.py)
-def load_ground_truth_from_json(json_path):
-    """
-    Load automated ground truth labels from JSON.
-    Expected format: {"conn_log_part_1.log": {"ping_flood_detected": true, ...}, ...}
-    """
-    with open(json_path, "r") as f:
-        data = json.load(f)
-    # Strip ".log" extension from keys for matching filenames without extension
-    return {k.rsplit(".", 1)[0]: v.get("ping_flood_detected", False) for k, v in data.items()}
-
-
-# Load ground truth labels from a .txt file with format: filename = True/False
+# Load ground truth labels from a .txt file and format of each line as filename = True/False
 def load_ground_truth_from_txt(txt_path):
-    """
-    Load ground truth labels from text file.
-    Expected format: conn_log_part_1 = True
-    """
     ground_truth = {}
     with open(txt_path, 'r') as f:
         for line in f:
             line = line.strip()
             if not line or '=' not in line:
-                continue  # skip empty or malformed lines
+                continue # skip empty or malformed lines
             fname, value = line.split('=')
-            fname = fname.strip().rsplit('.', 1)[0]  # Remove ".log" if present
+            fname = fname.strip().rsplit('.', 1)[0]  # Remove ".log"
             value = value.strip().lower() == 'true'
             ground_truth[fname] = value
     return ground_truth
 
-
-# Extract a prediction (True/False) from RAG-generated response
+# Extract a prediction (True/False) from a RAG-generated response, return None if the output is unclear/empty
 def extract_prediction(text):
-    """
-    Parse RAG output to determine if ping flood was detected.
-    Returns True if attack detected, False if not, None if unclear.
-    """
     text = text.strip()
     if not text:
         return None
-    
-    # Check for explicit UNDECIDABLE response (abstention feature)
-    if "UNDECIDABLE" in text.upper():
-        return None
-    
     # Protect against "conn.log" splitting issues by temporarily replacing it
     protected_text = text.replace("conn.log", "conn_log")
     sentences = protected_text.split(".")
     first_sentence = sentences[0].replace("conn_log", "conn.log").lower()
-    
     # If the first sentence contains "no" or "not", interpret as a negative prediction
     if "no" in first_sentence or "not" in first_sentence:
         return False
     else:
         return True
 
-
-# Compare ground truth to predictions in RAG output files
+# Compare ground truth to predictions in RAG output .txt files
 def evaluate(ground_truth, rag_folder):
-    """
-    Evaluate RAG predictions against ground truth labels.
-    
-    Returns dict with metrics and lists of misclassified files.
-    """
     tp = tn = fp = fn = 0
+    # File tracking
     missing = []
     undecided = []
     false_positives_list = []
     false_negatives_list = []
-    
+    # Loop through all ground truth files
     for fname_no_ext, true_label in ground_truth.items():
         rag_path = os.path.join(rag_folder, fname_no_ext + ".txt")
-        
+
         if not os.path.exists(rag_path):
             missing.append(fname_no_ext)
             continue
-        
+
         with open(rag_path, "r", encoding="utf-8") as f:
             rag_output = f.read()
-        
+
         pred = extract_prediction(rag_output)
-        
+
         if pred is None:
             undecided.append(fname_no_ext)
             continue
-        
-        # Compare prediction to ground truth
+        # Compare prediction to ground truth and count metrics
         if pred == true_label:
             if pred:
                 tp += 1
@@ -106,13 +260,13 @@ def evaluate(ground_truth, rag_folder):
             elif not true_label and pred:
                 fp += 1
                 false_positives_list.append(fname_no_ext)
-    
+
     total = tp + tn + fp + fn
     accuracy = (tp + tn) / total if total > 0 else 0
     precision = tp / (tp + fp) if (tp + fp) > 0 else 0
     recall = tp / (tp + fn) if (tp + fn) > 0 else 0
     f1_score = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
-    
+
     return {
         "total_evaluated": total,
         "true_positives": tp,
@@ -131,102 +285,72 @@ def evaluate(ground_truth, rag_folder):
 
 
 if __name__ == "__main__":
-    # ========== CONFIGURATION ==========
-    # Choose evaluation mode:
-    # - "auto" = Use automated labels from JSON (ping_flood_labels.json)
-    # - "manual" = Use manual labels from TXT file (manual_gt_labels.txt)
-    EVALUATION_MODE = "auto"  # Change to "manual" for human expert labels
-    
-    if EVALUATION_MODE == "auto":
-        ground_truth_path = "./split_logs/ping_flood_labels.json"
-        print("📊 Using AUTOMATED ground truth labels (sliding-window detection)")
-        ground_truth = load_ground_truth_from_json(ground_truth_path)
-    else:
-        ground_truth_path = "./manual_gt_labels.txt"
-        print("👤 Using MANUAL ground truth labels (human expert)")
-        ground_truth = load_ground_truth_from_txt(ground_truth_path)
-    
-    rag_outputs_folder = "./rag_outputs"
-    # ===================================
-    
-    print("="*60)
-    print("🔬 RAG System Evaluation")
-    print("="*60)
-    print(f"Ground truth: {ground_truth_path}")
-    print(f"RAG outputs: {rag_outputs_folder}")
-    print(f"Total ground truth samples: {len(ground_truth)}\n")
+    # ground_truth_txt_path = "./manual_gt_labels.txt"
+    # rag_outputs_folder = "./rag_outputs_inragsplit2"
+
+    ground_truth_txt_path = "./c101_manual_gt_labels.txt"
+    rag_outputs_folder = "./rag_outputs_c101split1"
+
+    ground_truth = load_ground_truth_from_txt(ground_truth_txt_path)
     results = evaluate(ground_truth, rag_outputs_folder)
-    
-    # Print summary
+
     print("=== Evaluation Results ===")
     print(f"Total evaluated: {results['total_evaluated']}")
     print(f"Accuracy: {results['accuracy']:.2%}")
     print(f"Precision: {results['precision']:.2%}")
     print(f"Recall: {results['recall']:.2%}")
     print(f"F1 Score: {results['f1_score']:.2%}")
-    print(f"\nTrue Positives: {results['true_positives']}")
+    print(f"True Positives: {results['true_positives']}")
     print(f"True Negatives: {results['true_negatives']}")
     print(f"False Positives: {results['false_positives']}")
     print(f"False Negatives: {results['false_negatives']}")
-    
+
     if results["missing_files"]:
-        print(f"\n⚠️  Missing RAG output files ({len(results['missing_files'])}): {results['missing_files'][:5]}")
+        print(f"\nMissing RAG output files for: {results['missing_files']}")
     if results["undecided_outputs"]:
-        print(f"\n⚠️  Undecided RAG outputs ({len(results['undecided_outputs'])}): {results['undecided_outputs'][:5]}")
+        print(f"\nUndecided RAG outputs for: {results['undecided_outputs']}")
     if results["false_positive_files"]:
-        print(f"\n❌ False Positives ({len(results['false_positive_files'])}):")
-        for f in results["false_positive_files"][:10]:
-            print(f"   - {f}")
+        print(f"\nFalse Positives ({len(results['false_positive_files'])}):")
+        for f in results["false_positive_files"]:
+            print(f" - {f}")
     if results["false_negative_files"]:
-        print(f"\n❌ False Negatives ({len(results['false_negative_files'])}):")
-        for f in results["false_negative_files"][:10]:
-            print(f"   - {f}")
-    
-    # Build lists for sklearn metrics
-    y_true = []
-    y_pred = []
-    
-    for fname_no_ext, true_label in ground_truth.items():
-        rag_path = os.path.join(rag_outputs_folder, fname_no_ext + ".txt")
-        if not os.path.exists(rag_path):
-            continue
-        with open(rag_path, "r", encoding="utf-8") as f:
-            rag_output = f.read()
-        pred = extract_prediction(rag_output)
-        if pred is None:
-            continue
-        y_true.append(1 if true_label else 0)
-        y_pred.append(1 if pred else 0)
-    
-    # Print sklearn classification report
-    print("\n" + "="*60)
-    print("Detailed Classification Report:")
-    print("="*60)
-    print(classification_report(y_true, y_pred, target_names=["No Attack", "Ping Flood"]))
-    
-    # Confusion Matrix
-    cm = confusion_matrix(y_true, y_pred)
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Attack", "Ping Flood"])
-    disp.plot(cmap=plt.cm.Blues)
-    plt.title("RAG System Confusion Matrix")
-    plt.tight_layout()
-    plt.savefig("confusion_matrix.png", dpi=300)
-    print("\n📊 Confusion matrix saved to: confusion_matrix.png")
-    plt.show()
-    
-    # ROC Curve
-    fpr, tpr, _ = roc_curve(y_true, y_pred)
-    roc_auc = auc(fpr, tpr)
-    
-    plt.figure()
-    plt.plot(fpr, tpr, linewidth=2, label=f"ROC Curve (AUC = {roc_auc:.2f})")
-    plt.plot([0, 1], [0, 1], "k--", linewidth=1, label="Random Classifier")
-    plt.xlabel("False Positive Rate")
-    plt.ylabel("True Positive Rate (Recall)")
-    plt.title("Receiver Operating Characteristic (ROC) Curve")
-    plt.legend(loc="lower right")
-    plt.grid(True, alpha=0.3)
-    plt.tight_layout()
-    plt.savefig("roc_curve.png", dpi=300)
-    print("📊 ROC curve saved to: roc_curve.png")
-    plt.show()
+        print(f"\nFalse Negatives ({len(results['false_negative_files'])}):")
+        for f in results["false_negative_files"]:
+            print(f" - {f}")
+
+# Build y_true and y_pred lists from ground truth and predictions
+y_true = []
+y_pred = []
+
+for fname_no_ext, true_label in ground_truth.items():
+    rag_path = os.path.join(rag_outputs_folder, fname_no_ext + ".txt")
+    if not os.path.exists(rag_path):
+        continue
+    with open(rag_path, "r", encoding="utf-8") as f:
+        rag_output = f.read()
+    pred = extract_prediction(rag_output)
+    if pred is None:
+        continue
+    y_true.append(1 if true_label else 0)
+    y_pred.append(1 if pred else 0)
+
+# Confusion matrix
+cm = confusion_matrix(y_true, y_pred)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Attack", "Ping Flood"])
+disp.plot(cmap=plt.cm.Blues)
+plt.title("Confusion Matrix")
+plt.show()
+
+# ROC curve and AUC
+fpr, tpr, _ = roc_curve(y_true, y_pred)
+roc_auc = auc(fpr, tpr)
+
+plt.figure()
+plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {roc_auc:.2f})")
+plt.plot([0, 1], [0, 1], "k--")
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
+plt.title("Receiver Operating Characteristic (ROC) Curve")
+plt.legend(loc="lower right")
+plt.grid(True)
+plt.show()

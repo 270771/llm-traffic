@@ -436,15 +436,7 @@ llm-traffic/
 
 If you use ReGAIN in your research, please cite:
 
-```bibtex
-@article{regain2025,
-  title={ReGAIN: Retrieval-Grounded AI Framework for Network Traffic Analysis},
-  author={[Authors]},
-  journal={[Conference/Journal]},
-  year={2025},
-  url={https://github.com/270771/llm-traffic}
-}
-```
+To be added
 
 ---
 
@@ -457,21 +449,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - **NSF**: Grants 2113945, 2200538, 2416992, 2230610 at NC A&T SU  
-- **MAWILab**: WIDE project for backbone traffic anomaly dataset  
+- **MAWILab**: WIDE project for traffic anomaly dataset  
 - **LangChain & ChromaDB**: RAG infrastructure  
 - **Sentence Transformers**: Semantic embedding framework  
 
 ---
 
 ## Contact & Support
-
-- **Issues**: [GitHub Issues](https://github.com/270771/llm-traffic/issues)  
-- **Discussions**: [GitHub Discussions](https://github.com/270771/llm-traffic/discussions)  
-- **Paper**: [arXiv link] (to be added)  
+ 
+- **Paper**: (to be added)  
 
 ---
-
-## Additional Documentation
-
-- [`BATCH_PROCESSING_GUIDE.md`](BATCH_PROCESSING_GUIDE.md) - Comprehensive batch mode usage  
-- [`EVALUATION_SETUP.md`](EVALUATION_SETUP.md) - Complete evaluation configuration
