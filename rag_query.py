@@ -3,7 +3,7 @@ import os
 import re
 from dotenv import load_dotenv
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain.chat_models import ChatOpenAI
 from langchain.retrievers import EnsembleRetriever
 from langchain.prompts import PromptTemplate
@@ -395,6 +395,261 @@ def generate_rag_analysis(query_text, similarity_threshold=0.3):
     # Send the prompt to the LLM and get its response
     response = llm.invoke([{"role": "user", "content": prompt}])
     return response.content
+
+
+# === Raw Log File Processing Functions ===
+
+def prepare_conn_log_for_llm(file_path):
+    """
+    Read and prepare a Zeek conn.log file for LLM analysis.
+    Filters to ICMP traffic by default, falls back to all traffic if no ICMP found.
+    
+    Args:
+        file_path (str): Path to the conn.log file.
+        
+    Returns:
+        str: Formatted log text ready for analysis, or error message.
+    """
+    try:
+        with open(file_path, 'r') as f:
+            lines = [line.strip() for line in f if not line.startswith("#")]
+        
+        # Filter lines to those with proto field == 'icmp'
+        icmp_lines = [line for line in lines if len(line.split('\t')) > 6 and line.split('\t')[6].lower() == 'icmp']
+        
+        # If no ICMP lines, fallback to all lines
+        return "\n".join(icmp_lines) if icmp_lines else "\n".join(lines)
+    except Exception as e:
+        return f"Error reading file: {e}"
+
+
+def cap_text(text, max_chars):
+    """
+    Truncate text cleanly at max_chars, preserving whole lines if possible.
+    
+    Args:
+        text (str): Text to truncate.
+        max_chars (int): Maximum character count.
+        
+    Returns:
+        str: Truncated text.
+    """
+    if len(text) <= max_chars:
+        return text
+    
+    lines = text.split('\n')
+    capped = []
+    current_len = 0
+    
+    for line in lines:
+        if current_len + len(line) + 1 > max_chars:
+            break
+        capped.append(line)
+        current_len += len(line) + 1
+    
+    return "\n".join(capped)
+
+
+def generate_rag_analysis_from_log(conn_log_text):
+    """
+    Generate RAG analysis directly from raw Zeek conn.log text.
+    This version is simpler and optimized for batch processing of log files.
+    
+    Args:
+        conn_log_text (str): Raw conn.log content (tab-separated).
+        
+    Returns:
+        str: LLM-generated analysis of the log file.
+    """
+    # Extract IPs from the log text
+    alert_ips = extract_ips(conn_log_text)
+    
+    # Match anomaly documents using the extracted IPs (simplified version without threshold)
+    matched_anomaly_docs = []
+    for ip in alert_ips:
+        results = anomaly_csv_store.similarity_search(ip, k=7)
+        for doc in results:
+            if ip in doc.page_content:
+                matched_anomaly_docs.append(doc.page_content)
+    
+    anomaly_contents = list(set(matched_anomaly_docs))
+    
+    # Match heuristic documents based on anomaly data
+    heuristic_contents = match_heuristic_docs(anomaly_contents, heuristic_txt_store)
+    
+    # Limit each section to reduce total tokens
+    context = {
+        "ping_flood_alerts2": cap_text(conn_log_text, 2500),
+        "anomaly_csv": "\n".join(anomaly_contents) if anomaly_contents else "No anomaly data found.",
+        "heuristic_context": "\n".join(heuristic_contents) if heuristic_contents else "No heuristic context available."
+    }
+    
+    # Format the prompt
+    prompt = ping_flood_prompt.format(**context)
+    
+    # Initialize ChatOpenAI LLM
+    llm = ChatOpenAI(model_name="gpt-4.1-mini", temperature=0)
+    
+    # Send the prompt to the LLM and get its response
+    response = llm.invoke([{"role": "user", "content": prompt}])
+    return response.content
+
+
+def run_folder_analysis(input_folder, output_folder):
+    """
+    Batch process all .log files in input_folder and save RAG analysis to output_folder.
+    This is optimized for evaluation workflows where you have many log files to analyze.
+    
+    Args:
+        input_folder (str): Directory containing conn.log files to analyze.
+        output_folder (str): Directory to save RAG analysis text files.
+    """
+    # Create output folder if it doesn't exist
+    os.makedirs(output_folder, exist_ok=True)
+    
+    # Get all .log files
+    log_files = [f for f in os.listdir(input_folder) if f.endswith(".log")]
+    
+    print(f"\n{'='*60}")
+    print(f"🚀 Batch RAG Analysis - Processing {len(log_files)} log files")
+    print(f"{'='*60}")
+    print(f"📂 Input folder:  {input_folder}")
+    print(f"📁 Output folder: {output_folder}\n")
+    
+    processed = 0
+    skipped = 0
+    failed = 0
+    
+    for fname in log_files:
+        full_path = os.path.join(input_folder, fname)
+        output_filename = fname.rsplit(".", 1)[0] + ".txt"
+        output_path = os.path.join(output_folder, output_filename)
+        
+        # Skip if already processed
+        if os.path.exists(output_path):
+            print(f"⏭️  Skipping {fname} (already exists)")
+            skipped += 1
+            continue
+        
+        print(f"🔍 Processing {fname}...")
+        
+        try:
+            # Read and prepare the log file
+            log_text = prepare_conn_log_for_llm(full_path)
+            
+            if log_text.startswith("Error"):
+                print(f"❌ Skipping {fname} due to read error: {log_text}")
+                failed += 1
+                continue
+            
+            # Generate RAG analysis
+            rag_response = generate_rag_analysis_from_log(log_text)
+            
+            # Save to output file
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write(rag_response)
+            
+            print(f"✅ Completed {fname} → {output_filename}")
+            processed += 1
+            
+        except Exception as e:
+            print(f"❌ Error processing {fname}: {e}")
+            failed += 1
+    
+    print(f"\n{'='*60}")
+    print(f"📊 Batch Processing Complete!")
+    print(f"{'='*60}")
+    print(f"✅ Successfully processed: {processed}")
+    print(f"⏭️  Skipped (existing):    {skipped}")
+    print(f"❌ Failed:                {failed}")
+    print(f"📁 Results saved to: {output_folder}\n")
+
+
+# === CLI Interface ===
+if __name__ == "__main__":
+    import sys
+    
+    # Check if running in batch mode (with command-line arguments)
+    if len(sys.argv) >= 3:
+        # Batch mode: python rag_query.py <input_folder> <output_folder>
+        input_folder = sys.argv[1]
+        output_folder = sys.argv[2]
+        
+        print("\n🔧 Running in BATCH MODE")
+        run_folder_analysis(input_folder, output_folder)
+        
+    elif len(sys.argv) == 2 and sys.argv[1] in ['--help', '-h']:
+        # Help mode
+        print("""
+╔════════════════════════════════════════════════════════════════╗
+║   🛰️  AI-Assisted Backbone Traffic Anomaly Investigator       ║
+╚════════════════════════════════════════════════════════════════╝
+
+📚 USAGE:
+
+1️⃣  Interactive Mode (Advanced RAG with thresholds & reranking):
+   python rag_query.py
+   
+   Then describe suspicious events in natural language.
+   Example: "Heavy ICMP ping storm to 3.30.218.60 at midnight"
+
+2️⃣  Batch Mode (Process raw log files for evaluation):
+   python rag_query.py <input_folder> <output_folder>
+   
+   Processes all .log files in input_folder and saves analysis
+   to output_folder as .txt files.
+   
+   Example:
+   python rag_query.py ./split_logs ./rag_outputs
+
+3️⃣  Help:
+   python rag_query.py --help
+
+🔍 Features:
+   • Cross-encoder reranking for precision
+   • MMR for diverse retrieval
+   • Similarity thresholds with abstention
+   • Metadata filtering support
+   • Batch processing for evaluation
+        """)
+        
+    else:
+        # Interactive mode: Advanced RAG system
+        print("""
+=========================================================
+🛰️  AI-Assisted Backbone Traffic Anomaly Investigator
+
+👋 Welcome, Analyst! You're about to consult your AI-powered co-pilot
+for backbone traffic anomaly detection and expert-level interpretation.
+
+This is the ADVANCED RAG mode with:
+✨ Cross-encoder reranking
+✨ Similarity thresholds & abstention
+✨ MMR for diverse retrieval
+✨ Metadata filtering support
+
+💡 What you can enter:
+- A quick note like "Heavy ICMP ping storm to 3.30.218.60 at midnight"
+- A suspicious event summary: "Unexpected scan-like surge to data center"
+- A curious observation: "Strange high-volume flow from unknown host"
+- Metadata filters: "DoS attack on port 443 to 192.168.1.1"
+
+Your AI partner will analyze it, cross-check your anomaly knowledge base,
+reference heuristic and taxonomy context, and recommend decisive action.
+
+Type 'exit' anytime to end your investigation.
+For batch processing, use: python rag_query.py <input_folder> <output_folder>
+""")
+
+        while True:
+            query = input("\n🕵️ Describe the suspicious network event you'd like me to analyze or type exit: ")
+            if query.strip().lower() == "exit":
+                print("✅ Session ended. Stay vigilant out there! 🚨")
+                break
+
+            # Run the RAG analysis and display result
+            result = generate_rag_analysis(query)
+            print("\n💡 AI-Generated Explanation & Action Plan:\n", result)
 
 
 # === CLI Interface ===
