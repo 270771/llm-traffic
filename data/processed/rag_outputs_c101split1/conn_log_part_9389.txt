@@ -1,0 +1,7 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Explanation: The ICMP type in the conn.log snippet is indicated by the field with value `1` (the 7th field after source IP and port), which corresponds to ICMP type 1 (Destination Unreachable), not type 8 (Echo Request). Since ping floods require ICMP type 8 packets, this traffic does not match ping flood patterns.
+
+No anomaly records or heuristic context are available to suggest another attack type. The connection state is `OTH` (other), which often indicates incomplete or unusual connection states but is not sufficient to classify an attack here.
+
+Next steps: Investigate the source IP 163.45.185.21 and destination IP 120.91.182.87 for any repeated or unusual ICMP type 1 traffic, as frequent Destination Unreachable messages may indicate network issues or scanning activity. Further logs or anomaly data should be reviewed to confirm any suspicious behavior.

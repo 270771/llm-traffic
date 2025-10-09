@@ -1,0 +1,14 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows over 20 distinct source IPs sending ICMP type 8 (echo request) packets to a single destination IP (54.179.180.7) within a very short time frame, matching the classic pattern of a distributed ICMP ping flood.
+- All ICMP packets are type 8, confirming these are echo requests, which are used in ping floods.
+- No anomaly records or heuristic context are provided, but by standard heuristic taxonomy, this matches heuristic 20 (multiple sources flooding a single target with ICMP echo requests) and falls under the taxonomy class of "Denial of Service (DoS) Attack."
+- Involved IPs: Multiple source IPs from the 157.17.x.x subnet and one outlier (133.247.49.34) targeting destination IP 54.179.180.7 on ICMP type 8.
+- Ports are not applicable for ICMP, but the consistent ICMP type 8 traffic confirms the attack vector.
+
+Security response plan:
+- Immediately implement rate limiting or blocking of ICMP echo requests from the identified source IPs at the network perimeter firewall or intrusion prevention system (IPS).
+- Deploy network-based anomaly detection to monitor and alert on sudden spikes in ICMP traffic.
+- Coordinate with upstream providers to filter or throttle traffic from the attacking IP ranges.
+- Conduct a forensic analysis to identify if any internal hosts are compromised and participating in the attack.
+- Prepare to apply geo-IP or subnet-based blocking if the attack persists and impacts availability.

@@ -1,0 +1,20 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows a high volume of ICMP traffic originating from a single source IP (54.254.197.94) targeting multiple destination IPs within the 163.45.x.x subnet. All ICMP packets have type 8, which corresponds to Echo Request messages used in ping operations. The rapid succession and distribution of these ICMP Echo Requests to many hosts is consistent with a classic ICMP ping flood pattern, where an attacker overwhelms targets with excessive ping requests to degrade network performance or availability.
+
+Heuristics and Taxonomy:  
+- Although no explicit anomaly records or heuristic context are provided, this behavior aligns with common heuristic #1: "Excessive ICMP Echo Requests from a single source to multiple destinations."  
+- Taxonomy class: "Network Denial of Service (DoS) - ICMP Flood."
+
+Involved IPs and Ports:  
+- Attacker/source IP: 54.254.197.94  
+- Multiple destination IPs: 163.45.127.66, 163.45.70.180, 163.45.70.101, 163.45.223.238, 163.45.223.230, 163.45.112.220, 163.45.70.251, 163.45.159.253, 163.45.173.50, 163.45.91.27, 163.45.130.228, 163.45.173.6, 163.45.24.216, 163.45.91.242, 163.45.91.157, 163.45.56.229, 163.45.135.90, 163.45.24.218, 163.45.130.11, 163.45.159.240, 163.45.68.73, 163.45.197.45  
+- ICMP does not use ports, so port fields are zero or irrelevant.
+
+Recommended Security Response Plan:  
+1. Immediately block or rate-limit ICMP Echo Requests from source IP 54.254.197.94 at the perimeter firewall or intrusion prevention system (IPS).  
+2. Monitor network traffic for additional ICMP floods or other DoS vectors from this or related IPs.  
+3. Notify affected network administrators of the targeted destination IPs to prepare for potential service degradation.  
+4. Implement or verify existing ICMP rate-limiting policies on routers and switches to mitigate impact.  
+5. Conduct a forensic review of logs and network devices to identify if the source IP is internal or external and take appropriate upstream action (e.g., ISP notification or internal host remediation).

@@ -1,0 +1,13 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows over 20 distinct ICMP connections from a single source IP (35.119.5.36) sending ICMP type 8 (Echo Request) packets to multiple destination IPs within a very short time frame. This pattern matches a classic ping flood where a host overwhelms multiple targets with ICMP echo requests.
+- Although no explicit heuristic or taxonomy data is provided, this behavior aligns with heuristic 20 (excessive ICMP echo requests) commonly used to identify ping floods. The taxonomy class is best assigned as "Denial of Service (DoS)" attack.
+- Involved IP addresses: Source IP 35.119.5.36; Destination IPs include 163.252.249.65, 163.252.249.177, 163.252.249.235, 163.252.60.6, 163.252.140.92, 163.252.237.40, 163.252.234.174, 163.252.58.193, 163.252.140.6, 163.252.237.124, 163.252.176.92, 163.252.237.235, 163.252.245.253, 163.252.240.47, 163.252.240.125, 163.252.78.237, 163.252.140.91, 163.252.245.247, 163.252.164.203.
+- Ports are not applicable for ICMP, but the ICMP type is consistently 8 (Echo Request).
+
+Security response plan:
+1. Immediately block or rate-limit ICMP traffic from source IP 35.119.5.36 at the network perimeter firewall or intrusion prevention system.
+2. Monitor for any further ICMP flood attempts from this or related IPs.
+3. Notify affected destination IP owners to prepare for potential service degradation.
+4. Conduct a forensic investigation on the source host to determine if it is compromised or misconfigured.
+5. Implement network-level ICMP flood detection and mitigation rules to prevent recurrence.

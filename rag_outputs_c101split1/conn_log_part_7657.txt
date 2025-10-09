@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: The Zeek conn.log snippet shows multiple ICMP connections, but only two entries have ICMP type 8 (Echo Request), which is the only type relevant for ping floods. However, the volume and pattern do not indicate a flood—there are only two ICMP type 8 packets from the same source IP (151.105.96.5) to two different destination IPs, with no indication of high frequency or volume typical of a ping flood.
-
-No anomaly records or heuristic context are provided, so no explicit heuristic or taxonomy can be assigned. Given the data, this traffic does not match known ping flood patterns, which require sustained high-rate ICMP Echo Requests.
-
-Next steps: Monitor for increased frequency or volume of ICMP type 8 packets from these or other IPs. If a sudden surge occurs, investigate for potential ICMP flood. Also, review network baseline traffic to identify any deviations in ICMP behavior.

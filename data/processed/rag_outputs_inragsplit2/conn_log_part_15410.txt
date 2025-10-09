@@ -1,0 +1,18 @@
+Based on the current log, a ping flooding attack is **not** happening.
+
+Reasoning:  
+- All conn.log entries show either TCP or UDP traffic; none indicate ICMP traffic.  
+- The last field in each entry is the IP protocol number: 6 for TCP, 17 for UDP, and ICMP would be 1. No entries have protocol 1.  
+- No ICMP type 8 (Echo Request) packets are present, which is required to identify a ping flood.  
+- The heuristic 20 (Ping flood) is not referenced in the anomaly CSV or logs. The only anomaly present is heuristic 10 (SYN attack) related to suspicious TCP SYN packets on port 8080, which is unrelated to ICMP or ping floods.
+
+Heuristic and taxonomy clarification:  
+- Heuristic 10 corresponds to SYN flood attacks, indicating suspicious TCP SYN packets.  
+- Taxonomy class 'ptmp' in anomaly_782 relates to partial TCP connection attempts, consistent with SYN flood behavior.
+
+Next steps:  
+- Investigate the anomaly_782 further for potential SYN flood or TCP-based DoS attacks.  
+- Monitor for any ICMP traffic with type 8 in future logs to detect possible ping floods.  
+- Verify if any hosts are generating excessive UDP or TCP SYN packets that could indicate other DoS vectors.
+
+No evidence supports a ping flood attack at this time.

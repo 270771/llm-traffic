@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-The Zeek conn.log snippet shows only TCP and UDP connections; there are no ICMP entries present. Since ICMP type 8 (Echo Request) is required to identify ping floods and no ICMP traffic is logged here, no ping flood pattern is detected.
-
-No anomalies or heuristics related to ICMP or ping floods are found in the anomaly CSV, and no heuristic context is provided.
-
-Next steps: Investigate ICMP traffic logs specifically (e.g., icmp.log) to confirm if any ICMP Echo Requests are occurring at high volume. Also, monitor for other types of DoS or scanning activity in TCP/UDP traffic, as many connections show SYN failures (S0 state), which could indicate scanning or other reconnaissance but not ping flooding.

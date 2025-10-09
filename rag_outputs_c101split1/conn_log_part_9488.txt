@@ -1,9 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-The ICMP traffic shown has ICMP type 128 (indicated by the Zeek conn.log ICMP code field), which corresponds to an ICMPv6 Echo Request, not the ICMP type 8 used in IPv4 ping floods. Since the ICMP type is not 8, this traffic does not match the known pattern for an ICMP ping flood attack.
-
-No anomalies are recorded in the anomaly CSV, and no heuristic or taxonomy context is provided. The connection state is OTH (other), and the flags indicate no retransmissions or errors.
-
-No other attack patterns are evident from this snippet. However, since this is ICMPv6 Echo Request traffic, it is normal network behavior unless seen in high volume or unusual patterns.
-
-Next steps: Monitor for unusually high rates of ICMPv6 Echo Requests from these IPs (2001:fa13:fc7d:4106:fcf1:f:525d:4eaf and 2001:fcff:fa79:c0fd:e:7ff:fe1e:3a07). If volume spikes significantly, investigate for potential ICMPv6-based DoS or reconnaissance activity.

@@ -11,29 +11,29 @@ SCENARIOS = {
     "3b_known_gt": {
         "name": "Figure 3(b): Known-Ground Truth",
         "type": "json",
-        "gt_path": "./inragsplit/ping_flood_labels.json",
-        "rag_folder": "./rag_outputs_inragsplit2",
+        "gt_path": "./data/processed/inragsplit/ping_flood_labels.json",
+        "rag_folder": "./data/processed/rag_outputs_inragsplit2",
         "output_prefix": "fig3b_known_gt"
     },
     "3c_unknown_gt": {
         "name": "Figure 3(c): Unknown-Ground Truth",
         "type": "json",
-        "gt_path": "./c101split/test1/ping_flood_labels.json",
-        "rag_folder": "./rag_outputs_c101split1",
+        "gt_path": "./data/processed/c101split/test1/ping_flood_labels.json",
+        "rag_folder": "./data/processed/rag_outputs_c101split1",
         "output_prefix": "fig3c_unknown_gt"
     },
     "4b_known_expert": {
         "name": "Figure 4(b): Known-Expert",
         "type": "txt",
-        "gt_path": "./manual_gt_labels.txt",
-        "rag_folder": "./rag_outputs_inragsplit2",
+        "gt_path": "./data/ground_truth/manual_gt_labels.txt",
+        "rag_folder": "./data/processed/rag_outputs_inragsplit2",
         "output_prefix": "fig4b_known_expert"
     },
     "4c_unknown_expert": {
         "name": "Figure 4(c): Unknown-Expert",
         "type": "txt",
-        "gt_path": "./c101_manual_gt_labels.txt",
-        "rag_folder": "./rag_outputs_c101split1",
+        "gt_path": "./data/ground_truth/c101_manual_gt_labels.txt",
+        "rag_folder": "./data/processed/rag_outputs_c101split1",
         "output_prefix": "fig4c_unknown_expert"
     }
 }
@@ -167,9 +167,10 @@ def save_confusion_matrix(y_true, y_pred, output_prefix):
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Attack", "Ping Flood"])
     disp.plot(cmap=plt.cm.Blues)
     plt.title(f"Confusion Matrix - {output_prefix}")
-    plt.savefig(f"{output_prefix}_confusion_matrix.png", dpi=300, bbox_inches='tight')
+    output_path = os.path.join("evaluation_results", f"{output_prefix}_confusion_matrix.png")
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"  ✓ Saved {output_prefix}_confusion_matrix.png")
+    print(f"  ✓ Saved {output_path}")
 
 
 def save_roc_curve(y_true, y_pred, output_prefix):
@@ -185,9 +186,10 @@ def save_roc_curve(y_true, y_pred, output_prefix):
     plt.title(f"ROC Curve - {output_prefix}")
     plt.legend(loc="lower right")
     plt.grid(True, alpha=0.3)
-    plt.savefig(f"{output_prefix}_roc_curve.png", dpi=300, bbox_inches='tight')
+    output_path = os.path.join("evaluation_results", f"{output_prefix}_roc_curve.png")
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"  ✓ Saved {output_prefix}_roc_curve.png (AUC = {roc_auc:.2f})")
+    print(f"  ✓ Saved {output_path} (AUC = {roc_auc:.2f})")
 
 
 def print_results(scenario_name, results):
@@ -212,7 +214,7 @@ def print_results(scenario_name, results):
         print(f"⚠️  Undecided outputs: {len(results['undecided_outputs'])} files")
 
 
-def save_results_summary(all_results, output_file="evaluation_summary.txt"):
+def save_results_summary(all_results, output_file="evaluation_results/evaluation_summary.txt"):
     """Save comprehensive results summary to file."""
     with open(output_file, "w") as f:
         f.write("="*80 + "\n")

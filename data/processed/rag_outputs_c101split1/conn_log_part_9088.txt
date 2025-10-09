@@ -1,0 +1,25 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows multiple ICMP connections with type 8 (Echo Request), which is the ICMP type used for ping.
+- Numerous distinct source IPs (e.g., 133.243.239.70, 157.206.202.167, 133.243.89.236, etc.) are sending ICMP Echo Requests to the same destination IPs (notably 52.223.127.239 and 18.46.237.125) in a very short time window (all timestamps within milliseconds).
+- This pattern of many hosts sending ICMP Echo Requests rapidly to a single target IP is consistent with a distributed ICMP ping flood attack.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly records or heuristic context are provided, the behavior matches a classic ICMP flood heuristic:
+  - Heuristic: High volume of ICMP Echo Requests (type 8) from multiple sources targeting a single destination.
+  - Taxonomy class: Network Denial of Service (DoS) attack via ICMP flood.
+
+Involved IPs and ports:
+- Source IPs: 133.243.239.70, 157.206.202.167, 133.243.89.236, 133.243.153.231, 133.243.179.250, 133.243.175.253, 157.206.242.129, 157.206.10.99, 133.243.223.213, 133.243.106.186, among others.
+- Destination IPs: Primarily 52.223.127.239 and 18.46.237.125.
+- ICMP protocol, no ports applicable.
+
+Recommended Security Response Plan:
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from the identified source IPs.
+2. Deploy or update intrusion prevention system (IPS) signatures to detect and block ICMP flood patterns.
+3. Coordinate with upstream providers to filter or block attack traffic closer to the source.
+4. Monitor affected destination IPs for service degradation or outages.
+5. Conduct a forensic analysis to identify if these source IPs are compromised hosts part of a botnet.
+6. Consider temporarily disabling ICMP Echo Requests on critical infrastructure if not required.
+7. Alert network operations and incident response teams to prepare for potential escalation.

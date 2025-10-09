@@ -1,0 +1,13 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows at least 20 distinct ICMP connections originating from a single source IP (163.76.120.97) with ICMP type 8 (Echo Request), which matches the known pattern of a ping flood attack where numerous ICMP echo requests are sent rapidly to multiple destination IPs.
+- Although no explicit anomaly records or heuristic context are provided, the behavior aligns with a common heuristic for ping floods: high volume of ICMP type 8 packets from one source to many destinations.
+- Involved IP addresses: Source IP 163.76.120.97; multiple destination IPs including 203.65.116.190, 203.65.118.82, 163.21.190.223, 203.65.116.65, 163.21.220.3, and others.
+- Ports are not applicable for ICMP, but the protocol is ICMP with type 8.
+
+Recommended security response plan:
+- Immediately block or rate-limit ICMP echo requests from source IP 163.76.120.97 at the network perimeter firewall or intrusion prevention system.
+- Monitor for any further ICMP traffic spikes from this or other IPs.
+- Conduct a network-wide scan to identify any compromised hosts that may be launching the attack.
+- Notify network operations and incident response teams to investigate the source host for compromise or misuse.
+- Consider deploying ICMP flood detection and mitigation tools if not already in place.

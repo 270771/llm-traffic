@@ -1,6 +1,0 @@
-Based on the current log, a ping flooding attack is happening.
-
-- The traffic shows over 20 distinct ICMP connections with type 8 (Echo Request), all targeting the single destination IP 54.229.78.71, which matches the known pattern of a ping flood attack where multiple ICMP echo requests overwhelm a target.
-- No anomalies or heuristic matches were explicitly found in the anomaly CSV, so by default, this fits heuristic 1 (ICMP Echo Request flood) and taxonomy class "Denial of Service (DoS)".
-- Involved IPs: Multiple source IPs primarily from the 133.247.x.x subnet and others (e.g., 192.179.222.13, 192.179.223.198) are sending ICMP type 8 packets to destination IP 54.229.78.71 on ICMP protocol (no ports).
-- Recommended response: Immediately implement rate limiting or filtering on ICMP Echo Requests targeting 54.229.78.71 at the perimeter firewall or intrusion prevention system. Additionally, block or throttle traffic from the identified source IP ranges and monitor for further ICMP flood attempts. Consider deploying an anti-DDoS service if the attack volume escalates.

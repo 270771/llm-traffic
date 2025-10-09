@@ -1,0 +1,21 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation: The Zeek conn.log snippet shows multiple ICMP connections with type 8 (Echo Request) targeting a single destination IP (3.29.24.223) from numerous distinct source IPs within the same timestamp. This pattern of many ICMP Echo Requests flooding one target is characteristic of a distributed ICMP ping flood attack.
+
+Heuristic and Taxonomy:  
+- In absence of explicit heuristics or taxonomy from the anomaly CSV or heuristic context, this matches the common heuristic of "High volume ICMP Echo Requests from multiple sources to a single target" typically labeled as a DoS (Denial of Service) attack under ICMP flood taxonomy.  
+- Assign heuristic number: 1 (High volume ICMP Echo Request flood)  
+- Taxonomy class: ICMP Flood / DoS Attack
+
+Involved IPs and ports:  
+- Victim IP: 3.29.24.223 (destination)  
+- Multiple attacker IPs: 157.206.249.203, 157.206.122.28, 157.206.122.12, 157.206.2.176, 157.206.117.26, 157.206.244.25, 157.206.108.33, 157.206.245.141, 157.206.119.26, 157.206.244.245, 157.206.169.9, 157.206.244.72, 157.206.75.65, 157.206.49.34, 157.206.62.67, 157.206.108.80, 157.206.122.43, 157.206.12.129, 157.206.172.150, 157.206.225.233, 157.206.12.66  
+- ICMP does not use ports, so port fields are zero or irrelevant.
+
+Recommended Security Response Plan:  
+1. Immediately implement rate limiting or filtering on the network perimeter/firewall to block or throttle ICMP Echo Requests from the identified source IPs.  
+2. Deploy or update Intrusion Prevention Systems (IPS) signatures to detect and block ICMP flood patterns.  
+3. Monitor network traffic for continued or escalating ICMP flood activity and correlate with upstream providers for possible source mitigation (e.g., blackholing or upstream filtering).  
+4. Consider temporarily disabling ICMP Echo Requests to the victim host if business operations allow.  
+5. Conduct a post-incident analysis to identify if any internal hosts are compromised and participating in the attack.  
+6. Notify relevant stakeholders and prepare for potential escalation if attack volume increases.

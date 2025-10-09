@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: The Zeek conn.log entries show ICMP traffic, but the ICMP type field is not explicitly provided as type 8 (Echo Request), which is required to identify a ping flood. The entries have ICMP protocol with no further detail indicating repeated Echo Requests or high volume typical of a ping flood. Additionally, no anomalies are recorded in the anomaly CSV, and no heuristic or taxonomy context is available to suggest suspicious behavior.
-
-No other attack type is clearly indicated by the given data. The connection states are OTH (other), and no payload or flags suggest a different attack vector.
-
-Next steps: Investigate further by capturing detailed ICMP type and code fields to confirm the nature of ICMP traffic. Monitor for high-frequency ICMP Echo Requests from the source IPs to the destination IPs to detect potential ping floods. Enable anomaly detection heuristics that flag excessive ICMP Echo Requests if available.

@@ -1,0 +1,17 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows multiple ICMP connections with type 8 (Echo Request), which is the correct ICMP type for ping floods.
+- There are well over 10 instances of ICMP type 8 packets targeting the same destination IP (50.239.214.145) from multiple source IPs in the 133.228.x.x range, indicating a coordinated flood.
+- Additionally, a single source IP (52.230.228.52) is sending multiple ICMP type 8 packets to various destination IPs in the 203.78.x.x range, consistent with scanning or flooding behavior.
+- No anomaly CSV records or heuristic context are provided, but by default, this matches heuristic 20 (known anomalous src/dst IPs) and taxonomy class "ICMP Flood" or "Ping Flood" based on standard network attack taxonomies.
+- Involved IPs: 
+  - Sources: 52.230.228.52, 133.228.210.185, 133.228.170.6, 133.228.181.252, 133.228.205.192, 133.228.210.10, 133.228.84.198, 133.228.186.249, 133.228.97.254, 133.228.79.249, 133.228.210.93, 133.228.89.92, 133.228.243.156, 133.228.189.247, 133.228.119.193, 133.228.189.248
+  - Destinations: 50.239.214.145, 203.78.191.247, 203.78.151.1, 203.78.191.180, 203.78.148.105, 203.78.174.112, 203.78.178.193, 203.78.173.222
+- Ports are ICMP type/fields, so no TCP/UDP ports apply.
+
+**Recommended Security Response Plan:**
+- Immediately implement rate limiting or blocking of ICMP Echo Requests from the identified source IPs at the perimeter firewall or intrusion prevention system.
+- Monitor and log ICMP traffic for further anomalies and correlate with other network events.
+- Conduct a network-wide scan for compromised hosts within the 133.228.x.x and 52.230.228.52 IP ranges to identify potential sources of the attack.
+- Notify upstream providers or ISPs about the attack sources for possible upstream filtering.
+- Consider deploying ICMP flood-specific mitigation tools or services if the attack volume escalates.

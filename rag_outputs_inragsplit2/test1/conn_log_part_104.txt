@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is happening.
-
-- The traffic shows over 20 distinct ICMP connections with type 8 (Echo Request) targeting a single destination IP 18.158.38.252 within a very short time frame, which matches the pattern of a ping flood attack.
-- The ICMP type 8 is the only type used here, consistent with ping flood behavior.
-- No anomaly records are present, so by default, this matches heuristic 1 (ICMP Echo Request flood) and taxonomy class "Denial of Service (DoS)".
-- Involved IPs: Multiple source IPs in the 157.161.x.x range are sending ICMP type 8 packets to destination IP 18.158.38.252 on ICMP protocol (no ports).
-- Recommended response: Immediately rate-limit or block ICMP Echo Requests from the identified source IP range (157.161.0.0/16) at the perimeter firewall or intrusion prevention system. Monitor the target host 18.158.38.252 for service degradation and consider deploying ICMP flood mitigation tools such as traffic shaping or blackholing offending traffic. Conduct further investigation to identify if these sources are compromised hosts or part of a botnet.

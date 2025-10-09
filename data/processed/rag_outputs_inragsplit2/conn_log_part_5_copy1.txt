@@ -1,0 +1,15 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Explanation:
+- All entries in the Zeek conn.log snippet are TCP connections; no ICMP traffic is present.
+- No ICMP type 8 (Echo Request) packets are logged, which are required to identify a ping flood.
+- The anomaly CSV records show anomalies related to TCP port 23 (Telnet) and port 443 (HTTPS), with heuristics 999 and 504 respectively, neither of which correspond to heuristic 20 (Ping flood).
+- Heuristic 20 explicitly relates to ping flood attacks, which require ICMP type 8 traffic and at least 10 instances unless overridden by known anomalous IPs.
+- The anomalies here are categorized as 'mptmp' with heuristic 999 (other) and 504 (HTTPS traffic anomaly), indicating suspicious TCP traffic but not ping floods.
+
+Next steps:
+- Investigate the source IP 107.81.9.228 targeting port 23 (Telnet) flagged under heuristic 999 for potential Telnet-related attacks.
+- Investigate source IP 163.21.64.150 targeting port 443 flagged under heuristic 504 for suspicious HTTPS traffic.
+- Collect ICMP traffic logs to monitor for any future ping flood attempts.
+
+No ping flood attack is detected at this time.

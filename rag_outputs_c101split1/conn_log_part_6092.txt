@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: Both ICMP entries have ICMP type 11 (Time Exceeded), not type 8 (Echo Request). Since ping floods specifically require ICMP type 8 packets, these entries do not match ping flood patterns.
-
-No anomalies are recorded in the anomaly CSV, and no heuristic or taxonomy context is provided. The observed ICMP type 11 traffic may indicate traceroute or network path issues rather than an attack.
-
-Next steps: Investigate the source and destination IPs for potential network misconfigurations or routing loops causing excessive ICMP Time Exceeded messages. Monitor for any increase in ICMP Echo Requests (type 8) to detect possible future ping floods.

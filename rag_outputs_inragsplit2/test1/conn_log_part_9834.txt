@@ -1,6 +1,0 @@
-Based on the current log, a ping flooding attack is happening.
-
-- The traffic shows over 20 distinct ICMP connections with type 8 (Echo Request), all targeting the single destination IP 3.215.122.104, which matches the known pattern of a ping flood attack where multiple sources send ICMP Echo Requests to overwhelm a target.
-- No anomaly records or heuristic context were provided, but by default, this matches heuristic 1 (ICMP Echo Request flood) and taxonomy class "Denial of Service (DoS)".
-- Involved IPs: Multiple source IPs from the 157.17.x.x subnet (e.g., 157.17.97.185, 157.17.0.70, 157.17.27.211, etc.) are sending ICMP type 8 packets to destination IP 3.215.122.104 on ICMP protocol (no ports).
-- Recommended response: Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from these source IPs. Deploy an Intrusion Prevention System (IPS) rule to detect and drop excessive ICMP type 8 traffic. Notify network operations to monitor for service degradation on 3.215.122.104 and consider blackholing traffic from the identified sources if the attack persists.

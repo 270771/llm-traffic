@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: The ICMP type field in the Zeek conn.log snippet is "3," which corresponds to "Destination Unreachable," not type 8 ("Echo Request") used in ping floods. Therefore, this traffic does not match the known pattern for a ping flood attack.
-
-No anomaly records or heuristic context are available to suggest another type of attack. The connection state "OTH" indicates an unusual or incomplete connection, which may warrant further investigation.
-
-Next steps: Investigate the cause of the ICMP type 3 messages between 202.250.197.15 and 89.247.69.190 to determine if there are network misconfigurations or other issues causing these unreachable messages. Monitor for any increase in ICMP traffic or other suspicious activity.

@@ -1,0 +1,9 @@
+⚠️ **UNDECIDABLE** - Insufficient evidence to provide reliable analysis.
+
+**Reason:** Maximum similarity score (0.00) is below threshold (0.3).
+**Missing context:** no specific IP addresses identified; with filters: {'label': 'anomalous'}.
+
+**Recommendation:** Please provide:
+  - More specific IP addresses or timestamps
+  - Additional context about the suspicious activity
+  - Relevant log entries or anomaly records

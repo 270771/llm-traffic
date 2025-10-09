@@ -1,0 +1,12 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows multiple ICMP connections with type 8 (Echo Request) from single source IPs (notably 133.16.14.149 and 18.116.76.138) to multiple destination IPs within a very short time frame, indicating a high volume of ICMP echo requests consistent with ping flood behavior.
+- There are well over 10 instances of ICMP type 8 packets, satisfying the threshold for ping flood detection.
+- Although no explicit anomaly or heuristic data is provided, this pattern aligns with a typical ping flood heuristic (commonly heuristic 20 in many taxonomies), which flags excessive ICMP echo requests as a denial-of-service attempt.
+- Involved IP addresses include source IPs: 133.16.14.149, 18.116.76.138, 54.203.245.209, 157.78.78.187, and destination IPs such as 23.79.61.250, 163.210.78.150, 163.210.170.22, 23.222.78.3, 104.78.197.250, among others. Ports are not relevant for ICMP but are consistently marked as 0 or not applicable.
+- Recommended security response:
+  1. Immediately rate-limit or block ICMP echo requests from the identified source IPs at the network perimeter firewall or intrusion prevention system.
+  2. Monitor for continued ICMP traffic spikes and correlate with network performance degradation.
+  3. Engage incident response to investigate potential compromised hosts or external attackers.
+  4. Implement network-level ICMP flood detection and mitigation tools to prevent recurrence.
+  5. Notify affected network owners and consider blackholing traffic if attack volume threatens service availability.

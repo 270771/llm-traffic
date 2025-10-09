@@ -1,6 +1,0 @@
-Based on the current log, a ping flooding attack is happening.
-
-- The traffic shows over 20 distinct ICMP connections with type 8 (Echo Request), all targeting the single destination IP 52.236.221.123, which matches the known pattern of a ping flood attack where many ICMP Echo Requests overwhelm a target.
-- No anomalies or heuristic data are provided, but by default, this matches heuristic 1 (ICMP Echo Request flood) and taxonomy class "Denial of Service (DoS)".
-- Involved IPs: Multiple source IPs in the 157.17.x.x range and others (e.g., 133.247.49.34) are sending ICMP type 8 packets to destination IP 52.236.221.123. Ports are irrelevant for ICMP.
-- Recommended response: Immediately implement rate limiting or blocking of ICMP Echo Requests from these source IPs at the network perimeter firewall. Monitor the target host 52.236.221.123 for service degradation. Consider deploying an ICMP flood mitigation appliance or cloud-based DDoS protection service. Conduct a network-wide scan to identify and remediate compromised hosts participating in the attack.

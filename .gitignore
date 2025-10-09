@@ -1,5 +1,34 @@
+# Python
 venv/
 __pycache__/
 *.pyc
-*.log
+*.pyo
+*.pyd
+.Python
+
+# Environment
 .env
+.env.local
+
+# Logs
+*.log
+
+# ChromaDB
+database/chroma/
+database/chroma_db/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (optional - uncomment if data is too large for repo)
+# data/raw/
+# data/processed/rag_outputs*/
+# data/processed/*split*/

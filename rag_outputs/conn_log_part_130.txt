@@ -1,9 +1,0 @@
-⚠️ **UNDECIDABLE** - Insufficient evidence to provide reliable analysis.
-
-**Reason:** Maximum similarity score (0.30) is below threshold (0.3).
-**Missing context:** no anomaly records found for IPs: 163.21.206.1, 163.21.6.46, 163.21.89.208.
-
-**Recommendation:** Please provide:
-  - More specific IP addresses or timestamps
-  - Additional context about the suspicious activity
-  - Relevant log entries or anomaly records

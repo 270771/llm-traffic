@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: The ICMP type in the Zeek conn.log snippet is 13, which corresponds to "Timestamp Request," not type 8 ("Echo Request") required for a ping flood. Therefore, this traffic does not match the known pattern of a ping flood attack.
-
-No anomalies are recorded in the anomaly CSV, and no heuristic or taxonomy context is provided. The connection state is OTH (other), indicating an incomplete or unusual connection, but this alone does not indicate a ping flood.
-
-Next steps: Investigate the nature of ICMP type 13 traffic between 131.140.198.65 and 121.182.39.116 to determine if it is part of a reconnaissance or timing-based attack. Monitor for any increase in ICMP Echo Requests (type 8) that could indicate a developing ping flood.

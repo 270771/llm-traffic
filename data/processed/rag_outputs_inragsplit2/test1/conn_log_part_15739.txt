@@ -1,0 +1,18 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation: The Zeek conn.log snippet shows at least 16 distinct ICMP connections with ICMP type 8 (Echo Request) targeting the single destination IP 3.22.191.77 within a very short time frame (all timestamps within milliseconds). This pattern of multiple sources sending ICMP Echo Requests simultaneously to one target matches the classic ping flood attack signature, where an attacker overwhelms a victim with ICMP echo requests.
+
+Since no anomaly CSV records or heuristic context are provided, the most likely heuristic to assign is heuristic 20 (as per your instructions, heuristic 20 relates to known anomalous src or dst IPs in ping flood detection). The taxonomy class is "Ping Flood" under ICMP-based Denial of Service attacks.
+
+Involved IP addresses:
+- Source IPs: Multiple distinct IPs in the 133.247.x.x range (e.g., 133.247.132.206, 133.247.80.11, 133.247.187.208, etc.)
+- Destination IP: 3.22.191.77
+- Ports: ICMP does not use ports, but ICMP type is 8 (Echo Request).
+
+Recommended security response plan:
+1. Immediately rate-limit or block ICMP Echo Requests from the identified source IP range (133.247.0.0/16) at the network perimeter firewall or intrusion prevention system.
+2. Monitor the destination host 3.22.191.77 for service degradation or availability issues.
+3. Implement ICMP flood detection and mitigation tools such as ICMP rate limiting or anomaly-based IDS rules.
+4. Conduct a network-wide scan to identify if other hosts are being targeted similarly.
+5. Notify upstream providers or ISPs about the attack sources for possible upstream filtering.
+6. Review and update incident response plans to handle ICMP-based DoS attacks effectively.

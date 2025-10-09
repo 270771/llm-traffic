@@ -1,9 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation:  
-The Zeek conn.log entries show ICMP traffic with types 11 and 3, not type 8. Since ICMP type 8 corresponds to Echo Request (ping), and the known criterion for ping flood detection requires ICMP type 8, these entries do not match ping flood patterns. ICMP type 11 is Time Exceeded, and type 3 is Destination Unreachable, which are not indicative of ping floods.
-
-No anomaly records or heuristic context are provided, so no direct heuristic or taxonomy can be assigned. However, ICMP type 3 and 11 traffic may indicate network issues or misconfigurations rather than an attack.
-
-Next steps:  
-Investigate the cause of the ICMP type 3 and 11 messages to ensure network stability and proper routing. Monitor for any increase in ICMP Echo Requests (type 8) that could indicate future ping flood attempts.

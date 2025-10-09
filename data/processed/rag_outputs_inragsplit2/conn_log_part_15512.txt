@@ -1,0 +1,17 @@
+Based on the current log, a ping flooding attack is **not** happening.
+
+Reasoning:
+- The provided Zeek conn.log snippet contains only TCP connections; no ICMP traffic entries are present.
+- No ICMP type 8 (Echo Request) packets are logged, which are required to identify a ping flood.
+- The anomaly CSV shows only one anomaly (anomaly_782) related to a SYN attack (heuristic 10), which is unrelated to ICMP or ping floods.
+- Heuristic 20, which corresponds to ping flood detection, is not referenced in the anomaly records.
+
+Heuristic and taxonomy clarification:
+- Heuristic 10 corresponds to SYN attacks, indicating suspicious TCP SYN packets.
+- Heuristic 20 corresponds to ping flood attacks, which require multiple ICMP type 8 packets.
+- Since no ICMP traffic or heuristic 20 anomalies are present, no ping flood is detected.
+
+Next steps:
+- Investigate the SYN attack anomaly (heuristic 10) further by reviewing connection attempts from source IP 89.3.89.164 on port 8080.
+- Collect and analyze ICMP traffic logs separately to confirm if any ping flood attempts occur outside this snippet.
+- Enable or verify ICMP logging in Zeek to capture relevant ICMP type 8 packets for future detection.

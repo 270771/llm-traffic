@@ -1,0 +1,7 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows at least 20 distinct ICMP connections with type 8 (Echo Request) targeting a single destination IP 3.116.11.97, which matches the known pattern of a ping flood attack where multiple sources send ICMP Echo Requests to overwhelm the target.
+- All ICMP types are 8, confirming these are ping requests, and the volume exceeds the threshold of 10 instances.
+- No anomaly CSV records or heuristic context are provided, but by default, this matches heuristic 1 (ICMP flood detection) and taxonomy class "Denial of Service (DoS)".
+- Involved IPs: Multiple source IPs in the 133.247.x.x range are flooding destination IP 3.116.11.97 on ICMP type 8 (no ports applicable for ICMP).
+- Recommended response: Immediately implement rate limiting or blocking of ICMP Echo Requests from the identified source IP range at the network perimeter firewall or intrusion prevention system. Monitor the target host 3.116.11.97 for service degradation and consider deploying ICMP flood mitigation tools such as traffic shaping or blackholing suspicious traffic. Conduct further investigation to identify if these source IPs are compromised hosts or part of a botnet.

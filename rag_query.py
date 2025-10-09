@@ -612,6 +612,7 @@ if __name__ == "__main__":
    • Metadata filtering support
    • Batch processing for evaluation
         """)
+        sys.exit(0)
         
     else:
         # Interactive mode: Advanced RAG system

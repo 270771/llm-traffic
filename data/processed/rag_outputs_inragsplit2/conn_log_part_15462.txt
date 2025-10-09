@@ -1,0 +1,13 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Explanation:  
+- The ICMP types observed are 11 and 3, not type 8 (Echo Request), which is required for a ping flood.  
+- There are only two ICMP entries, both with types other than 8, and far fewer than the minimum threshold of 10 ICMP type 8 packets.  
+- No anomaly records or heuristic context are provided to suggest otherwise.
+
+No other attack type is clearly indicated by the given data. ICMP type 11 corresponds to Time Exceeded messages, and type 3 corresponds to Destination Unreachable messages, which are normal control messages rather than flooding.
+
+Next steps:  
+- Monitor for any increase in ICMP type 8 packets from these or other IPs.  
+- Investigate the source IPs (202.194.17.63 and 203.78.181.110) for any unusual activity or other anomaly indicators.  
+- Collect more comprehensive logs and anomaly data to enable heuristic-based detection.

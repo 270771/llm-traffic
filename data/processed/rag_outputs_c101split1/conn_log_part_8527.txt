@@ -1,0 +1,24 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows multiple ICMP connections originating from the single source IP 54.254.197.94 targeting many different destination IPs.
+- All these ICMP packets have type 8, which corresponds to Echo Request (ping).
+- The frequency and volume of these ICMP Echo Requests within a very short timestamp window (all around 1641013226.59 to 1641013226.60) strongly indicate a flood pattern.
+- This matches the known ping flood pattern: a high rate of ICMP Echo Requests from one source to multiple destinations.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly records or heuristic context are provided, the most likely heuristic number is **H1: High-rate ICMP Echo Request flood**.
+- The taxonomy class is **T1: ICMP-based Denial of Service (DoS) attack**.
+
+Involved IPs and Ports:
+- Attacker/source IP: 54.254.197.94
+- Multiple destination IPs in the 202.250.x.x range
+- ICMP type: 8 (Echo Request)
+- ICMP code: 0
+
+Recommended Security Response Plan:
+1. Immediately block or rate-limit ICMP Echo Requests from 54.254.197.94 at the perimeter firewall or intrusion prevention system (IPS).
+2. Monitor network traffic for continued or new sources of ICMP flooding.
+3. Notify network operations and incident response teams to investigate the source host for compromise or misuse.
+4. Implement ICMP rate limiting on critical infrastructure to mitigate impact.
+5. Consider deploying anomaly detection rules to alert on similar high-rate ICMP traffic patterns in the future.

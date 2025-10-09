@@ -1,0 +1,11 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Explanation:  
+All ICMP traffic must have type 8 (Echo Request) to be considered a ping flood. The provided Zeek conn.log snippet contains no ICMP entries at all; all records are UDP or TCP connections. Therefore, no ping flood pattern is present.
+
+Since no anomaly records or heuristic context are available, no specific heuristic or taxonomy can be assigned. The traffic mostly shows failed connection attempts (S0 state) on various TCP and UDP ports, which may indicate scanning or reconnaissance activity rather than flooding.
+
+Next steps:  
+- Investigate the repeated UDP traffic from 45.121.95.154 to multiple 133.105.193.x addresses on port 5060 (SIP signaling port), as the volume and pattern could indicate SIP scanning or a different type of DoS attempt.  
+- Monitor for any ICMP Echo Requests (type 8) in future logs to detect potential ping floods.  
+- Correlate with other logs or IDS alerts to identify if these connection attempts align with known scanning heuristics or volumetric attacks.

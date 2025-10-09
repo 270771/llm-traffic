@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-The ICMP type in the log is 0 (Echo Reply), not 8 (Echo Request), which is required for a ping flood attack. This traffic represents a response to a ping rather than the flood of ping requests characteristic of a ping flood.
-
-No anomalies are recorded in the anomaly CSV, and no heuristic or taxonomy context is provided. Since the traffic is an ICMP Echo Reply, it does not match ping flood patterns or other common ICMP-based attacks such as Smurf or ICMP flood.
-
-Next steps: Investigate if there are corresponding ICMP Echo Requests (type 8) in the logs to verify normal ping activity. Monitor for any sudden increase in ICMP Echo Requests from the same source IP (151.105.96.5) that could indicate the start of a ping flood.

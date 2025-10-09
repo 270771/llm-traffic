@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: Both ICMP entries have type 11 (Time Exceeded), not type 8 (Echo Request). Since ping floods specifically require ICMP type 8 packets sent in high volume, these entries do not match ping flood criteria.
-
-No anomalies are recorded in the anomaly CSV, and no heuristic or taxonomy context is provided. The observed ICMP traffic likely represents traceroute or diagnostic messages rather than an attack.
-
-Next steps: Investigate the source IPs (221.65.215.210 and 202.101.171.238) for unusual ICMP activity patterns or volume over a longer time window to rule out other ICMP-based reconnaissance or denial-of-service attempts. Monitor for any increase in ICMP Echo Requests (type 8) which would be more indicative of ping flood behavior.

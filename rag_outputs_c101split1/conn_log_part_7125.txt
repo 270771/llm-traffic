@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: All ICMP entries in the Zeek conn.log snippet show ICMP type 3 (Destination Unreachable), not type 8 (Echo Request). Since ping floods specifically require ICMP type 8 packets, this traffic does not match ping flood patterns.
-
-No anomaly records or heuristic context are provided, so no direct heuristic or taxonomy can be assigned. However, ICMP type 3 traffic often indicates network scanning or misconfiguration rather than flooding.
-
-Next steps: Investigate the source IPs sending repeated ICMP type 3 messages (203.78.137.52, 133.227.58.122, 163.45.21.81) to determine if there is a misconfiguration or a different reconnaissance activity. Monitoring for increased volume or other ICMP types may help detect evolving threats.

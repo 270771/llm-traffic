@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-The ICMP type field is missing or indicated as "-", which means the ICMP type is not explicitly type 8 (Echo Request). Since only ICMP type 8 traffic qualifies as ping floods, this traffic does not match ping flood patterns.
-
-No anomaly records or heuristics are available to suggest another attack type. The connection state "OTH" (other) and flags do not indicate a typical flood pattern.
-
-Next steps: Investigate the nature of this ICMP traffic further by capturing full packet details to identify ICMP types and payloads. Monitor for repeated ICMP Echo Requests (type 8) from the source IP 157.206.115.1 to 208.19.160.231 to detect potential future ping floods.

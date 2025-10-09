@@ -1,0 +1,14 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The traffic shows multiple ICMP connections with type 8 (Echo Request), which is the correct ICMP type for ping floods.
+- There are well over 10 instances of ICMP type 8 packets originating primarily from IP 18.22.226.126 targeting multiple destination IPs in the 163.252.x.x range, consistent with a distributed ping flood pattern.
+- No anomaly records or heuristic context are provided, but by default, this matches heuristic 20 (excessive ICMP echo requests) and falls under the taxonomy class of "Denial of Service (DoS) Attack."
+- Involved IP addresses: Source IP 18.22.226.126 (primary attacker), secondary source 54.183.76.138, and multiple destination IPs in the 163.252.0.0/16 subnet.
+- Ports are irrelevant for ICMP, but the ICMP type field is consistently 8, confirming echo requests.
+
+Recommended security response plan:
+- Immediately rate-limit or block ICMP echo requests from 18.22.226.126 at the perimeter firewall or intrusion prevention system.
+- Monitor for additional sources sending ICMP type 8 packets and apply similar controls.
+- Conduct network traffic analysis to identify any collateral impact on the targeted hosts.
+- Notify network operations to prepare for potential service degradation and consider blackholing traffic from the attacker IP if the attack persists.
+- Implement or tune existing DoS mitigation tools to detect and mitigate ICMP flood attacks automatically.

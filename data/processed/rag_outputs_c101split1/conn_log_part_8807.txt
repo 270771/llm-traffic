@@ -1,0 +1,11 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Explanation:  
+Both ICMP entries have ICMP type values of 3 and 0, respectively. Since a ping flood requires ICMP type 8 (Echo Request), these entries do not match the criteria for a ping flood attack.
+
+No anomalies are explicitly recorded in the anomaly CSV, and no heuristic or taxonomy context is provided. The ICMP type 3 corresponds to "Destination Unreachable," and type 0 corresponds to "Echo Reply," which are normal ICMP message types and do not indicate flooding.
+
+Next steps:  
+- Investigate the source of ICMP type 3 messages to ensure no misconfigurations or network issues causing unreachable destinations.  
+- Monitor for any increase in ICMP type 8 traffic that could indicate the start of a ping flood attack.  
+- If possible, obtain heuristic and taxonomy definitions to better classify future anomalies.

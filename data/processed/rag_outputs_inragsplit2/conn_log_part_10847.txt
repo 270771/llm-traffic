@@ -1,0 +1,14 @@
+Based on the current log, a ping flooding attack is not happening.
+
+Explanation:  
+- All ICMP types in the snippet are type 8 (Echo Request), which is consistent with ping traffic.  
+- However, there are only 4 instances of ICMP type 8 in the provided snippet, which is below the threshold of at least 10 instances required to confirm a ping flood attack.  
+- No anomaly records or heuristic matches (such as heuristic 20) are present to override the instance count requirement.  
+- The traffic does not show excessive volume or rapid repetition indicative of flooding.
+
+Since no anomalies or heuristics are provided, no other attack type can be confidently inferred from this data.  
+
+Next steps:  
+- Continue monitoring for increased frequency or volume of ICMP type 8 packets from the same source IPs.  
+- Investigate if any of the involved IPs (78.116.131.149, 61.175.151.116, 35.100.170.152) appear in other logs with suspicious behavior.  
+- Collect more data to verify if a pattern of ping flooding emerges.

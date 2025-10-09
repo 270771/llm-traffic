@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: The ICMP type field in the Zeek conn.log snippet is `11`, which corresponds to "Time Exceeded" messages, not type `8` (Echo Request) required for a ping flood. Therefore, this traffic does not match the known pattern of a ping flood attack, which involves a high volume of ICMP Echo Requests.
-
-No anomaly records or heuristic context are available to suggest another type of attack. The connection state is `OTH` (other), indicating an incomplete or unusual connection, but this alone does not indicate an attack.
-
-Next steps: Investigate the source IP 195.157.247.184 and destination IP 203.78.143.78 for unusual ICMP traffic patterns or other anomalies over a longer time window to rule out other ICMP-based reconnaissance or denial-of-service attempts.

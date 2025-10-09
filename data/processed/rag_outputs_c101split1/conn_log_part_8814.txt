@@ -1,0 +1,20 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows multiple ICMP connections originating from the same source IP address (13.24.95.251) targeting multiple destination IPs with ICMP type 8, which corresponds to Echo Request messages (ping). The rapid succession of these requests with very low inter-arrival times (sub-millisecond intervals) and consistent packet sizes (56 bytes) strongly matches the known pattern of a ping flood attack, where an attacker overwhelms targets with a high volume of ICMP Echo Requests.
+
+Heuristics and Taxonomy:  
+Although no explicit anomaly records or heuristic context are provided, this behavior aligns with common heuristic #1: "High volume ICMP Echo Requests from a single source to multiple destinations," and taxonomy class "ICMP Flooding / Denial of Service."
+
+Involved IPs and Ports:  
+- Attacker/source IP: 13.24.95.251  
+- Target IPs: 203.78.160.162, 203.78.160.3, 203.78.160.5, 203.78.141.242, 203.78.142.24  
+- ICMP type: 8 (Echo Request)  
+- Ports: ICMP does not use ports, so none applicable.
+
+Recommended Security Response Plan:  
+1. Immediately block or rate-limit ICMP Echo Requests from 13.24.95.251 at the network perimeter firewall or intrusion prevention system (IPS).  
+2. Monitor network traffic for similar patterns from other sources to detect potential distributed attacks.  
+3. Notify affected network owners of the targeted IPs to prepare for potential service degradation.  
+4. Implement ICMP flood detection and mitigation tools, such as anomaly-based IDS signatures or traffic shaping.  
+5. Review and update incident response procedures to handle ICMP-based DoS attacks.

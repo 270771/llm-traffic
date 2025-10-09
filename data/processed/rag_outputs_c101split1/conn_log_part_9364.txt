@@ -1,0 +1,27 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:
+- The Zeek conn.log snippet shows numerous ICMP connections with ICMP type 8 (Echo Request), which is the type used for ping.
+- Multiple source IPs from the 157.206.x.x subnet are sending ICMP Echo Requests to two distinct destination IPs: 54.183.178.87 and 69.232.166.26.
+- The volume and concurrency of these ICMP Echo Requests within the same timestamp strongly indicate a coordinated flood rather than normal ping activity.
+- The ICMP type being 8 confirms these are ping requests, matching the known pattern of a ping flood attack where many echo requests overwhelm the target.
+
+Heuristics and Taxonomy:
+- Although no explicit anomaly or heuristic data is provided, this behavior aligns with a classic ICMP flood heuristic, typically labeled as:
+  - Heuristic: ICMP Flood Detection (commonly heuristic #3 in many taxonomies)
+  - Taxonomy Class: Network Denial of Service (DoS) Attack
+
+Involved IPs and Ports:
+- Source IPs: Multiple hosts in 157.206.0.0/16 subnet (e.g., 157.206.211.89, 157.206.0.155, 157.206.206.166, etc.)
+- Destination IPs: 54.183.178.87 and 69.232.166.26
+- Ports: ICMP does not use ports, but ICMP type is 8 (Echo Request)
+
+Recommended Security Response Plan:
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from the identified source subnet (157.206.0.0/16).
+2. Deploy or update intrusion prevention system (IPS) signatures to detect and block ICMP flood patterns targeting the destination IPs.
+3. Monitor network traffic for continued ICMP flood attempts and correlate with other logs to identify potential compromised hosts within the source subnet.
+4. Notify affected parties (owners of 54.183.178.87 and 69.232.166.26) to prepare for mitigation and possible upstream filtering.
+5. Consider blackholing or sinkholing traffic from persistent attacking IPs if mitigation at the perimeter is insufficient.
+6. Conduct forensic analysis on source IPs to determine if they are part of a botnet or compromised network segment.
+
+This targeted and immediate response will help mitigate the ongoing ping flood attack and reduce impact on the targeted hosts.

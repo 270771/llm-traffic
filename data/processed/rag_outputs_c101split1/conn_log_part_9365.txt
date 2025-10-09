@@ -1,0 +1,20 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows a high volume of ICMP traffic with ICMP type 8 (Echo Request) originating from multiple source IPs within the 157.206.x.x subnet targeting two destination IPs: 54.183.178.87 and 69.232.166.26. The rapid succession of these echo requests within a very narrow timestamp window (~1641013232.998 to 1641013233.002) is consistent with a ping flood pattern, where numerous ICMP echo requests are sent to overwhelm the target.
+
+Heuristics and Taxonomy:  
+- Although no explicit heuristics or taxonomy are provided in the anomaly CSV or heuristic context, this behavior aligns with common heuristic #1: "High volume ICMP Echo Requests from multiple sources to a single or few targets."  
+- Taxonomy class: "ICMP Flooding / Denial of Service Attack."
+
+Involved IPs and Ports:  
+- Source IPs: Multiple from 157.206.0.0/16 subnet (e.g., 157.206.147.233, 157.206.117.57, 157.206.145.182, etc.)  
+- Destination IPs: 54.183.178.87 and 69.232.166.26  
+- Ports: ICMP does not use ports, but ICMP type is 8 (Echo Request).
+
+Recommended Security Response Plan:  
+1. Immediately implement rate limiting or filtering on the network perimeter to block or throttle ICMP Echo Requests from the identified source subnet (157.206.0.0/16) targeting the victim IPs.  
+2. Deploy or update intrusion prevention system (IPS) signatures to detect and block ICMP flood patterns.  
+3. Monitor network traffic for continued or escalating ICMP flood attempts and correlate with other logs for potential lateral movement or secondary attacks.  
+4. Notify affected parties (owners of 54.183.178.87 and 69.232.166.26) to prepare for potential service degradation and coordinate mitigation efforts.  
+5. Consider blackholing or sinkholing traffic from persistent attacking IPs if mitigation at the perimeter is insufficient.

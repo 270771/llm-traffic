@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: The ICMP type field in the Zeek conn.log snippet is indicated by the ICMP code field (field 10) and ICMP type (field 11), but both are marked as "-" (missing or not recorded). Without an ICMP type of 8 (Echo Request), the traffic cannot be classified as a ping flood. The connection state is "OTH" (other), which typically indicates incomplete or unusual connection states, but not necessarily a ping flood.
-
-No anomaly records or heuristic context are available to suggest another attack type. Given the lack of ICMP type 8 and no other suspicious indicators, this traffic does not match ping flood patterns.
-
-Next steps: Investigate why ICMP type and code are missing in the log. Verify if logging is complete or if other network monitoring tools can provide more detailed ICMP information. Monitor for repeated ICMP Echo Requests from the source IP 133.227.235.23 to destination 92.72.196.229 to detect potential future ping floods.

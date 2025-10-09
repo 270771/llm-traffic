@@ -1,0 +1,21 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows multiple ICMP connections with type 8 (Echo Request) targeting the single destination IP 35.87.78.209 from numerous distinct source IPs within a very short timestamp window (all around 1641013211.015–.019). This pattern of many ICMP Echo Requests flooding one target IP is characteristic of a ping flood attack, where an attacker overwhelms a host with ICMP Echo Requests to degrade its availability.
+
+Heuristics and Taxonomy:  
+- Although no explicit anomaly records or heuristic context are provided, this matches the classic heuristic of "High volume ICMP Echo Requests from multiple sources to a single target" often labeled as a DoS (Denial of Service) attack.  
+- Assign heuristic number: 1 (common heuristic for volumetric ICMP flood).  
+- Taxonomy class: DoS/Disruption.
+
+Involved IPs and Ports:  
+- Target IP: 35.87.78.209 (no port for ICMP)  
+- Source IPs: Multiple, including 133.227.199.2, 133.227.132.249, 133.227.208.8, 133.227.155.93, 133.227.130.250, 133.227.200.5, 133.227.148.249, 133.227.115.69, 133.227.218.5, 133.227.130.189, 133.227.224.194, 133.227.144.254, 133.227.183.249, 133.227.224.6, 133.227.226.1, and others.
+
+Recommended Security Response Plan:  
+- Immediately implement rate limiting or ICMP traffic filtering on network perimeter devices to block or throttle ICMP Echo Requests targeting 35.87.78.209.  
+- Deploy or tune intrusion prevention systems (IPS) to detect and mitigate ICMP flood patterns.  
+- Coordinate with upstream providers or ISPs to filter or block malicious traffic sources if possible.  
+- Monitor the target host for performance degradation and ensure critical services remain operational.  
+- Consider blacklisting or geo-blocking suspicious source IP ranges if they are not legitimate users.  
+- Conduct a post-incident analysis to identify if this is part of a larger coordinated attack and update firewall/IDS rules accordingly.

@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: Both ICMP entries show ICMP type 11 (code 11 in the 4th field after the source IP, which is the ICMP type field in Zeek conn.log), not type 8. ICMP type 11 corresponds to "Time Exceeded" messages, not Echo Request (ping) messages. Since a ping flood requires ICMP type 8 (Echo Request), these entries do not match ping flood patterns.
-
-No anomaly records are present to suggest other attacks. Without heuristic or taxonomy context, the safest assumption is these are normal ICMP error messages or traceroute-related traffic.
-
-Next steps: Investigate if these ICMP Time Exceeded messages are part of legitimate network diagnostics or if they correlate with other suspicious activity. Monitor for any increase in ICMP type 8 traffic or unusual volume from these IPs.

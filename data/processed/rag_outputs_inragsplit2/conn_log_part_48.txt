@@ -1,0 +1,22 @@
+Based on the current log, a ping flooding attack is happening.
+
+- The Zeek conn.log snippet shows at least 15 distinct ICMP connections with ICMP type 8 (Echo Request), which meets the threshold of 10 instances for ping flood detection.
+- Multiple source IPs (e.g., 133.16.14.149, 192.0.46.x, 157.78.x.x) are sending ICMP type 8 packets to various destination IPs, indicating a distributed pattern consistent with a ping flood.
+- The anomaly CSV identifies heuristic 20 ("Ping flood") associated with suspicious IPs such as 133.16.14.149 and destination 18.98.73.236, confirming the relevance of this heuristic.
+- The taxonomy class "mptmp" (MultiPoints) and "icmp_error" are linked to these anomalies, supporting the classification of this traffic as a ping flood attack.
+
+Involved IP addresses:
+- Source IPs: 133.16.14.149, 192.0.46.1, 192.0.46.36, 192.0.46.37, 192.0.47.49, 192.0.47.249, 157.78.69.33, 157.78.78.187, 54.70.248.140, 203.114.140.137
+- Destination IPs: 18.98.73.236, 23.65.249.250, 23.224.81.247, 23.86.126.3, 23.88.42.251, 184.200.242.253, 184.204.168.3, 186.251.221.79, 18.55.36.47
+
+Ports are not applicable for ICMP, but the consistent ICMP type 8 traffic and volume indicate flooding.
+
+Recommended security response plan:
+1. Immediately implement rate limiting or filtering on ICMP Echo Requests at network perimeter devices to mitigate the flood.
+2. Block or throttle traffic from identified suspicious source IPs, especially 133.16.14.149 and the 192.0.46.x/192.0.47.x subnet, pending further investigation.
+3. Monitor network traffic for continued ICMP anomalies and correlate with IDS/IPS alerts.
+4. Conduct a forensic analysis on affected hosts to check for compromise or participation in the attack.
+5. Notify upstream providers or peers if attack traffic originates externally to coordinate mitigation.
+6. Update firewall and intrusion detection signatures to detect and block similar ICMP flood patterns in the future.
+
+This attack matches heuristic 20 (Ping flood) and taxonomy class "mptmp" (MultiPoints), indicating a distributed ICMP flood targeting multiple destinations.

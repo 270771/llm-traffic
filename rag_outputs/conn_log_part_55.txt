@@ -1,3 +1,0 @@
-- Ping flood alert: Analyze potential ICMP ping flood activity in this network log. The log contains 13 ICMP packets between 4 source IPs and 90 destination IPs.
-  Justified by anomaly: No anomaly data found.
-  → Action: Continue monitoring; no immediate action required. The absence of anomalies and heuristic context indicates this is normal network behavior rather than a confirmed attack.

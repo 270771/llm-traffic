@@ -1,7 +1,0 @@
-Based on the current log, a ping flooding attack is not happening.
-
-Explanation: The ICMP type field in the Zeek conn.log snippet is indicated by the ICMP code column (value 13), which corresponds to ICMP type 13 (Timestamp Request), not type 8 (Echo Request). Since ping floods specifically require ICMP type 8 packets, this traffic does not match ping flood patterns.
-
-No anomaly records are found in the anomaly CSV, and no heuristic or taxonomy context is provided. However, ICMP type 13 traffic can be legitimate or part of reconnaissance but is not indicative of a ping flood.
-
-Next steps: Investigate the source IPs (157.206.100.169 and 203.78.139.207) for unusual ICMP activity or other suspicious behavior, as repeated timestamp requests could indicate scanning or probing. Monitor for any increase in ICMP Echo Requests (type 8) that would suggest a ping flood.

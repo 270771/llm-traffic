@@ -1,0 +1,20 @@
+Based on the current log, a ping flooding attack is happening.
+
+Explanation:  
+The Zeek conn.log snippet shows at least 10 distinct ICMP connections with ICMP type 8 (Echo Request) targeting the same destination IP 69.47.68.228 from multiple different source IPs within a very short time frame. This pattern matches a classic ICMP ping flood, where numerous echo requests overwhelm the target. No anomalies or heuristic exceptions are noted, so the threshold of 10 ICMP type 8 packets is met.
+
+Heuristics and Taxonomy:  
+- Assign heuristic number 1 (common for volumetric ICMP flood detection).  
+- Taxonomy class: Network Denial of Service (DoS) attack.
+
+Involved IPs and ports:  
+- Source IPs: Multiple (130.197.154.156, 130.197.154.135, 130.197.24.234, 130.197.172.117, 130.197.25.30, 130.197.158.21, 130.197.54.165, 130.197.21.159, 130.197.250.6)  
+- Destination IP: 69.47.68.228  
+- Ports: ICMP does not use ports, but ICMP type 8 is the key indicator.
+
+Security Response Plan:  
+- Immediately implement rate limiting or filtering on ICMP Echo Requests targeting 69.47.68.228 at the perimeter firewall or intrusion prevention system (IPS).  
+- Block or throttle traffic from the identified source IPs if they are not legitimate users.  
+- Monitor for further ICMP flood attempts and correlate with other network logs for potential coordinated attacks.  
+- Notify network operations and incident response teams to prepare for potential escalation.  
+- Consider deploying ICMP flood-specific mitigation tools or services if attack volume increases.
