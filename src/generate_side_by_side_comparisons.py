@@ -50,17 +50,15 @@ def create_side_by_side_gt_comparison(ping_path, syn_path, output_dir):
     
     ax.set_xlabel('Performance Metrics', fontsize=13, weight='bold', labelpad=8)
     ax.set_ylabel('Percentage (%)', fontsize=13, weight='bold', labelpad=8)
-    ax.set_title('Ground Truth Performance Comparison: Ping Flood vs SYN Flood', 
-                 fontsize=14, weight='bold', pad=12)
+    # Remove title - keep only axis labels
     ax.set_xticks(x)
     ax.set_xticklabels(metrics, fontsize=12)
     ax.legend(fontsize=12, loc='lower right', framealpha=0.95)
     ax.set_ylim([0, 105])
     ax.grid(axis='y', alpha=0.3, linestyle='--')
     
-    # Add horizontal line at 95% for reference
+    # Add horizontal line at 95% for reference (without text label)
     ax.axhline(y=95, color='gray', linestyle=':', linewidth=1.5, alpha=0.5)
-    ax.text(3.7, 96, '95%', fontsize=10, color='gray', style='italic')
     
     plt.tight_layout()
     output_file = os.path.join(output_dir, 'side_by_side_GT_comparison.png')
@@ -107,17 +105,15 @@ def create_side_by_side_expert_comparison(ping_path, syn_path, output_dir):
     
     ax.set_xlabel('Performance Metrics', fontsize=13, weight='bold', labelpad=8)
     ax.set_ylabel('Percentage (%)', fontsize=13, weight='bold', labelpad=8)
-    ax.set_title('Expert-Validated Performance Comparison: Ping Flood vs SYN Flood', 
-                 fontsize=14, weight='bold', pad=12)
+    # Remove title - keep only axis labels
     ax.set_xticks(x)
     ax.set_xticklabels(metrics, fontsize=12)
     ax.legend(fontsize=12, loc='lower right', framealpha=0.95)
     ax.set_ylim([0, 105])
     ax.grid(axis='y', alpha=0.3, linestyle='--')
     
-    # Add horizontal line at 95% for reference
+    # Add horizontal line at 95% for reference (without text label)
     ax.axhline(y=95, color='gray', linestyle=':', linewidth=1.5, alpha=0.5)
-    ax.text(3.7, 96, '95%', fontsize=10, color='gray', style='italic')
     
     plt.tight_layout()
     output_file = os.path.join(output_dir, 'side_by_side_Expert_comparison.png')
@@ -168,7 +164,7 @@ def create_dual_side_by_side_comparison(ping_path, syn_path, output_dir):
                      ha='center', va='bottom', fontsize=8, weight='bold')
     
     ax1.set_ylabel('Percentage (%)', fontsize=13, weight='bold', labelpad=8)
-    ax1.set_title('(a) Ground Truth Evaluation', fontsize=14, weight='bold', pad=10)
+    # Remove title - keep only axis labels
     ax1.set_xticks(x)
     ax1.set_xticklabels(metrics, fontsize=12)
     ax1.legend(fontsize=12, loc='lower right', framealpha=0.95)
@@ -196,7 +192,7 @@ def create_dual_side_by_side_comparison(ping_path, syn_path, output_dir):
     
     ax2.set_xlabel('Performance Metrics', fontsize=13, weight='bold', labelpad=8)
     ax2.set_ylabel('Percentage (%)', fontsize=13, weight='bold', labelpad=8)
-    ax2.set_title('(b) Expert-Validated Evaluation', fontsize=14, weight='bold', pad=10)
+    # Remove title - keep only axis labels
     ax2.set_xticks(x)
     ax2.set_xticklabels(metrics, fontsize=12)
     ax2.legend(fontsize=12, loc='lower right', framealpha=0.95)
@@ -204,8 +200,7 @@ def create_dual_side_by_side_comparison(ping_path, syn_path, output_dir):
     ax2.grid(axis='y', alpha=0.3, linestyle='--')
     ax2.axhline(y=95, color='gray', linestyle=':', linewidth=1.5, alpha=0.5)
     
-    plt.suptitle('Performance Comparison: Ping Flood vs SYN Flood', 
-                 fontsize=15, weight='bold', y=0.995)
+    # Remove overall title - keep only axis labels
     plt.tight_layout()
     
     output_file = os.path.join(output_dir, 'dual_side_by_side_comparison.png')

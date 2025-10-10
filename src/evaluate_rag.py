@@ -338,7 +338,7 @@ for fname_no_ext, true_label in ground_truth.items():
 cm = confusion_matrix(y_true, y_pred)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Attack", "Ping Flood"])
 disp.plot(cmap=plt.cm.Blues)
-plt.title("Confusion Matrix")
+plt.title("")
 plt.show()
 
 # ROC curve and AUC
@@ -346,11 +346,10 @@ fpr, tpr, _ = roc_curve(y_true, y_pred)
 roc_auc = auc(fpr, tpr)
 
 plt.figure()
-plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {roc_auc:.2f})")
+plt.plot(fpr, tpr, label=f"AUC = {roc_auc:.2f}")
 plt.plot([0, 1], [0, 1], "k--")
 plt.xlabel("False Positive Rate")
 plt.ylabel("True Positive Rate")
-plt.title("Receiver Operating Characteristic (ROC) Curve")
 plt.legend(loc="lower right")
 plt.grid(True)
 plt.show()

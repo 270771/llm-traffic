@@ -152,7 +152,9 @@ def save_confusion_matrix(y_true, y_pred, output_prefix):
     cm = confusion_matrix(y_true, y_pred)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Attack", "Ping Flood"])
     disp.plot(cmap=plt.cm.Blues)
-    plt.title(f"Confusion Matrix - {output_prefix}")
+    
+    # Remove title - keep only axis labels
+    plt.title("")
     output_path = os.path.join("ping_evaluation_results", f"{output_prefix}_confusion_matrix.png")
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
@@ -165,11 +167,11 @@ def save_roc_curve(y_true, y_pred, output_prefix):
     roc_auc = auc(fpr, tpr)
     
     plt.figure()
-    plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {roc_auc:.2f})", linewidth=2)
-    plt.plot([0, 1], [0, 1], "k--", label="Random Classifier")
+    plt.plot(fpr, tpr, label=f"AUC = {roc_auc:.2f}", linewidth=2)
+    plt.plot([0, 1], [0, 1], "k--", linewidth=1)
     plt.xlabel("False Positive Rate")
     plt.ylabel("True Positive Rate")
-    plt.title(f"ROC Curve - {output_prefix}")
+    # Remove title - keep only axis labels
     plt.legend(loc="lower right")
     plt.grid(True, alpha=0.3)
     output_path = os.path.join("ping_evaluation_results", f"{output_prefix}_roc_curve.png")

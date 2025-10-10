@@ -294,7 +294,8 @@ def save_confusion_matrix(y_true, y_pred, output_dir):
     cm = confusion_matrix(y_true, y_pred)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Attack", "SYN Flood"])
     disp.plot(cmap=plt.cm.Blues)
-    plt.title(f"Confusion Matrix - SYN Flood Detection")
+    # Remove title - keep only axis labels
+    plt.title("")
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, "confusion_matrix.png")
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
@@ -308,11 +309,11 @@ def save_roc_curve(y_true, y_pred, output_dir):
     roc_auc = auc(fpr, tpr)
     
     plt.figure()
-    plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {roc_auc:.2f})", linewidth=2)
-    plt.plot([0, 1], [0, 1], "k--", label="Random Classifier")
+    plt.plot(fpr, tpr, label=f"AUC = {roc_auc:.2f}", linewidth=2)
+    plt.plot([0, 1], [0, 1], "k--", linewidth=1)
     plt.xlabel("False Positive Rate")
     plt.ylabel("True Positive Rate")
-    plt.title(f"ROC Curve - SYN Flood Detection")
+    # Remove title - keep only axis labels
     plt.legend(loc="lower right")
     plt.grid(True, alpha=0.3)
     os.makedirs(output_dir, exist_ok=True)
