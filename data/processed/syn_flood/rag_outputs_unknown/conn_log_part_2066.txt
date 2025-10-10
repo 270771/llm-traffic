@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from source IP 167.249.133.167 port 30233 to destination IP 202.152.169.139 port 22000 show characteristics consistent with a SYN flood (high rate, no successful completions, REJ flags).
+  Justified by anomaly: No matching anomaly ID or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for suspicious activity and apply rate-limiting on incoming SYN packets from this IP to mitigate potential SYN flood impact.
+
+**Explanation:** Although no anomaly records or heuristic context are available to directly confirm this alert, the presence of repeated TCP SYN attempts with REJ flags and no established connections strongly indicates a SYN flood attack pattern. Immediate mitigation through rate-limiting and investigation is warranted to prevent service disruption.

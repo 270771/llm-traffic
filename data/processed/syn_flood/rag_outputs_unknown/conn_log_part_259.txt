@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.250.164.111 on port 12528 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the observed pattern of numerous SYN packets without completion is a classic signature of SYN flood behavior.  
+  → Action: Immediately rate-limit or block incoming TCP SYN packets from source IP 167.249.133.167 to mitigate the SYN flood and prevent resource exhaustion on the target system. Initiate further investigation on the source IP for potential malicious activity.

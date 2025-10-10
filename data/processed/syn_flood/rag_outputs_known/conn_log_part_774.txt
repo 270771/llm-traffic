@@ -1,0 +1,5 @@
+- SYN flood alert: TCP session from 167.249.133.167 to 203.65.64.155 shows SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:** Although no anomaly records or heuristics are provided, the TCP flag pattern (S0) strongly indicates a SYN flood attempt, as SYN packets are sent without completing the handshake. This behavior is consistent with SYN flood attacks designed to exhaust server resources. Immediate investigation and mitigation are warranted.

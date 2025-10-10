@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106:29011 to 163.21.109.133:3000 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero completed handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Despite lack of anomaly data, the observed pattern of SYN packets without handshake completion is a classic SYN flood signature. Immediately rate-limit connections from 93.81.158.106 to 163.21.109.133:3000 and monitor for further suspicious activity. Consider blocking if attack persists.

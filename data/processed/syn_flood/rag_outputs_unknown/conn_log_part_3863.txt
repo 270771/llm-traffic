@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:16655 to 133.118.162.223:3389 showing SYN packets with no established connections (S0 state), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 93.81.158.106 targeting port 3389 to prevent resource exhaustion and protect the RDP service. Initiate investigation on source IP for potential malicious activity.

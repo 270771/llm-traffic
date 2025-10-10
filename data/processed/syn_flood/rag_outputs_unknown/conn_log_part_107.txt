@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on port 41323 is sending TCP SYN packets to destination 133.250.170.149 port 12393, resulting in numerous half-open connections (S0 state) with no established sessions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Despite lack of anomaly data, the presence of multiple SYN packets without completion (S0) is a classic SYN flood signature. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity. If attack persists, block the source IP to protect the target system.

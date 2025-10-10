@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 on high source port 44083 targeting destination 202.152.173.202 port 23 (Telnet) with TCP flags indicating SYN flood behavior (SH flags, repeated attempts).
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to further validate.
+  → Action: Despite lack of anomaly data and heuristic context, the observed pattern of repeated SYN attempts to port 23 is a classic SYN flood signature. Immediately block IP 107.81.9.228 to prevent potential denial-of-service impact and investigate source for further malicious activity.

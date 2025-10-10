@@ -1,0 +1,3 @@
+- SYN flood alert: Timestamp 1641791328.580609, source IP 93.81.158.106, source port 23320, destination IP 203.65.55.89, destination port 7001, TCP protocol, flag S0 (SYN sent, no response), 1 SYN packet, 44 bytes, no established connection.
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to further validate.
+  → Action: Investigate source IP 93.81.158.106 for unusual SYN packet patterns and consider rate-limiting connections from this IP to destination port 7001 to mitigate potential SYN flood impact.

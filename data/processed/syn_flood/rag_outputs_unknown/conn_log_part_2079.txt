@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 163.21.12.45 on port 4063 show multiple SYN packets with no corresponding ACKs, indicated by TCP flag S0 and only 1 SYN sent.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:** Although no anomaly record or heuristic context is available, the presence of TCP flag S0 (SYN sent, no response) and repeated SYN packets without completion is a classic indicator of a SYN flood attack. Immediate investigation and mitigation are warranted to prevent potential denial-of-service impact.

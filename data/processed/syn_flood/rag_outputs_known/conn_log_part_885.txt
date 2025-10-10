@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:29011 to 163.21.220.81:8090 showing SYN packets with no established connections (S0 state), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the alert’s TCP flag pattern (S0) and connection count (1 SYN, 44 packets, no ACKs) strongly align with classic SYN flood characteristics—numerous SYNs without completing handshakes to exhaust server resources.
+  → Action: Block IP 93.81.158.106 at the firewall and implement rate-limiting on port 8090 to mitigate the SYN flood attack.

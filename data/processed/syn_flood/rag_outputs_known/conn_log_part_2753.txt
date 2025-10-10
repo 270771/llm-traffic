@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 45.101.6.227 to 203.65.103.15 on port 22 show rapid SYN packets with zero successful completions and immediate REJ (reject) responses, indicating connection initiation without handshake completion.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the pattern of repeated SYNs without ACKs and immediate rejects is a classic signature of a SYN flood attack aimed at exhausting server resources on port 22 (SSH).
+  → Action: Block IP 45.101.6.227 immediately to prevent resource exhaustion and investigate source for potential malicious activity.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 159.231.29.3:61953 to 163.21.148.140:8443 showing SYN packets with no completion (S0 state), indicating half-open connections typical of SYN flood.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the S0 flag (SYN sent, no response) and multiple SYN packets without completion strongly align with classic SYN flood behavior.
+  → Action: Immediately rate-limit incoming SYN packets from 159.231.29.3 and monitor for continued suspicious activity; if persistent, block the source IP to prevent denial of service.

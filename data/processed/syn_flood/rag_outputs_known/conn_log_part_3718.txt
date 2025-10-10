@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.223.177 on port 5801 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero established connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued SYN flood behavior; escalate to block IP if attack persists.

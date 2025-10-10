@@ -1,0 +1,6 @@
+- SYN flood alert: TCP connection attempt from 107.81.9.228:53861 to 202.152.173.202:23 showing rapid SYN behavior with no successful handshake (RSTR flag, zero ACKs).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 107.81.9.228 for suspicious activity and consider rate-limiting or blocking if further evidence of SYN flood emerges.
+
+**Explanation:**  
+The alert shows characteristics typical of a SYN flood (many SYNs without completing handshakes), but without anomaly data or heuristic context, confirmation is limited. However, the presence of RSTR (reset) flags and zero ACKs strongly indicates incomplete connections consistent with SYN flood behavior. Immediate investigation and cautious mitigation are warranted.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 163.21.56.148 on port 9100 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the observed pattern (SYN packets without handshake completion) is a well-known signature of SYN flood attacks.  
+  → Action: Immediately rate-limit or block incoming TCP SYN packets from source IP 93.81.158.106 to protect the target system from resource exhaustion and potential denial of service. Initiate further investigation on the source IP for malicious activity.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.50.183 on port 54138 show multiple SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No anomaly data found to directly match this event; however, the pattern of repeated SYN packets without completion is a classic signature of a SYN flood attack.
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for further suspicious activity; if the pattern persists, block the IP to prevent resource exhaustion.

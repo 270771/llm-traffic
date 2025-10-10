@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 157.161.40.85 to 159.1.193.245 on port 8165 shows OTH flag with 40 SYN packets and zero completions, indicating incomplete handshakes consistent with SYN flood behavior.  
+  Justified by anomaly: No anomaly data found to directly match this event. However, the pattern of numerous SYN packets without established connections is a classic SYN flood signature.  
+  → Action: Immediately rate-limit incoming SYN packets from 157.161.40.85 and block if the behavior persists to mitigate denial-of-service impact. Initiate investigation on source IP for potential malicious activity.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.250.75.16 on port 41800 show SYN packets with no corresponding ACKs, indicated by S0 flag and zero successful connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if traffic persists, as the pattern of SYN packets without completion is consistent with SYN flood behavior.

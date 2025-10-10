@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.250.106.121 on port 50050 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm. However, the observed pattern (SYN packets sent without completion) aligns with classic SYN flood behavior, where attackers overwhelm targets by initiating many half-open connections.  
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 93.81.158.106 to mitigate the SYN flood and protect the target system. Initiate further monitoring for related suspicious activity.

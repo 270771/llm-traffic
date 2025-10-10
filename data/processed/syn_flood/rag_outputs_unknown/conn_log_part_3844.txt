@@ -1,0 +1,3 @@
+- SYN flood alert: Crz6QV19gQ8O9rxwhk from 107.81.9.228 to 202.152.173.202 on port 23 shows multiple SYN flags with no corresponding ACKs, indicating a potential SYN flood.
+  Justified by anomaly: No matching anomaly ID or heuristic context available to directly confirm this behavior.
+  → Action: Immediately rate-limit incoming SYN packets from 107.81.9.228 and monitor for continued suspicious activity; if sustained, block the IP to prevent resource exhaustion on port 23 (Telnet).

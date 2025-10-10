@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 is sending a high volume of TCP SYN packets to destination IP 133.250.142.10 on port 15000, with connection state S0 (SYN sent, no response), indicating incomplete TCP handshakes typical of SYN flood attacks.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the connection state S0 and high SYN count (44 SYN packets with zero completions) strongly align with classic SYN flood behavior, where attackers exhaust server resources by initiating but not completing TCP connections.
+  → Action: Block or rate-limit incoming TCP SYN packets from source IP 167.249.133.167 to destination port 15000 to mitigate the SYN flood attack and protect server availability.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 203.65.114.222:12174 to 209.210.102.212:53663 showing OTH flag with zero bytes transferred and a reset after one packet.
+  Justified by anomaly: No anomaly data found to directly match this event; no heuristic or taxonomy context available to further validate.
+  → Action: Investigate source IP 203.65.114.222 for repeated SYN attempts and monitor traffic patterns; apply rate-limiting on incoming connections from this IP to mitigate potential SYN flood impact.

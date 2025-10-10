@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.80.98 on port 2067 show a high number of SYN packets with no corresponding ACK responses (S0 state), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm. However, the observed pattern of numerous SYN packets without handshake completion (S0) is a well-known indicator of SYN flood attacks in standard TCP/IP behavior analysis.  
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 93.81.158.106 to mitigate the SYN flood and protect the target system. Initiate further investigation on the source IP for potential malicious activity.

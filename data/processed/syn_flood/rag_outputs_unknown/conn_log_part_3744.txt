@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 on high source port 57527 targeting destination 202.152.173.202 port 23 (Telnet) with TCP flags indicating SYN flood pattern (SH, F, F, 0, F, 1, 40).
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to confirm.
+  → Action: Despite lack of anomaly data, the traffic pattern (high source port, targeting Telnet port 23 with SYN flood flags) is a classic SYN flood signature. Immediately block IP 107.81.9.228 to prevent potential denial-of-service on Telnet service and investigate source for further malicious activity.

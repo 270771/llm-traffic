@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:28693 to 133.250.139.100:79 showing S0 flag (SYN sent, no response), with 44 packets and 1 connection attempt.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and monitor traffic patterns; consider rate-limiting connections from this IP pending further evidence.

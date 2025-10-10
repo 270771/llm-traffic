@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.250.108.230 on port 16992 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and a high count of SYNs (44) with zero completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the pattern of numerous SYN packets without handshake completion (S0 flag) is a classic signature of a SYN flood attack, overwhelming the target with half-open connections.
+  → Action: Block IP 93.81.158.106 immediately to prevent further SYN flood traffic and protect the target server from resource exhaustion.

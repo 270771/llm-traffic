@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 203.65.114.222:9505 to 162.142.130.73:1720 showing OTH flag with repeated SYN-like behavior (R=1, 40 packets).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Despite lack of anomaly data, the pattern of repeated SYN attempts with OTH flag and no established connection strongly indicates a SYN flood attempt. Immediately rate-limit connections from 203.65.114.222 and monitor for escalation. If attack persists, block the IP to protect the target.

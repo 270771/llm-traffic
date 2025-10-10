@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 93.81.158.106 to 133.250.73.220 on port 7634 shows a single SYN packet with no response (flag S0), indicating a half-open connection attempt consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the observed pattern (S0 flag with no handshake completion) is a classic indicator of SYN flood attacks as it exhausts server resources by leaving connections half-open.
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for repeated attempts; if persistent, block the IP to prevent resource exhaustion.

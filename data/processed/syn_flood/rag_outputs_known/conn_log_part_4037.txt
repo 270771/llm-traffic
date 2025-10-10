@@ -1,0 +1,6 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:30909 to 202.44.232.84:21 with SYN flag set and no response (S0 state), indicating a half-open connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:**  
+The alert shows a SYN packet sent without completing the TCP handshake (S0 state), a classic sign of SYN flood behavior. Although no anomaly record or heuristic context is provided, the connection pattern aligns with known SYN flood characteristics—numerous half-open connections intended to exhaust server resources. Immediate investigation and proactive mitigation are warranted.

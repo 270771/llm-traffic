@@ -1,0 +1,5 @@
+- Ping flood alert: 1641791012.221077 from 167.249.133.167 to 133.118.193.216 on TCP ports 54891 → 13780 with S0 flag and minimal packet count.
+  Justified by anomaly: No anomaly data found, no heuristic context available.
+  → Action: Investigate source IP 167.249.133.167 for suspicious activity and monitor traffic patterns; consider rate-limiting or blocking if further evidence of flooding emerges.
+
+**Explanation:** The alert shows a TCP connection attempt with S0 (SYN sent, no response) flag rather than ICMP ping flood traffic. Without anomaly records or heuristic context, this event does not match known ICMP ping flood patterns. Immediate blocking is premature; investigation and monitoring are warranted.

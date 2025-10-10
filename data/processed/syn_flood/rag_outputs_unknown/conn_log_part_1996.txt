@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 targeting destination 202.152.173.202 on port 23 with TCP flags indicating repeated SYN attempts and RSTR responses.
+  Justified by anomaly: No matching anomaly record found; however, the alert shows classic SYN flood characteristics—high volume of SYN packets with no corresponding ACKs, triggering RSTR responses.
+  → Action: Immediately block IP 107.81.9.228 to prevent further SYN flood impact and investigate source for potential compromise or malicious intent.

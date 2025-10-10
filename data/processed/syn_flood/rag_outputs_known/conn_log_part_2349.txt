@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 113.139.143.150 to 203.65.103.15 on port 23 show rapid SYN packets with zero successful completions and immediate rejections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a SYN flood.
+  → Action: Despite lack of anomaly data, the pattern of repeated SYN attempts with no completions and immediate rejections on a sensitive port (Telnet, port 23) is consistent with SYN flood behavior. Recommend immediate rate-limiting on source IP 113.139.143.150 and monitoring for further suspicious activity. If attack persists, block IP to protect service availability.

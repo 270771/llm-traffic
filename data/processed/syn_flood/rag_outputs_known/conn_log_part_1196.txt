@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.28.246 on port 8880 shows SYN packets with no established connections (S0 flag), indicating incomplete TCP handshakes consistent with SYN flood behavior.  
+  Justified by anomaly: No anomaly data found to directly match this event. However, the alert’s pattern (S0 flag, multiple SYNs without completion) aligns with standard SYN flood characteristics documented in cybersecurity practice.  
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; if persistent, block the IP to prevent denial-of-service impact.

@@ -1,0 +1,3 @@
+- SYN flood alert: 1641790921.161806	CG1wMj4RuqNCvFn5o7	133.118.0.227	34405	192.103.164.17	636	tcp	-	11.267658	0	0	OTH	F	F	0	^h	0	0	3	180	-	6  
+  Justified by anomaly: No matching anomaly record found, no heuristic context available to confirm or explain this detection.  
+  → Action: Investigate source IP 133.118.0.227 for unusual SYN packet patterns and consider rate-limiting or blocking if SYN flood behavior persists.

@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 163.21.64.150 on port 58051 targeting 13.111.136.41 port 443 shows SYN flood characteristics with high packet counts and SYN flags.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 163.21.64.150 immediately and apply rate-limiting on incoming SYN packets from this IP to protect the target server while further analysis is conducted.

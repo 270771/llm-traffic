@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:29011 to 133.118.130.38:9009 showing SYN packets with no completion (S0 state), indicating half-open connections consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential malicious activity and implement rate-limiting on port 9009 to mitigate possible SYN flood impact.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 203.65.103.228 on port 43009 show SYN packets without completing handshakes (flag S0, count 44).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Block IP 167.249.133.167 temporarily and monitor for continued SYN flood behavior, as repeated SYN packets without handshake completion strongly indicate a SYN flood attack pattern.

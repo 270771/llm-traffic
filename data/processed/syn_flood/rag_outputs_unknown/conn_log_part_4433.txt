@@ -1,0 +1,3 @@
+- SYN flood alert: CrwD7S2lQinf4Nyy31 detected a high volume of TCP SYN packets from source IP 163.21.64.150 to destination IP 13.111.136.41 on port 443, with a large number of half-open connections (indicated by SF flag and high packet counts).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Despite lack of anomaly data, the observed pattern of numerous SYN packets without completion is characteristic of a SYN flood attack. Immediately rate-limit connections from 163.21.64.150 and monitor for further suspicious activity. If attack persists, block the source IP to protect the destination server.

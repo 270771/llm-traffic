@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167 to 133.250.84.123 shows SYN packets with no completion (S0 state), indicating half-open connections typical of SYN flood attacks.
+  Justified by anomaly: No matching anomaly ID or heuristic available due to missing anomaly data and heuristic context.
+  → Action: Immediately rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued suspicious activity; escalate to block IP if attack persists.

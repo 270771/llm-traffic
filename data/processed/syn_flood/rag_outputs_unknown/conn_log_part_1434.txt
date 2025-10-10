@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 24366 is sending TCP SYN packets to destination 203.65.123.18 port 2404, resulting in S0 (SYN sent, no response) connection state with 44 attempts and zero completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the high volume of SYN packets with no handshake completion (S0) strongly indicates a SYN flood attack pattern. Immediately block or rate-limit IP 93.81.158.106 to prevent resource exhaustion on the target. Initiate further investigation on this source IP.

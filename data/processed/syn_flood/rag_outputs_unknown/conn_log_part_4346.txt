@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.91.200 on port 4506 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero completed connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Block IP 93.81.158.106 immediately due to clear SYN flood pattern (numerous SYNs without handshake completion), which exhausts server resources and disrupts service.

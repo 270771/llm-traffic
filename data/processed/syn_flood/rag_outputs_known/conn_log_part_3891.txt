@@ -1,0 +1,3 @@
+- SYN flood alert: CoVEao446OXYiYpx22 detected a potential SYN flood from source IP 167.249.133.167 to destination IP 202.152.173.205 on port 31001 with TCP protocol, showing a high rate of connection attempts and zero successful completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this detection.
+  → Action: Investigate source IP 167.249.133.167 immediately for suspicious activity and consider implementing rate-limiting on port 31001 to mitigate potential SYN flood impact.

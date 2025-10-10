@@ -1,0 +1,5 @@
+- SYN flood alert: TCP SYN flood detected from source IP 93.81.158.106 targeting 202.36.216.5 on port 2000 with high connection attempt rate (63.39 connections/sec) and no corresponding anomaly record.
+  Justified by anomaly: No matching anomaly ID or heuristic available due to lack of anomaly data and heuristic context.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to 202.36.216.5 on port 2000 and initiate investigation of source IP for further malicious activity.
+
+Despite absence of anomaly records or heuristic context, the extremely high SYN request rate with no successful handshakes strongly indicates a SYN flood attack requiring prompt mitigation.

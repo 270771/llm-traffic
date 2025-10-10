@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 163.21.241.20 on port 7474 show SYN packets with no corresponding ACKs, flagged as S0 state (SYN sent, no response), indicating incomplete handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the S0 flag and connection pattern alone are strong indicators of a SYN flood attack due to the high number of half-open connections (44 attempts with zero completions).  
+  → Action: Block IP 93.81.158.106 immediately to prevent resource exhaustion and investigate source for potential malicious activity. Implement rate-limiting on port 7474 to mitigate further SYN flood attempts.

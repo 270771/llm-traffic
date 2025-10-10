@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 203.65.114.222:15004 to 209.210.102.184:55397 showing OTH flag with 40 SYN packets and 0 ACKs.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Despite lack of anomaly data, the pattern of numerous SYN packets without corresponding ACKs strongly indicates a SYN flood attempt. Immediately rate-limit connections from 203.65.114.222 and monitor for further suspicious activity. If attack persists, block the IP to protect the target system.

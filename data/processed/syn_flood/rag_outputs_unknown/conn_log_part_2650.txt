@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 133.250.68.38 on port 11112 with SYN flag set and no response (S0 state).
+  Justified by anomaly: No anomaly data found; however, the alert indicates a classic SYN flood pattern characterized by numerous SYN packets without completing the handshake (S0 state), which is a well-known indicator of SYN flood attacks.
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; if persistent, block the IP to prevent resource exhaustion.

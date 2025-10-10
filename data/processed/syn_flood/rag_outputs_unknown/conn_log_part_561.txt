@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:11187 to 133.250.76.241:41800 showing S0 flag (SYN sent, no response), with 44 packets and 0 completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a known SYN flood pattern.
+  → Action: Despite lack of explicit anomaly data, the presence of numerous SYN packets without completion (S0 state) strongly indicates a SYN flood attempt. Recommend immediate rate-limiting on source IP 93.81.158.106 and monitoring for further suspicious activity. If volume persists, block IP to protect target 133.250.76.241.

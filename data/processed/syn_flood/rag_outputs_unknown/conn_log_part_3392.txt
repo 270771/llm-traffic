@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167:31904 to 133.118.213.236:14825 showing S0 flag (SYN sent, no response), with 44 attempts and 0 completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the pattern of numerous SYN attempts without handshake completion (S0) is a classic SYN flood indicator. Immediately rate-limit connections from 167.249.133.167 and monitor for escalation. If traffic persists, block the source IP to protect the target.

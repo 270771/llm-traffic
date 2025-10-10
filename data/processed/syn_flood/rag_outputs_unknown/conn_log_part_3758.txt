@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.112.158 on port 14407 show SYN packets with no corresponding ACKs, resulting in many half-open connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the observed pattern of numerous SYN packets without completion is a classic SYN flood signature. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity. If attack persists, block the IP to protect the target server.

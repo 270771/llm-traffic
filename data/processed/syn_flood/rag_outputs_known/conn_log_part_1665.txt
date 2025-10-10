@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 202.152.168.83 on port 102 with no successful handshake completion, indicated by RSTR (Reset) flags and zero ACKs.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for suspicious activity and consider rate-limiting or blocking if further evidence of SYN flood emerges.

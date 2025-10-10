@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 133.250.69.64 targeting destination 192.103.164.17 on port 636 with TCP flags indicating an OTH (other) state and a high count of initial SYN packets (60).
+  Justified by anomaly: No matching anomaly record found; however, the alert shows classic SYN flood characteristics—numerous SYN packets without corresponding ACKs, indicated by TCP state OTH and flag F (FIN) with zero established connections.
+  → Action: Immediately rate-limit incoming connections from 133.250.69.64 and monitor for continued SYN flood behavior; if sustained, block the IP to protect the target server on port 636.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 202.44.239.91 on port 12419 shows SYN packets with no corresponding ACKs (S0 flag set), indicating incomplete TCP handshakes consistent with SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the presence of multiple SYN packets without handshake completion (S0) is a classic indicator of SYN flood attacks as per standard TCP/IP behavior analysis.  
+  → Action: Immediately rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued abnormal connection attempts. If the behavior persists, block the source IP to prevent denial-of-service impact.

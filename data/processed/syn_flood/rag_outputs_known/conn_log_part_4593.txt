@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 93.81.158.106 to destination IP 203.65.89.135 on port 8099, characterized by a single SYN packet with no corresponding ACK (S0 flag), indicating incomplete TCP handshake attempts.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to port 8099 and initiate investigation on the source IP for potential malicious activity. Implement temporary blocking if SYN flood traffic persists to protect the target service.

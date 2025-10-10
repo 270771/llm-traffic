@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 93.81.158.106:29011 to 163.21.187.32:8000 shows S0 state with 1 attempt and 44 packets, indicating SYN packets sent without completing handshake.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately block IP 93.81.158.106 to prevent potential SYN flood attack, as the S0 state with multiple SYN attempts and no handshake completion is a classic signature of SYN flood behavior.

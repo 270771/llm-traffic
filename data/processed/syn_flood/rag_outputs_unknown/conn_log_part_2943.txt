@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 is sending TCP SYN packets to destination 202.152.169.91 on port 5432, with flags indicating SYN flood behavior (SH, F, F).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately block IP 93.81.158.106 at the network perimeter and initiate investigation of traffic patterns to prevent potential denial-of-service impact.

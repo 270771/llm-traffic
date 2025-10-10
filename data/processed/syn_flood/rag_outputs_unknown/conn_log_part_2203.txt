@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 133.250.174.60:47881 to 192.103.164.17:636 show characteristics consistent with a SYN flood (high number of SYN packets, no corresponding ACKs).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm.
+  → Action: Immediately rate-limit connections from 133.250.174.60 to 192.103.164.17:636 and monitor for continued suspicious activity; escalate for manual investigation due to lack of automated anomaly confirmation.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 92.199.253.203 to 163.21.148.140 on port 33892 showing SYN packets with no completion (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 92.199.253.203 for suspicious activity and consider rate-limiting or blocking if SYN flood behavior persists, as incomplete TCP handshakes (S0) are a classic indicator of SYN flood attacks.

@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on port 55937 sending TCP SYN packets to destination 133.118.57.75 port 20440, with connection state S0 (SYN sent, no response), indicating incomplete TCP handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate this event.
+  → Action: Immediately rate-limit connections from 167.249.133.167 and monitor for continued SYN flood behavior; if persistent, block the IP to protect the target system from resource exhaustion.

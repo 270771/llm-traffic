@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167 to 163.21.180.195 on ports 20635 → 10302 shows S0 flag with 1 connection attempt and 44 packets, indicating SYN packets sent without completing handshake.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Block IP 167.249.133.167 temporarily and monitor for repeated SYN flood patterns due to clear SYN flood signature (S0 state with multiple SYN packets and no handshake completion).

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 163.21.187.13:17423 to 192.103.164.17:636 showing 4.04 seconds duration with zero successful handshakes and multiple failed attempts (OTH flag, F->F).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 163.21.187.13 for suspicious activity and monitor traffic patterns; consider rate-limiting or temporarily blocking if further SYN flood indicators emerge.

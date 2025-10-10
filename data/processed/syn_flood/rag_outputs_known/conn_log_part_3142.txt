@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 133.250.127.88 on port 21314 showing SYN packets with no established connections (S0 flag, 1 attempt, 44 bytes, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+Since no anomaly data or heuristic context is available, the alert alone indicates suspicious SYN-only traffic consistent with a SYN flood pattern (S0 state), warranting proactive investigation and mitigation.

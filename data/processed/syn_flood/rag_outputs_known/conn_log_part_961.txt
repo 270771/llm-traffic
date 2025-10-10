@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 203.65.81.202 on port 8027 with 15,000 SYN packets and zero completed connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the volume of SYN packets with no established connections (S0) is a classic signature of a SYN flood attack, indicating resource exhaustion attempts.
+  → Action: Immediately block IP 167.249.133.167 to prevent further SYN flood traffic and protect target server 203.65.81.202. Initiate investigation on source IP for potential malicious activity.

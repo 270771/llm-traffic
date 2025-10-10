@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 202.44.235.88 on port 9943 show a high number of SYN packets with no corresponding ACKs (S0 state), indicating incomplete TCP handshakes consistent with a SYN flood attack.
+  Justified by anomaly: No direct anomaly record available; however, the alert’s pattern of numerous SYN packets without completion aligns with the classic SYN flood heuristic—excessive half-open connections causing resource exhaustion.
+  → Action: Immediately block or rate-limit incoming SYN packets from 93.81.158.106 to prevent denial of service and investigate the source for potential malicious activity.

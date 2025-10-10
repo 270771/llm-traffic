@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 203.65.48.88 on port 53 showing S0 flag (SYN sent, no response), with 44 attempts and no established connections.
+  Justified by anomaly: No anomaly data found; no heuristic context available to further validate.
+  → Action: Despite lack of anomaly records and heuristic context, the pattern of numerous SYN packets without completion on port 53 (DNS) strongly indicates a SYN flood attempt. Recommend immediate rate-limiting on incoming SYN packets from 93.81.158.106 and monitoring for further suspicious activity. If attack persists, block the source IP to protect DNS services.

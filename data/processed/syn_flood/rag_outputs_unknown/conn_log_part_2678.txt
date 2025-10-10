@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 133.118.30.123 to 192.103.164.17 on port 636 with OTH flag and 60 SYN packets observed.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood.
+  → Action: Investigate source IP 133.118.30.123 for unusual connection patterns and monitor traffic to port 636; consider rate-limiting connections if SYN packet volume persists.

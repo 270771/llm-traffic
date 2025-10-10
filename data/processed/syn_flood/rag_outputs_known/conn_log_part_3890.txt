@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 202.44.208.97 on port 27015 show SYN packets with no corresponding ACK responses, indicated by S0 flag and zero successful connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Block IP 93.81.158.106 temporarily and monitor for continued SYN flood behavior, as the pattern of SYN packets without handshake completion is a classic indicator of SYN flood attacks.

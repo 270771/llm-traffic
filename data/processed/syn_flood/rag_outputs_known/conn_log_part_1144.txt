@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 93.81.158.106:20012 to 133.118.73.243:444 shows S0 flag with zero bytes transferred and only one SYN packet sent, indicating incomplete TCP handshake typical of SYN flood.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the S0 flag and single SYN packet without response is a well-known signature of SYN flood attacks.
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for repeated connection attempts; consider blocking if attack volume persists.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 133.118.104.27 on port 33060 shows SYN packets with no established connections (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this event. However, the presence of multiple SYN packets without completion (S0 flag) is a well-known indicator of SYN flood behavior in network security taxonomy.  
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity. If the pattern persists, block the IP to prevent denial-of-service impact.

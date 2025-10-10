@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 133.118.108.164 on port 2376 showing S0 flag (SYN sent, no response), with 44 attempts and 0 completions.
+  Justified by anomaly: No anomaly data found; however, the S0 flag with multiple connection attempts and zero completions is a classic indicator of a SYN flood attack, where the attacker sends numerous SYN packets without completing the handshake, overwhelming the target.
+  → Action: Block or rate-limit incoming SYN packets from 93.81.158.106 to prevent resource exhaustion and investigate the source for further malicious activity.

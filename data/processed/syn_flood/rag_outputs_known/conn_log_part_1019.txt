@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.250.74.129 on port 9051 show a high number of SYN packets with no corresponding ACKs, indicated by multiple S0 flags and zero data transfer.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+Since no anomaly data or heuristic context is available, the alert alone shows classic SYN flood characteristics (many SYNs, no ACKs), justifying investigation and mitigation steps.

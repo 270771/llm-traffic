@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 163.21.150.155 on source port 38568 targeting destination IP 192.103.164.17 on port 636, with 60 SYN packets and 1 incomplete handshake.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Despite lack of anomaly data, the volume of SYN packets with incomplete handshakes strongly indicates a SYN flood attack. Immediately block IP 163.21.150.155 to prevent further disruption and investigate the source for potential compromise.

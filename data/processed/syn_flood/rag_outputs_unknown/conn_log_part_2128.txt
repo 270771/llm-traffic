@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.125.88 on port 3790 show a SYN flood pattern with multiple SYN packets and no corresponding ACKs (S0 state, 44 packets).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately block IP 93.81.158.106 to prevent further SYN flood impact, and initiate investigation on source for potential malicious activity.

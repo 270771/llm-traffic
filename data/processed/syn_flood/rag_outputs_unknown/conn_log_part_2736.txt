@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:26312 to 203.65.46.43:1433 shows a SYN flood pattern with multiple SYN packets sent (flag S), no established connections (S0 state), and no response from the target.
+  Justified by anomaly: No anomaly data found to directly match this event. However, the SYN flood pattern is evident from the TCP flags and connection state (S0), which indicates half-open connections typical of SYN flood attacks.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for further suspicious activity; if attack persists, block the source IP to protect the target server on port 1433.

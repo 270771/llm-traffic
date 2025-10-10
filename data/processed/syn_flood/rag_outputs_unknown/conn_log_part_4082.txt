@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 93.81.158.106 to destination IP 202.152.173.98 on port 9160, characterized by multiple SYN packets with no corresponding ACKs, indicating half-open connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; if the pattern persists, block the source IP to prevent resource exhaustion on the target server.

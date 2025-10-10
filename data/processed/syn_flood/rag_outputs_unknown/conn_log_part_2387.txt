@@ -1,0 +1,3 @@
+- SYN flood alert: Connection attempt from 133.118.156.166 to 192.103.164.17 on TCP port 636 shows characteristics of a SYN flood (high SYN count, no established connections).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 133.118.156.166 for suspicious activity and apply rate-limiting on incoming SYN packets from this IP to mitigate potential SYN flood impact.

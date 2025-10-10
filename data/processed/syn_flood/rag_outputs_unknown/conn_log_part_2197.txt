@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 targeting destination 163.21.21.99 on port 311 with TCP flag S0 and only 1 connection attempt.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from 93.81.158.106 and monitor for further SYN flood behavior due to observed single SYN packet without completion, indicative of SYN flood pattern despite lack of anomaly data.

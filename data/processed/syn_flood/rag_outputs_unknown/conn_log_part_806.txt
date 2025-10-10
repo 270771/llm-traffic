@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.78.32 on port 8649 show numerous SYN packets with no corresponding ACKs, flagged as S0 state (SYN sent, no response).
+  Justified by anomaly: No anomaly data found to directly match this event; no heuristic or taxonomy context available to further validate.
+  → Action: Despite lack of anomaly records and heuristic context, the observed pattern of repeated SYN packets without completion is a classic SYN flood signature. Immediately rate-limit connections from 93.81.158.106 to mitigate potential denial-of-service impact and investigate source for further malicious activity.

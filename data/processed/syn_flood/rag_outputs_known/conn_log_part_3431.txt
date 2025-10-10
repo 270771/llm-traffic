@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167:61276 to 163.21.42.154:32101 resulted in a SYN packet with no corresponding ACK (flag S0), indicating a half-open connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for repeated SYN-only packets; implement rate-limiting on incoming SYN requests to 163.21.42.154:32101 to mitigate potential SYN flood.

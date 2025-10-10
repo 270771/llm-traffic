@@ -1,0 +1,3 @@
+- SYN flood alert: High-rate TCP SYN packets from 107.81.9.228 to 202.152.173.202 on port 23 with no corresponding ACKs, indicating a SYN flood pattern.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Immediately block IP 107.81.9.228 to prevent further SYN flood impact, as the observed behavior (multiple SYNs without handshake completion) is a classic SYN flood signature.

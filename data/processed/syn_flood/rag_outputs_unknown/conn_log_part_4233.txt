@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.254.98 on port 27015 shows a SYN packet with no corresponding ACK (flag S0), indicating a half-open connection typical of SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity to prevent resource exhaustion. If flooding persists, block the IP at the firewall.

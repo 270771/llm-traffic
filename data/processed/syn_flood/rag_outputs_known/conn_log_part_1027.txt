@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 on high source port 38811 targeting destination 202.152.173.202 port 23 with TCP flags indicating SYN flood pattern (SH flags, multiple SYN attempts).
+  Justified by anomaly: No matching anomaly record found; no heuristic context available to further validate.
+  → Action: Immediately rate-limit connections from 107.81.9.228 and monitor for continued SYN flood behavior; escalate for manual investigation due to lack of anomaly confirmation but clear SYN flood indicators.

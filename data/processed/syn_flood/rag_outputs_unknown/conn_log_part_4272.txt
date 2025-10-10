@@ -1,0 +1,3 @@
+- SYN flood alert: Multiple TCP SYN packets detected from source IP 107.81.9.228 to destination 202.152.173.202 on port 23, with flags indicating SYN and handshake failure (SH), and a high count of 3 SYN attempts within a short interval (3.33 seconds).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this event.
+  → Action: Despite lack of anomaly data, the pattern of repeated SYN attempts with no successful handshake on a sensitive port (23, typically Telnet) is consistent with SYN flood behavior. Immediately block or rate-limit IP 107.81.9.228 to prevent potential denial-of-service impact and investigate source for further malicious activity.

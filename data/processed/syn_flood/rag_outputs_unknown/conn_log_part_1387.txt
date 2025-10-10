@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 targeting destination IP 133.118.241.47 on port 12332 with TCP SYN packets resulting in S0 (connection attempt sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the presence of numerous SYN packets with no established connections (S0 state) strongly indicates a SYN flood attack pattern. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity. If attack persists, block the source IP to protect the target system.

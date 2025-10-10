@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 133.250.104.4 targeting destination IP 192.103.164.17 on port 636 with 120 SYN packets and no corresponding ACKs, indicating incomplete TCP handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit connections from 133.250.104.4 and initiate investigation to verify if this is a coordinated SYN flood attack. If confirmed, block the source IP to protect the target server.

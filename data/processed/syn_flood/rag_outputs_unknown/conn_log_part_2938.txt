@@ -1,0 +1,3 @@
+- SYN flood alert: CGMs9c2NzdDy2TZ0jj from 107.81.9.228 to 202.152.173.202 on port 23 with TCP flags indicating SYN and handshake failure.
+  Justified by anomaly: No anomaly data found, no heuristic context available.
+  → Action: Investigate source IP 107.81.9.228 for suspicious activity and consider rate-limiting or blocking connections to port 23 due to the high risk of SYN flood attacks targeting Telnet services.

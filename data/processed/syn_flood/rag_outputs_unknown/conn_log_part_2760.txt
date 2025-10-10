@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 93.81.158.106 to destination IP 202.152.168.90 on port 10000, with 52.7 seconds duration, 39 SYN packets, zero ACK responses, and flags indicating half-open connections (SH).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data and heuristic context, the pattern of numerous SYN packets without corresponding ACKs over an extended period is a classic SYN flood signature. Immediately block or rate-limit connections from source IP 93.81.158.106 to protect the target system from resource exhaustion. Initiate further investigation on this source IP for potential malicious activity.

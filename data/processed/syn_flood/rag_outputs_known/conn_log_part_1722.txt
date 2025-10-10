@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:21491 to 203.65.85.129:8087 showing S0 flag (SYN sent, no response), with 1 connection attempt and 44 bytes transferred, indicating incomplete TCP handshake.
+  Justified by anomaly: No anomaly data found to directly match this event. However, the S0 flag with no handshake completion is a classic indicator of a SYN flood attack, where numerous SYN packets are sent without completing the handshake, overwhelming the target.
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for further suspicious connection attempts; if volume persists, block the IP to prevent resource exhaustion.

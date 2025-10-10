@@ -1,0 +1,32 @@
+{
+  "syn_gt": {
+    "name": "SYN Flood Detection - Ground Truth",
+    "metrics": {
+      "accuracy": 0.9881856540084388,
+      "precision": 1.0,
+      "recall": 0.9864439603001695,
+      "f1_score": 0.9931757250792103
+    },
+    "confusion": {
+      "tp": 4075,
+      "tn": 609,
+      "fp": 0,
+      "fn": 56
+    }
+  },
+  "syn_expert": {
+    "name": "SYN Flood Detection - Expert Labels",
+    "metrics": {
+      "accuracy": 0.9594851234437645,
+      "precision": 0.9720176730486009,
+      "recall": 0.9806835066864784,
+      "f1_score": 0.9763313609467456
+    },
+    "confusion": {
+      "tp": 3960,
+      "tn": 587,
+      "fp": 114,
+      "fn": 78
+    }
+  }
+}

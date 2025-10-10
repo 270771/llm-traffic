@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 133.118.68.216 on port 21281 with SYN packets sent but no completion (S0 state, 44 SYNs, 0 ACKs).
+  Justified by anomaly: No anomaly data found to directly match this event. However, the pattern of numerous SYN packets without corresponding ACKs (S0 state) is a classic indicator of a SYN flood attack, as it exhausts server resources by leaving half-open connections.
+  → Action: Block IP 167.249.133.167 immediately to prevent further SYN flood impact and investigate source for potential malicious activity.

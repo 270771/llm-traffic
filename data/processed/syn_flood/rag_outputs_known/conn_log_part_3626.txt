@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 93.81.158.106 to 203.65.2.103 on port 8649 shows S0 flag with 44 attempts and zero completions, indicating incomplete TCP handshakes typical of SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the S0 flag with multiple connection attempts and no established sessions is a classic signature of SYN flood attacks.  
+  → Action: Immediately rate-limit or block incoming TCP SYN packets from source IP 93.81.158.106 to prevent resource exhaustion on target 203.65.2.103. Initiate further investigation on source IP for potential malicious activity.

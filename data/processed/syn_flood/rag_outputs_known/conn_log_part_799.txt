@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.92.64 on port 104 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately rate-limit or block IP 93.81.158.106 to prevent potential SYN flood, as the pattern of SYN packets without handshake completion is a classic indicator of SYN flood attacks. Investigate source for further malicious activity.

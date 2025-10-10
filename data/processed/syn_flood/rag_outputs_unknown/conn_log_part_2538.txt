@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 152.221.57.167 to 163.21.148.140 on port 44585 showing SYN packets with no established connections (flag S0).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 152.221.57.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from 93.81.158.106 (src port 31383) to 163.21.222.141 (dst port 55000) with connection state S0 (SYN sent, no response), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued SYN flood activity; escalate to block IP if attack persists.

@@ -1,0 +1,5 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 202.152.168.120 on port 4064 with multiple SYN flags and no corresponding ACKs.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to 202.152.168.120 and initiate investigation to verify attack scope and source behavior.
+
+Despite lack of anomaly data and heuristic context, the presence of multiple SYN flags without ACK responses strongly indicates a SYN flood attack pattern requiring prompt mitigation.

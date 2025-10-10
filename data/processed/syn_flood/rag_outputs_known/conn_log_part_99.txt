@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on port 3645 is initiating numerous TCP connection attempts to destination 163.21.224.169 port 12508, resulting in multiple S0 (SYN sent, no response) flags, indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the alert’s pattern of repeated SYN packets without handshake completion (S0) is a classic signature of SYN flood attacks.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 167.249.133.167 to prevent resource exhaustion and protect the target system. Initiate investigation on the source IP for potential malicious activity.

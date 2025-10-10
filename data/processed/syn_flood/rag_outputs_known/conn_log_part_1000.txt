@@ -1,0 +1,3 @@
+- Ping flood alert: 1641791150.653245 Ci3NVL1btromyFoKKi 107.81.9.228 58736 202.152.173.202 23 tcp - - - - SH F F 0 F 1 40 0 0 - 6  
+  Justified by anomaly: No matching anomaly record found, no heuristic context available to confirm this as a ping flood. The alert shows TCP traffic on port 23 (Telnet), not ICMP ping traffic, which is inconsistent with a ping flood attack pattern.  
+  → Action: Investigate source IP 107.81.9.228 for suspicious TCP activity on port 23; block or rate-limit if confirmed malicious. Do not treat as ping flood without ICMP evidence.

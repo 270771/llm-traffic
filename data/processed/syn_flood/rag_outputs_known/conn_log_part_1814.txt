@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:29011 to 133.118.106.11:8086 with SYN flag set, no response, and connection state S0 (SYN sent, no reply).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for repeated SYN attempts; implement rate-limiting on port 8086 to mitigate potential SYN flood impact.

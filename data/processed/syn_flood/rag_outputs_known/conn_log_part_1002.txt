@@ -1,0 +1,3 @@
+- Ping flood alert: 1641790900.751982 CanZy7P1tRA0joDUl 167.249.133.167 35385 133.250.126.73 10016 tcp - - - - S0 F F 0 S 1 44 0 0 - 6  
+  Justified by anomaly: No matching anomaly record found, no heuristic context available to confirm or explain this detection.  
+  → Action: Investigate source IP 167.249.133.167 for suspicious TCP SYN flood behavior due to multiple failed connection attempts (S0 state), and consider rate-limiting or blocking if confirmed malicious.

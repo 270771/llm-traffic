@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 157.161.144.77:16024 to 167.105.118.74:34243 showing OTH flag with 1 SYN packet and no established connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood.
+  → Action: Investigate source IP 157.161.144.77 for unusual connection patterns and monitor traffic volume; apply rate-limiting on port 34243 if SYN packet rate spikes persist.

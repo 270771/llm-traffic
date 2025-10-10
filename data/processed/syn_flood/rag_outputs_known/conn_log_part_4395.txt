@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.15.52 on port 82 show a high number of SYN packets with no corresponding ACKs, indicated by S0 flag and 44 SYN packets sent with zero completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Despite lack of anomaly data, the pattern of numerous SYN packets without handshake completion is a classic SYN flood signature. Immediately block or rate-limit IP 93.81.158.106 to prevent resource exhaustion on 133.118.15.52. Initiate further monitoring for similar behavior.

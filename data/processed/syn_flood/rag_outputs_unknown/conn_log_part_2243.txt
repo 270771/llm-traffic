@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 107.81.9.228 to 202.152.173.202 on port 23 with RSTR flag and high SYN ratio (0.859849).
+  Justified by anomaly: No matching anomaly record found; no heuristic context available to further validate.
+  → Action: Investigate source IP 107.81.9.228 for unusual connection patterns and consider rate-limiting connections to port 23 to mitigate potential SYN flood risk.

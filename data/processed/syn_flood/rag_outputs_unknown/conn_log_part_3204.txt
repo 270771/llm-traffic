@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 163.21.145.164:15753 to 192.103.164.17:636 showing OTH (other) TCP state with flags indicating a SYN flood pattern (F, F flags, 1 packet, 60 bytes).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 163.21.145.164 for unusual connection patterns and consider rate-limiting or blocking if SYN flood behavior persists.
+
+**Explanation:** Although no anomaly record or heuristic context is available to directly confirm this as a SYN flood, the alert’s TCP flags and connection pattern strongly indicate a SYN flood attempt. Immediate investigation and proactive mitigation are warranted to prevent potential denial-of-service impact.

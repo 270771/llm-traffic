@@ -1,0 +1,6 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.235.13 on port 5222 showing SYN packets with no completion (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for suspicious activity and consider rate-limiting or blocking if further SYN flood patterns emerge.
+
+**Explanation:**  
+The alert indicates a SYN flood pattern (S0 state means SYN sent but no response or completion), which is a classic sign of a SYN flood attack. However, without anomaly records or heuristic context, confirmation is limited. Immediate investigation and cautious mitigation are warranted to prevent potential denial-of-service impact.

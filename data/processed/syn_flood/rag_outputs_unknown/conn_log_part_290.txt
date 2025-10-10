@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 157.161.40.85:13472 to 159.231.68.31:59971 shows OTH flag with repeated resets and zero payload, indicative of incomplete handshake attempts consistent with SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm. However, the observed pattern—multiple connection attempts with OTH flags and resets—is a classic signature of SYN flood attacks aimed at exhausting server resources.  
+  → Action: Immediately rate-limit incoming connections from source IP 157.161.40.85 and monitor for continued suspicious activity. If flooding persists, block the IP to protect network availability.

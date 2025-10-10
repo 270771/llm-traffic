@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 203.65.87.43:10417 to 192.103.164.17:636 showing OTH flag with 60 SYN packets and 1 connection attempt.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 203.65.87.43 for unusual SYN packet volume and consider rate-limiting or blocking if confirmed as SYN flood.

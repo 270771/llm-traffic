@@ -1,0 +1,5 @@
+- SYN flood alert: Source IP 167.249.133.167 on high source port 51393 targeting destination 163.21.47.248 port 12424 with TCP flag S0 (SYN sent, no response), 44 connection attempts, 0 completions, indicating many half-open connections consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately rate-limit or block IP 167.249.133.167 to prevent resource exhaustion and investigate source for potential malicious activity.
+
+Despite lack of anomaly records or heuristics, the connection pattern (numerous SYNs without completion) and TCP flags strongly indicate a SYN flood attack requiring prompt mitigation.

@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.86.54 on port 3260 showing S0 state with 1 SYN packet and no response.
+  Justified by anomaly: No anomaly data found, no heuristic context available.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further suspicious behavior is confirmed.
+
+Explanation: Although no anomaly record or heuristic context is available to directly confirm this alert, the S0 TCP state (SYN sent, no response) with a single SYN packet and no established connection is a classic indicator of a SYN flood attempt. The destination port 3260 (commonly iSCSI) is a known target for such attacks. Immediate investigation and proactive mitigation are warranted.

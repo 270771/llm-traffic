@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 163.21.202.126 to destination 35.140.190.82 on port 443 with 1643 SYN packets sent and only 16 responses, indicating a high volume of half-open connections over 180 seconds.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this event.
+  → Action: Immediately rate-limit incoming SYN packets from 163.21.202.126 and monitor for continued abnormal SYN traffic. If sustained, block the source IP to prevent resource exhaustion on the target server.

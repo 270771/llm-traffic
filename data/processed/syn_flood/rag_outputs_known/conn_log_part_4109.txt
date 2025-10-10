@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.110.235 on port 7779 show multiple SYN packets with no completion (S0 flag), indicating half-open connections typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm. However, the presence of multiple SYN packets without established connections (S0) is a classic indicator of SYN flood behavior.  
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; consider blocking if attack persists.

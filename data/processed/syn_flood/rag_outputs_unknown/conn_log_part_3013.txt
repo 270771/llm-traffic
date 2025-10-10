@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.43.113 on port 445 show SYN packets with no corresponding ACK responses, indicated by TCP flag S0 (SYN sent, no reply).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm.
+  → Action: Block IP 93.81.158.106 or implement rate-limiting on incoming SYN packets from this source to prevent potential SYN flood attack on port 445.

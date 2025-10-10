@@ -1,0 +1,5 @@
+- SYN flood alert: Source IP 203.65.43.30 on high source port 50705 targeting destination 192.103.164.17 port 636 with TCP flag OTH and only 1 packet sent in a short interval.
+  Justified by anomaly: No matching anomaly record found, no heuristic context available to confirm.
+  → Action: Investigate source IP 203.65.43.30 for unusual connection patterns and monitor traffic to port 636; consider rate-limiting connections from this IP pending further data.
+
+**Explanation:** Without anomaly records or heuristic context, confirmation is not possible. However, the single SYN-like packet with OTH flag and low packet count is insufficient alone to confirm a SYN flood. Proactive investigation and monitoring are warranted to prevent potential escalation.

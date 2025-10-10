@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 93.81.158.106:23320 to 163.21.174.156:5006 shows a SYN flood pattern with multiple SYN packets sent (S0 state, 1 attempt, 44 bytes, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to prevent resource exhaustion and investigate source for potential malicious activity.

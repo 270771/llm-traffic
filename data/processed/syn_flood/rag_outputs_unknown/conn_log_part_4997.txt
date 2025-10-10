@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 on port 40006 targeting 202.152.173.202 port 23 with TCP SYN flood characteristics (3.8 seconds duration, multiple SYN flags, no ACKs).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately block IP 107.81.9.228 at the firewall to prevent further SYN flood attempts, as the alert indicates classic SYN flood behavior (multiple SYN packets without completion) targeting a vulnerable service (port 23, Telnet).

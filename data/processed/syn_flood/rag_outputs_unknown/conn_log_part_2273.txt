@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.8.38 on port 1723 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response), consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the SYN flood pattern is evident from the TCP flags and connection state (S0) indicating half-open connections typical of SYN flood attacks.
+  → Action: Immediately rate-limit or block incoming SYN packets from 93.81.158.106 targeting port 1723 to prevent resource exhaustion on the target server. Investigate source IP for further malicious activity.

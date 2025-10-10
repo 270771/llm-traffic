@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 157.161.40.85 to 192.222.97.152 on port 443 with 18,531 SYN packets and no corresponding ACKs, indicating half-open connections.
+  Justified by anomaly: No anomaly data found to directly match this event. However, the volume of SYN packets without completion is a classic signature of a SYN flood attack, overwhelming the target with connection requests and exhausting resources.
+  → Action: Immediately block IP 157.161.40.85 to prevent further SYN flood traffic and protect the target server. Follow up with network monitoring to detect any additional suspicious activity from related sources.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.254.204 on port 30104 show a high number of SYN packets with no corresponding ACK responses (S0 state, 44 attempts, 1 SYN sent, 0 established connections).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Block IP 167.249.133.167 temporarily and monitor for continued SYN flood behavior due to clear SYN flood pattern (many SYNs without handshake completion).

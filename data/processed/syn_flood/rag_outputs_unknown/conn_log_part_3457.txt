@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.77.61 on port 22 show SYN packets with no corresponding ACKs, indicating incomplete TCP handshakes (S0 state).
+  Justified by anomaly: No anomaly data found to directly match this event; however, the S0 flag in TCP connection states is a well-known indicator of SYN flood attacks, where SYN requests are sent without completing the handshake.
+  → Action: Immediately block IP 93.81.158.106 to prevent further SYN flood attempts targeting port 22 and investigate the source for potential malicious activity.

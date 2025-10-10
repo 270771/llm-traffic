@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 19222 sending TCP SYN packets to destination 163.21.35.189 port 1025, with connection state S0 (SYN sent, no response), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm this event.
+  → Action: Immediately rate-limit or block incoming TCP SYN packets from 93.81.158.106 to prevent resource exhaustion on 163.21.35.189, as the connection attempts are failing to complete and match classic SYN flood patterns. Initiate further investigation on the source IP for potential malicious activity.

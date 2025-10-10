@@ -1,0 +1,5 @@
+- SYN flood alert: TCP SYN flood detected from 167.249.133.167 to 133.118.15.114 on port 10024, showing a single SYN packet with no response (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for suspicious activity and consider rate-limiting or blocking if further SYN flood patterns emerge.
+
+**Explanation:** Although no anomaly data or heuristic context is available to fully confirm this as a SYN flood, the presence of a SYN packet with no corresponding ACK or connection establishment (S0 state) is a classic indicator of a SYN flood attempt. Immediate investigation and cautious mitigation are warranted.

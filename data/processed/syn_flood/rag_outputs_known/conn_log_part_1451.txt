@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from source IP 167.249.133.167 on port 13934 to destination IP 202.152.169.3 on port 16096 show repeated connection resets (REJ) with zero successful handshakes and a high rate (0.436366).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is confirmed.
+
+**Explanation:** Although no anomaly record or heuristic context is provided, the pattern of repeated TCP connection attempts with zero successful handshakes and connection resets is consistent with SYN flood behavior. Immediate investigation and proactive mitigation are warranted.

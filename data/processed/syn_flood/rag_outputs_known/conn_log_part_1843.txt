@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.87.48 on port 631 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No anomaly data found to directly match this event. However, the presence of numerous SYN packets without completion (S0 flag) is a well-known indicator of SYN flood behavior, consistent with standard SYN flood detection heuristics.  
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity. If the behavior persists, block the IP to prevent denial-of-service impact.

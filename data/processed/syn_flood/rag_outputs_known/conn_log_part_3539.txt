@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.197.7 on port 5269 shows a SYN flood pattern with multiple SYN packets and no established connections (flag S0).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to prevent resource exhaustion and monitor for continued SYN flood behavior. If attack persists, block the IP to protect the target server.

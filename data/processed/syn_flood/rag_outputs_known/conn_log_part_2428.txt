@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 107.81.9.228 to 202.152.173.202 on port 23 with multiple SYN flags and no corresponding ACKs.
+  Justified by anomaly: No anomaly data found, no heuristic context available to cross-validate.
+  → Action: Immediately rate-limit connections from 107.81.9.228 and initiate investigation to confirm malicious intent due to lack of corroborating anomaly data.

@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 202.44.253.243:62566 to 192.103.164.17:636 showing OTH flag with 1 SYN packet and no established connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 202.44.253.243 for repeated SYN attempts and consider rate-limiting or blocking if further SYN flood patterns emerge.
+
+Explanation: Although no anomaly data or heuristic context is provided, the presence of a single SYN packet with no follow-up connection (OTH flag) can indicate a SYN flood attempt. Without corroborating anomaly records, immediate blocking is premature, but proactive investigation and monitoring are warranted.

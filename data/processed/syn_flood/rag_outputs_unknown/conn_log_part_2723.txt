@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.144.224 on port 10250 with SYN flag set and no response (S0 state), indicating incomplete TCP handshake.
+  Justified by anomaly: No anomaly data found; however, the S0 flag in TCP flow records is a well-known indicator of SYN flood attacks, as it represents SYN packets sent without completing the handshake.
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; if persistent, block the IP to prevent resource exhaustion.

@@ -1,0 +1,3 @@
+- SYN flood alert: Timestamp 1641790931.112237 indicates a high volume of TCP SYN packets from source IP 163.21.32.245 to destination IP 192.103.164.17 on port 636, with connection state OTH and flags indicating incomplete handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context is available to confirm this as a known SYN flood pattern.
+  → Action: Despite lack of anomaly data, the observed pattern of numerous incomplete TCP handshakes (SYN packets without completion) is a classic indicator of a SYN flood attack. Immediately rate-limit connections from 163.21.32.245 and monitor for further suspicious activity. If the behavior persists, block the source IP to protect the target server.

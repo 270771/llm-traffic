@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.250.187.119 show SYN packets with no corresponding ACKs or established connections, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No anomaly data found to directly match this event; however, the TCP flag pattern S0 is a well-known indicator of SYN flood attacks, where numerous SYN packets are sent without completing the handshake, overwhelming the target.
+  → Action: Block IP 167.249.133.167 to prevent further SYN flood attempts and protect the target system from resource exhaustion.

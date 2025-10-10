@@ -1,0 +1,6 @@
+- SYN flood alert: TCP connection attempt from 157.161.40.85:53480 to 167.105.118.67:49743 showing OTH flag with RST and only 1 packet sent.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood.
+  → Action: Investigate source IP 157.161.40.85 for unusual connection patterns and monitor traffic volume; apply rate-limiting if high connection attempts persist.
+
+**Explanation:**  
+The alert shows a single TCP packet with OTH flag and RST, which is atypical for a classic SYN flood (which involves many SYN packets without completing handshakes). Without anomaly data or heuristic context, this event alone does not confirm a SYN flood. However, the presence of RST and only one packet suggests a possible scanning or connection reset behavior rather than a flood. Therefore, proactive monitoring and rate-limiting are appropriate initial steps.

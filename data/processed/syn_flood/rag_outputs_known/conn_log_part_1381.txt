@@ -1,0 +1,3 @@
+- SYN flood alert: Connection attempt from 167.249.133.167:49934 to 163.21.187.54:9918 shows TCP flag S0 (SYN sent, no response), with 1 SYN packet and no established connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for repeated SYN attempts; implement rate-limiting on port 9918 to mitigate potential SYN flood.

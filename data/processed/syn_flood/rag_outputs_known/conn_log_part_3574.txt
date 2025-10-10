@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 133.118.2.65 on port 21381 with SYN flag set and no response (S0 state), indicating a half-open connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Despite lack of anomaly data, the observed SYN flood pattern (numerous SYN packets without completion) is a classic DoS indicator. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity. If attack persists, block the IP to protect the target system.

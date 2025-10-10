@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.150.59 on port 16034 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and only 1 SYN sent.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a known pattern.
+  → Action: Despite lack of anomaly data, the presence of numerous SYN packets without handshake completion (S0 flag) is a classic SYN flood signature. Immediately rate-limit connections from 167.249.133.167 and monitor for escalation. If traffic persists, block the source IP to protect the target system.

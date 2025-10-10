@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 on port 55933 targeting 202.152.173.202 port 23 shows TCP flags consistent with SYN flood (multiple SYN packets with no completion).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the observed TCP flag pattern (SYN packets without ACKs) targeting a known service port (23, Telnet) is a classic SYN flood signature. Immediately block or rate-limit connections from 107.81.9.228 to protect the target from resource exhaustion.

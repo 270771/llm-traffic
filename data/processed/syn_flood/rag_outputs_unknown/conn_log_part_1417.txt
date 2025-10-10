@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 133.118.234.212 on port 9042 showing S0 flag (SYN sent, no response), with 44 packets and 0 bytes acknowledged, indicating incomplete handshakes consistent with SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm. However, the alert’s pattern (multiple SYNs without completion) aligns with classic SYN flood characteristics—numerous half-open connections exhausting server resources.  
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; if persistent, block the IP to prevent denial-of-service impact.

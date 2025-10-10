@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167 to 133.250.117.150 on port 7317 shows S0 flag with 44 attempts and 0 completions, indicating numerous SYN packets without handshake completion.
+  Justified by anomaly: No direct anomaly record or heuristic context available; however, the S0 flag with high SYN attempts and zero ACK responses is a classic signature of a SYN flood attack, where the attacker sends many SYN requests without completing the TCP handshake to exhaust server resources.
+  → Action: Block IP 167.249.133.167 immediately to prevent further resource exhaustion and investigate source for potential malicious activity.

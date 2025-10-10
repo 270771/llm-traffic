@@ -1,0 +1,3 @@
+- SYN flood alert: High-volume TCP SYN packets from 157.161.40.85 to 192.222.97.152 on port 443 with 3868 SYN attempts in 2.56 seconds, no corresponding ACKs, flags indicating half-open connections (SH), and zero successful handshakes.
+  Justified by anomaly: No anomaly data found; however, the behavior—extremely high SYN rate with no ACK responses and half-open connections—is a classic signature of a SYN flood attack, overwhelming the target with connection requests without completing handshakes.
+  → Action: Block IP 157.161.40.85 immediately to prevent further resource exhaustion and investigate source for potential malicious intent.

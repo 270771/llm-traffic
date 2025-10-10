@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167:43775 to 203.65.67.235:45333 shows S0 state with 1 attempt and 44 bytes, indicating a SYN sent but no response.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and monitor traffic patterns; consider rate-limiting connections from this IP pending further data.

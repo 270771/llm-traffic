@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 203.65.49.11 to 192.103.164.17 on port 636 with multiple SYN packets and no corresponding ACKs, indicating incomplete TCP handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the alert’s pattern of repeated SYN packets without completion is a classic signature of SYN flood attacks, which overwhelm target resources by exhausting connection queues.
+  → Action: Immediately block IP 203.65.49.11 at the firewall and implement rate-limiting on incoming SYN packets to port 636 to mitigate the attack and protect service availability.

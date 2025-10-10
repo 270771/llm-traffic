@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from 167.249.133.167 to 163.21.160.249 on port 16311 with SYN flag set and no corresponding ACKs, indicating incomplete TCP handshakes (S0 state).
+  Justified by anomaly: No anomaly data found to directly match this event; however, the S0 TCP state (SYN sent, no response) is a classic indicator of SYN flood attacks as it shows many half-open connections.
+  → Action: Rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued abnormal connection attempts; if sustained, block the source IP to mitigate the SYN flood.

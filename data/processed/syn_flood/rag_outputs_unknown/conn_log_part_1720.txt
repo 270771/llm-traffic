@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from source 107.81.9.228 to destination 202.152.173.202 on port 23 with a high packet rate (2.9 packets/sec) and flags indicating SYN and half-open connections.
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to further validate.
+  → Action: Immediately rate-limit connections from 107.81.9.228 to 202.152.173.202 on port 23 and initiate investigation of source IP for potential SYN flood activity.

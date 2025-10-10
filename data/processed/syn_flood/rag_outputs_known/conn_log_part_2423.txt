@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 targeting destination IP 203.65.73.205 on port 4002 with TCP flags indicating SYN packets (S0 state), showing 44 connection attempts with zero completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a known pattern.
+  → Action: Despite lack of anomaly data, the high volume of SYN packets without connection completion (S0) strongly indicates a SYN flood attack. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity. If attack persists, block the IP to protect the target system.

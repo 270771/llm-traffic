@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 178.33.24.177:59273 to 163.21.148.140:8622 showing SYN packets with no completion (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Despite lack of anomaly data, the presence of multiple SYN packets without handshake completion (S0) is a classic SYN flood indicator. Immediately rate-limit connections from 178.33.24.177 and monitor for further suspicious activity. If attack persists, block the IP to protect the target server.

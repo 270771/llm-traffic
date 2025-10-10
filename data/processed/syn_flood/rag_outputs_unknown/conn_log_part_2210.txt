@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 163.21.64.150:58061 targeting 13.111.136.41:443 with high packet counts and SYN flags.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from source IP 163.21.64.150 and initiate investigation to verify malicious intent due to high SYN packet volume indicative of SYN flood behavior.

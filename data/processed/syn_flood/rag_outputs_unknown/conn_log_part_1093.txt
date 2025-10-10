@@ -1,0 +1,5 @@
+- SYN flood alert: Source IP 107.81.9.228 on port 60178 targeting 202.152.173.202 port 23 with TCP flags indicating RSTR and rapid connection attempts.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 107.81.9.228 for suspicious activity and consider rate-limiting or blocking if further SYN flood patterns emerge.
+
+**Explanation:** Although no anomaly data or heuristic context is provided, the alert shows characteristics typical of SYN flood attempts—numerous connection attempts with reset flags and short intervals. Without anomaly confirmation, immediate blocking is premature, but proactive investigation and rate-limiting are warranted to prevent potential denial-of-service impact.

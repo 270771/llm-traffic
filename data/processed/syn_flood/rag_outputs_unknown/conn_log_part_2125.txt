@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.70.65 on port 7218 show SYN packets with no corresponding ACKs (flag S0), indicating half-open connections typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm. However, the observed TCP flags and connection pattern (SYN sent, no response) are classic indicators of a SYN flood.  
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity. If attack persists, block the IP to protect the target server.

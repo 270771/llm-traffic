@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 163.21.161.16 on port 41800 show SYN packets with no corresponding ACKs, indicating incomplete TCP handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+Since no anomaly data or heuristic context is available, the alert alone shows classic SYN flood behavior (many SYNs without handshake completion), which is a known threat pattern. Immediate investigation and mitigation are warranted.

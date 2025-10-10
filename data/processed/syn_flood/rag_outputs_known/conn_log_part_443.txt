@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.111.60 on port 12457 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No anomaly data or heuristic context available to directly match or explain this behavior.
+  → Action: Immediately rate-limit or block incoming SYN packets from 167.249.133.167 to prevent potential SYN flood impact, and initiate investigation on this source IP for further malicious activity.
+
+Despite lack of explicit anomaly records or heuristics, the presence of numerous SYN packets without handshake completion (S0 flag) is a classic indicator of SYN flood attacks and warrants proactive mitigation.

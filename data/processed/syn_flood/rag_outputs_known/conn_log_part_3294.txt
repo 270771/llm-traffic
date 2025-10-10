@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on high source port 51362 targeting destination IP 133.118.84.17 port 12368 with TCP flag S (SYN) and connection state S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to further validate.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if traffic volume is confirmed malicious.

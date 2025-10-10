@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 202.44.221.155 on port 4500 with SYN flag set and no response (S0 state), indicating a likely SYN flood pattern.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; escalate to block IP if attack persists.

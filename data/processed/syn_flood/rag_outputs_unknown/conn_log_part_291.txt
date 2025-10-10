@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167 to 163.21.214.16 on ports 15847→12267 shows SYN packets with no completion (flag S0), indicating half-open connections typical of SYN flood.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the SYN flood pattern is evident from the TCP flags and connection state (S0) indicating SYN packets without ACK responses.
+  → Action: Immediately block or rate-limit incoming connections from IP 167.249.133.167 to mitigate the SYN flood attack.

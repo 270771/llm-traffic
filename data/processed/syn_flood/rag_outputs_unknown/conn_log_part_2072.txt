@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 167.249.133.167 to 163.21.165.169 on port 12148, showing numerous SYN packets with no corresponding ACKs (S0 state), indicating half-open connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued suspicious activity; if sustained, block the IP to prevent resource exhaustion.

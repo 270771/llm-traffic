@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 163.21.217.70 to 192.103.164.17 on port 636 with 120 SYN packets and zero completions over ~4.9 seconds.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit or block IP 163.21.217.70 to prevent resource exhaustion and investigate source for potential malicious intent.

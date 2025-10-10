@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 initiated a TCP connection to destination IP 133.118.251.239 on port 12351 with a SYN flag set but no corresponding ACK, indicating a half-open connection (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a known pattern.
+  → Action: Despite lack of anomaly data, the presence of multiple SYN packets without completion (S0) strongly indicates a SYN flood attempt. Recommend immediate rate-limiting on connections from 167.249.133.167 and monitoring for further suspicious activity. If volume persists, block the source IP to protect the target system.

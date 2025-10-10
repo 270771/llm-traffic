@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.157.199 on port 27015 show SYN packets with no corresponding ACKs, indicating incomplete TCP handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:** Although no anomaly record or heuristic context is provided, the S0 TCP flag state (SYN sent, no response) strongly indicates a SYN flood pattern, as the attacker sends SYN packets without completing handshakes, overwhelming the target. Immediate investigation and mitigation are warranted.

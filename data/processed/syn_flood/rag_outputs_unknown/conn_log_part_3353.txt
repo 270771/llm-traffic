@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.67.240 on port 21002 show SYN packets with no corresponding ACKs or established connections, indicated by S0 flag and zero successful handshakes.
+  Justified by anomaly: No anomaly data found; however, the S0 flag (SYN sent, no response) and high count of SYN packets without completion is a classic signature of a SYN flood attack, consistent with known TCP connection exhaustion patterns.
+  → Action: Block IP 167.249.133.167 immediately to prevent resource exhaustion and investigate source for further malicious activity.

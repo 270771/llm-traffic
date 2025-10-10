@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 163.21.96.116 on port 8060, characterized by numerous SYN packets with no corresponding ACKs (S0 flag set).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and initiate investigation on this source IP to prevent potential denial-of-service impact.

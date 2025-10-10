@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106:13443 to 202.152.169.178:5984 show characteristics consistent with SYN flood behavior (high rate, REJ flags, no established connections).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately rate-limit connections from source IP 93.81.158.106 and monitor for continued suspicious activity; escalate for manual investigation due to lack of anomaly confirmation but presence of SYN flood indicators.

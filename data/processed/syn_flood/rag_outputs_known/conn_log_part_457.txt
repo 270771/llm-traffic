@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 138.7.47.156:57052 to 163.21.148.140:81 show SYN packets with no established connections (S0 state), indicating incomplete TCP handshakes typical of SYN flood attacks.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 138.7.47.156 and monitor for continued suspicious activity; consider blocking if attack persists.

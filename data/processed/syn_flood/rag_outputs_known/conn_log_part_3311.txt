@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.129.122 show numerous SYN packets with no completion (S0 flag), indicating half-open connections typical of SYN flood attacks.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the observed pattern of repeated SYN packets without handshake completion (S0) is a well-established indicator of SYN flood behavior.
+  → Action: Block IP 93.81.158.106 immediately to prevent further resource exhaustion and investigate source for potential malicious activity.

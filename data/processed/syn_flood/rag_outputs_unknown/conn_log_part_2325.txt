@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.64.210 on port 12306 show SYN packets with no corresponding ACKs, indicating incomplete TCP handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Immediately rate-limit connections from 167.249.133.167 to port 12306 and initiate investigation of source IP for potential SYN flood activity. Implement SYN cookies or other TCP stack hardening to mitigate impact.

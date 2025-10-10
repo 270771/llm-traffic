@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167:45310 to 163.21.98.6:17100 showing S0 state with zero successful connections and multiple SYN packets.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.

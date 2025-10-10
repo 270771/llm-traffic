@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 133.118.75.19 on high source port 59806 targeting destination IP 192.103.164.17 on port 636 with TCP flags indicating OTH (no established connection).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood based on known patterns.
+  → Action: Investigate source IP 133.118.75.19 for unusual connection attempts and monitor traffic volume; consider rate-limiting connections from this IP pending further data.

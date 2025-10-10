@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 107.81.9.228 targeting destination 202.152.173.202 on port 23 with suspicious TCP flags and packet patterns.
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to further validate.
+  → Action: Investigate source IP 107.81.9.228 immediately for potential malicious activity and consider implementing rate-limiting or blocking on port 23 to prevent exploitation.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 202.152.169.91 on port 5432 with 253 SYN packets and no corresponding ACKs, indicating a half-open connection flood.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; escalate to block IP if SYN flood persists.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 202.152.169.178 on port 5984 with multiple SYN flags and no corresponding ACKs.
+  Justified by anomaly: No anomaly data found to directly match this event; however, the alert’s pattern—numerous SYN packets without completion of TCP handshake—is a classic indicator of a SYN flood attack.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; if attack persists, block the IP to protect the target server.

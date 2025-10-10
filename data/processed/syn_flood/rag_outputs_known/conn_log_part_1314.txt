@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 203.65.122.141 targeting destination 192.103.164.17 on port 636 with TCP flag pattern indicating OTH (other) and multiple SYN flags.
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to further validate.
+  → Action: Investigate source IP 203.65.122.141 immediately for suspicious activity and consider implementing rate-limiting on port 636 to mitigate potential SYN flood impact.

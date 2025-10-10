@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 167.249.133.167 to destination IP 133.118.176.22 on ports 10710 → 21295, with multiple SYN packets sent but no corresponding connection establishment (S0 flag).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit connections from source IP 167.249.133.167 and initiate investigation to verify if this is a coordinated SYN flood attack. Implement temporary blocking if SYN flood behavior persists.

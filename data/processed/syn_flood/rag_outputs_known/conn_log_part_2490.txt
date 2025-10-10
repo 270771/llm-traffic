@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.250.115.124 on port 9505 show a high number of SYN packets with no corresponding ACKs, indicated by the S0 flag and zero successful connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate this event.
+  → Action: Immediately rate-limit connections from 167.249.133.167 to port 9505 on 133.250.115.124 and initiate investigation to confirm if this is a SYN flood attack. If confirmed, block the source IP to prevent service disruption.

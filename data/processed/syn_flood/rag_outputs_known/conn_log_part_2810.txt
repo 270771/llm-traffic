@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 133.250.151.82 on port 37777 showing SYN packets with no completion (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the observed SYN flood pattern (SYN packets without handshake completion) is a classic denial-of-service indicator. Immediately rate-limit connections from 93.81.158.106 to mitigate potential SYN flood impact and investigate source further.

@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 20832 is sending TCP SYN packets to destination 163.21.44.162 port 995, resulting in multiple half-open connections (S0 state) with no established sessions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the presence of numerous SYN packets without completion (S0) is a classic SYN flood signature. Immediately rate-limit connections from 93.81.158.106 and monitor for escalation. If traffic persists, block the IP to protect the target server.

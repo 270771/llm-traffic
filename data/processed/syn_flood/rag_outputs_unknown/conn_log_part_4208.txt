@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 107.81.9.228:54851 to 202.152.173.202:23 with rapid RSTR response and zero successful handshakes, indicating abnormal TCP behavior consistent with SYN flood characteristics.  
+  Justified by anomaly: No matching anomaly record found; however, the alert’s pattern—high SYN attempts with immediate RST responses and no established connections—is a classic signature of SYN flood attacks aimed at exhausting server resources.  
+  → Action: Immediately rate-limit incoming connections from 107.81.9.228 and monitor for continued suspicious activity; consider blocking if attack persists.

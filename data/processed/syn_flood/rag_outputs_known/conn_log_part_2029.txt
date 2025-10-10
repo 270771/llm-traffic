@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 is sending TCP SYN packets to destination 202.152.173.202 on port 23 with a high frequency (2.9 seconds interval) and no corresponding ACK responses, indicating incomplete TCP handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately block IP 107.81.9.228 at the firewall to prevent further SYN flood attempts targeting port 23 (Telnet), as the pattern of SYN packets without handshake completion is a classic SYN flood signature.

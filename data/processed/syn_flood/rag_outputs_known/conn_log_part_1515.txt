@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.38.95 on port 25 showing SYN packets with no completion (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Despite lack of anomaly data, the observed pattern of SYN packets without handshake completion (S0) on a critical service port (SMTP 25) is a classic SYN flood indicator. Immediately rate-limit connections from 93.81.158.106 and monitor for further suspicious activity. If attack persists, block the IP to protect service availability.

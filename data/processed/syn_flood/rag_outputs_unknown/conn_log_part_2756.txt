@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.225.232 on port 9447 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from 167.249.133.167 to port 9447 and monitor for continued SYN flood activity; escalate to block IP if attack persists.

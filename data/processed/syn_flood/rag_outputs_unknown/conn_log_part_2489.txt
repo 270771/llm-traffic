@@ -1,0 +1,3 @@
+- SYN flood alert: CrxUvt32wtF9Ioglq5 from 133.118.205.106 to 192.103.164.17 on port 636 shows a TCP connection with OTH flag and 60 packets with only 1 ACK.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood.
+  → Action: Investigate source IP 133.118.205.106 for unusual connection patterns and monitor traffic to port 636; apply rate-limiting if SYN packet volume spikes.

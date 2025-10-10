@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.33.226 on port 15018 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero successful connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from 167.249.133.167 to 163.21.33.226 on port 15018 and initiate investigation of source IP for potential SYN flood activity.

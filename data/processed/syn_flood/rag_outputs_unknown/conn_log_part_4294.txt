@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.14.183 on port 12588 show a high number of SYN packets with no corresponding ACK responses, indicated by the S0 flag and 44 attempts with zero completions.
+  Justified by anomaly: No matching anomaly record or heuristic context is available; however, the pattern of numerous SYN packets without handshake completion (S0 state) is a classic signature of a SYN flood attack.
+  → Action: Immediately block or rate-limit incoming connections from IP 167.249.133.167 to prevent resource exhaustion and protect the target server.

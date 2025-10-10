@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167:18499 to 163.21.175.70:9223 showing SYN packets with no corresponding ACKs (S0 state), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit or block incoming SYN packets from 167.249.133.167 to prevent resource exhaustion on the target server, and initiate investigation of the source IP for malicious activity.
+
+Despite the lack of anomaly records or heuristic context, the observed pattern of SYN packets without handshake completion (S0) is a classic signature of SYN flood attacks and warrants decisive mitigation.

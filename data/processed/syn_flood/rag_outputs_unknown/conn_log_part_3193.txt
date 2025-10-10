@@ -1,0 +1,3 @@
+- SYN flood alert: CXbS8z2oTJ5Kg0K0F4 from 163.21.64.150 to 13.111.136.41:443 shows characteristics of a SYN flood attack with high SYN packet counts and connection attempts.
+  Justified by anomaly: No matching anomaly ID or heuristic context available to confirm this detection.
+  → Action: Investigate source IP 163.21.64.150 immediately and apply rate-limiting on incoming SYN packets to 13.111.136.41:443 to mitigate potential SYN flood impact.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood attempt from 107.81.9.228 to 202.152.173.202 on port 23, showing rapid connection attempts with no successful handshake completion (indicated by RSTR flags and zero successful connections).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this event.
+  → Action: Immediately block IP 107.81.9.228 to prevent further SYN flood attempts and investigate source for potential compromise or malicious intent. Implement rate-limiting on port 23 to mitigate similar future attacks.

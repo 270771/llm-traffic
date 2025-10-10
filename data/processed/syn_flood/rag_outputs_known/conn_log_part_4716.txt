@@ -1,0 +1,5 @@
+- SYN flood alert: TCP SYN flood detected from source IP 93.81.158.106 targeting destination IP 133.118.6.58 on port 1883, characterized by numerous SYN packets with no corresponding ACKs (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this event.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 93.81.158.106 to prevent potential denial-of-service impact, and initiate further investigation to confirm attack scope.
+
+Despite the lack of anomaly records or heuristic documentation, the presence of multiple SYN packets without handshake completion (S0 flag) is a classic and well-understood indicator of a SYN flood attack, justifying proactive mitigation.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from source IP 93.81.158.106 to destination IP 163.21.218.148 on port 55442 show a high number of SYN packets with no corresponding ACK responses, indicated by the TCP flag S0 (SYN sent, no reply).
+  Justified by anomaly: No matching anomaly record or heuristic context is available to directly confirm this event. However, the S0 flag pattern is a well-known indicator of SYN flood attacks, where numerous SYN requests are sent without completing the handshake, overwhelming the target.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from 93.81.158.106 to prevent resource exhaustion on the destination host and investigate the source IP for further malicious activity.

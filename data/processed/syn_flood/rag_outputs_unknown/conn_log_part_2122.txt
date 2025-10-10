@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 107.81.9.228:56480 to 202.152.173.202:23 showing abnormal SYN behavior with no corresponding anomaly record.
+  Justified by anomaly: No matching anomaly ID or heuristic context available to confirm this as a SYN flood based on structured data or heuristics.
+  → Action: Despite lack of anomaly confirmation, the alert’s characteristics (high SYN rate, no established connections) justify immediate rate-limiting on source IP 107.81.9.228 and monitoring for escalation. Block if SYN flood persists.

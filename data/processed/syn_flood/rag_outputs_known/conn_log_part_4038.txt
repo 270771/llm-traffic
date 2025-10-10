@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 163.21.88.48 on port 18036 showing SYN packets with no corresponding ACKs (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately rate-limit connections from 167.249.133.167 and monitor for continued SYN flood behavior; escalate to block IP if attack persists.

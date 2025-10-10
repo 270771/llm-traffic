@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 133.250.64.59 on port 5800 with high SYN packet count and low completion rate.
+  Justified by anomaly: No matching anomaly record found; however, the alert’s characteristics—high volume of SYN packets (38) with no corresponding ACKs (F flags) and multiple incomplete connections (SF flag)—are consistent with SYN flood behavior as per standard network security understanding.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 93.81.158.106 to prevent resource exhaustion and protect the target server. Initiate investigation on the source IP for potential malicious activity.

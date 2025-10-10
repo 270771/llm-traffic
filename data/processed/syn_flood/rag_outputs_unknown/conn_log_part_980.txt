@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.213.122 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and only 1 SYN sent with no established connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Despite lack of anomaly data, the pattern of numerous SYN packets without completion is a classic SYN flood signature. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity to prevent resource exhaustion.

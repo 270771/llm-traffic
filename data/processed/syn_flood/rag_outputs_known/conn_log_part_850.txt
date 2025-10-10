@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 107.81.9.228:47137 to 202.152.173.202:23 show characteristics consistent with SYN flood behavior, including a high rate of SYN packets and no successful connection establishment (indicated by RSTR flags and zero completions).
+  Justified by anomaly: No matching anomaly record or heuristic context is available to directly confirm this detection.
+  → Action: Despite lack of anomaly data, the observed pattern of repeated SYN attempts without handshake completion on port 23 (Telnet) is a classic SYN flood signature. Immediately block or rate-limit IP 107.81.9.228 to prevent resource exhaustion and investigate the source for potential malicious activity.

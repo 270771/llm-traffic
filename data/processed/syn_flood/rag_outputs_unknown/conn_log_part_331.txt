@@ -1,0 +1,3 @@
+- SYN flood alert: CU39Ex30kRey0ffP3k detected a TCP SYN flood from 133.118.124.174 to 192.103.164.17 on port 636.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this detection.
+  → Action: Investigate source IP 133.118.124.174 for suspicious activity and monitor traffic patterns closely; consider rate-limiting connections from this IP pending further evidence.

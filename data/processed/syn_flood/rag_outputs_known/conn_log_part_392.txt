@@ -1,0 +1,5 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 23320 sending TCP SYN packets to destination 133.250.99.40 port 9001, with connection state S0 (SYN sent, no response), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm this detection.
+  → Action: Immediately rate-limit or block incoming SYN packets from 93.81.158.106 to prevent resource exhaustion on 133.250.99.40 port 9001, and initiate investigation of the source IP for malicious activity.
+
+Despite lack of anomaly data or heuristics, the connection state S0 with repeated SYN packets and no handshake completion is a classic signature of a SYN flood attack, warranting decisive mitigation.

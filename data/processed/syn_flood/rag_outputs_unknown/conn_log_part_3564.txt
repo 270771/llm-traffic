@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 initiated numerous TCP SYN packets to destination 133.118.133.216 on port 16404, resulting in multiple half-open connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the presence of multiple SYN packets with no completion (S0) strongly indicates a SYN flood attack. Immediately block IP 167.249.133.167 and monitor for further suspicious activity.

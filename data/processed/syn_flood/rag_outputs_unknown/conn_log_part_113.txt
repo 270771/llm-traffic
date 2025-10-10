@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 40432 is sending TCP packets to destination 202.152.168.83 port 102, with 22 connection attempts and 0 successful handshakes, resulting in multiple RSTR (reset) flags and a high packet rate (4.97 packets/sec).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a SYN flood.
+  → Action: Despite lack of anomaly data, the pattern of numerous connection attempts with zero successful handshakes and repeated reset flags is consistent with SYN flood behavior. Immediately rate-limit connections from 93.81.158.106 and monitor for escalation; consider blocking if traffic persists or escalates.

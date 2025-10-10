@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from 167.249.133.167 (source port 6165) to 163.21.151.149 (destination port 11920) with TCP flag S0 (SYN sent, no response), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately rate-limit or block incoming SYN packets from 167.249.133.167 to prevent resource exhaustion and investigate the source for potential malicious activity.

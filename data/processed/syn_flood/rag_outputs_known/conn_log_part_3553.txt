@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 sent a TCP SYN packet to destination 163.21.69.55 on port 12350, resulting in an S0 (SYN sent, no response) connection state with only 1 SYN packet and no established connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm or explain this behavior.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity due to incomplete TCP handshakes; consider rate-limiting or blocking if further evidence of SYN flood emerges.

@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 163.21.202.126 on high source port 54325 targeting destination 20.42.31.5 on port 443 with 4100 SYN packets and a high packet rate (60.4 packets/sec).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the volume and rate of SYN packets strongly indicate a SYN flood attack. Immediately block or rate-limit connections from 163.21.202.126 to protect the destination server. Initiate further investigation on the source IP for potential malicious activity.

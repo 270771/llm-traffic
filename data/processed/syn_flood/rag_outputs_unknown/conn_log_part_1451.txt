@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 163.21.94.113:39289 to 192.103.164.17:636 showing OTH flag with 1 SYN packet and no established connection.
+  Justified by anomaly: No anomaly data found, no heuristic context available to confirm.
+  → Action: Investigate source IP 163.21.94.113 for unusual SYN packet patterns and monitor traffic to port 636; apply rate-limiting on incoming SYN requests if SYN flood symptoms persist.

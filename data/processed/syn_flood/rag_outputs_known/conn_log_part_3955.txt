@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.55.115 on port 2379 show a high number of SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm.
+  → Action: Immediately rate-limit or block incoming SYN packets from 93.81.158.106 to prevent resource exhaustion and protect the target server. Initiate investigation on the source IP for potential malicious activity.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.38.120 on port 8086 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm. However, the observed pattern (SYN packets without handshake completion) is a classic signature of SYN flood behavior.  
+  → Action: Immediately block IP 93.81.158.106 to prevent further resource exhaustion on 203.65.38.120 and investigate source for potential malicious activity.

@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.250.181.140 on port 5858 show SYN packets with no corresponding ACKs, indicating incomplete TCP handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Note:** Due to absence of anomaly data and heuristic context, confirmation is limited; however, the S0 flag and connection pattern strongly indicate a SYN flood attempt.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from 93.81.158.106 to 203.65.127.215 on port 3128 with rapid connection attempts and zero successful completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for suspicious activity and apply rate-limiting on port 3128 to mitigate potential SYN flood impact.

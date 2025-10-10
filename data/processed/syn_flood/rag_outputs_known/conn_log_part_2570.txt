@@ -1,0 +1,5 @@
+- SYN flood alert: TCP session from 93.81.158.106:31802 to 203.65.96.76:993 shows SYN flood characteristics with multiple SYN packets and no established connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to prevent resource exhaustion and investigate source IP for further malicious activity.
+
+Despite the lack of anomaly records or heuristic context, the SYN flood pattern (S0 state with multiple SYNs and no ACKs) is a well-known indicator of a SYN flood attack and requires prompt mitigation.

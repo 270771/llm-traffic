@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 37258 sending rapid TCP SYN packets to destination 202.152.169.178 port 5984, with 252 SYN packets over 3.4 seconds and zero successful connections (RSTR flags observed).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data and heuristic context, the high volume of SYN packets with no successful handshakes and presence of RSTR flags strongly indicates a SYN flood attack. Immediately block or rate-limit IP 93.81.158.106 to prevent resource exhaustion on the target server. Initiate further investigation on this source IP for potential malicious activity.

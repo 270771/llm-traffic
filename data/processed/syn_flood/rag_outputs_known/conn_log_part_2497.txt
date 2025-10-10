@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 203.65.114.222 targeting destination IP 68.72.147.251 on port 2015 with OTH (other) TCP flag behavior and 40 SYN packets sent.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this detection.
+  → Action: Investigate source IP 203.65.114.222 immediately for suspicious activity and consider rate-limiting or blocking if SYN flood behavior persists, as the volume and pattern strongly indicate a SYN flood attack despite lack of anomaly data.

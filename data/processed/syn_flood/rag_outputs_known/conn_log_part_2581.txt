@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 93.81.158.106 to 163.21.25.89 on port 2087 shows SYN packets with no established connections (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the observed pattern of SYN packets without completion (S0) is a well-known signature of SYN flood attacks in TCP/IP traffic analysis.  
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for further suspicious activity; if attack persists, block the IP to protect the target server.

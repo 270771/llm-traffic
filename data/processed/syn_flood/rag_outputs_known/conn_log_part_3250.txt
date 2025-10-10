@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.16.12 on port 80 shows a SYN packet with no corresponding ACK (S0 flag), indicating a half-open connection typical of SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; if persistent, block the IP to prevent denial-of-service impact.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167:43734 to 163.21.204.61:21268 shows SYN packets with no established connection (S0 state), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm. However, the S0 flag and single SYN packet without response is a classic indicator of SYN flood behavior.  
+  → Action: Immediately rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued suspicious activity. If the pattern persists, block the source IP to prevent denial of service.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.250.177.231 on port 37 show a high number of SYN packets with no corresponding ACKs (S0 state), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the alert’s characteristics (numerous SYNs without completion) align with standard SYN flood behavior as per common network security knowledge.  
+  → Action: Immediately block or rate-limit incoming SYN packets from 93.81.158.106 to prevent resource exhaustion and investigate the source for potential malicious activity.

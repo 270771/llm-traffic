@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 157.161.40.85 to 192.222.97.252 on port 443 with 643 SYN packets and 0 established connections, flagged as S0 (connection attempt without response) and SAD (SYN attack detected).
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately block IP 157.161.40.85 to prevent further SYN flood attempts and investigate source for potential compromise or malicious intent.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.175.68 on port 12243 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the observed pattern (SYN packets without handshake completion) is a classic signature of SYN flood behavior.  
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 167.249.133.167 to mitigate the SYN flood attack and protect the target system. Investigate the source for further malicious activity.

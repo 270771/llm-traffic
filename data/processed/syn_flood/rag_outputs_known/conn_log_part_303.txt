@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 203.65.114.130 on port 12444 show rapid SYN packets with zero successful completions and immediate rejections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for suspicious activity and consider rate-limiting or blocking if SYN flood behavior persists, as rapid SYN attempts with no completions and REJ flags strongly indicate a SYN flood attack pattern.

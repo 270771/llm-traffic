@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:29011 to 163.21.86.219:5901 showing SYN packets with no completion (S0 state), indicating half-open connections typical of SYN flood attacks.  
+  Justified by anomaly: No anomaly data found to directly match this event.  
+  → Action: Despite lack of anomaly record or heuristic context, the observed SYN flood pattern (numerous SYN packets without handshake completion) is a classic denial-of-service indicator. Immediately rate-limit connections from 93.81.158.106 and monitor for escalation. If attack persists, block the source IP to protect the target system.

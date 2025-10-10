@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.226.66 on port 8728 shows SYN packets with no completion (S0 state), indicating half-open connections typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the S0 flag and connection pattern alone are strong indicators of a SYN flood as per standard TCP/IP behavior analysis.  
+  → Action: Immediately rate-limit or block incoming SYN packets from 93.81.158.106 to protect the target server from resource exhaustion. Initiate further investigation on this source IP for potential malicious activity.

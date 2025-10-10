@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on high source port 33660 targeting destination IP 133.250.161.199 on port 14400 with TCP flags indicating SYN packets (S0 state), 44 packets sent with zero responses.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the pattern of numerous SYN packets without responses (S0 state) strongly indicates a SYN flood attack. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity. If attack persists, block the source IP to protect the target.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.220.100 on port 9193 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No anomaly data found to directly match this event; however, the SYN flood pattern is evident from the TCP flags and connection behavior.
+  → Action: Rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued suspicious activity; if persistent, block the IP to prevent resource exhaustion.

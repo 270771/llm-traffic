@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 133.118.114.111 on port 9387 showing a single SYN packet with no response (S0 state), indicating a half-open connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:** Although no anomaly data or heuristic context is provided, the presence of an S0 TCP state (SYN sent, no response) with only one SYN packet and no established connection is a classic indicator of a SYN flood attempt. This behavior disrupts normal TCP handshake completion and is consistent with SYN flood attack patterns. Without anomaly records, a cautious approach is to monitor and limit connections from this IP.

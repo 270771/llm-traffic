@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 157.161.144.77:20256 to 195.98.149.62:19721 showing OTH flag with 1 retransmission and 40 packets, indicating incomplete TCP handshake typical of SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm. However, the OTH flag combined with retransmissions and lack of handshake completion is a well-known signature of SYN flood attacks disrupting normal TCP session establishment.  
+  → Action: Immediately rate-limit incoming connections from source IP 157.161.144.77 and monitor for continued anomalous SYN traffic. If sustained, block the IP to prevent denial-of-service impact.

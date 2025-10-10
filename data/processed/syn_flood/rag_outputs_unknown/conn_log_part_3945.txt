@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167 to 163.21.96.71 on port 44304 shows SYN packets with no established connections (S0 flag), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No direct anomaly record found; however, the S0 flag in TCP sessions is a well-known heuristic indicating SYN flood attacks due to numerous half-open connections.
+  → Action: Rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued suspicious activity; if persistent, block the IP to prevent resource exhaustion.

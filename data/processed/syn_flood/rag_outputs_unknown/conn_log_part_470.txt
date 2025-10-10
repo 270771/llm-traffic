@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 203.65.125.87:28641 to 192.103.164.17:636 showing OTH flag with 1 SYN packet and 60 bytes transferred, indicating incomplete TCP handshake typical of SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record found; however, the OTH flag combined with a single SYN and no established connection aligns with known SYN flood patterns where half-open connections exhaust resources.  
+  → Action: Rate-limit incoming SYN packets from 203.65.125.87 and monitor for repeated incomplete handshakes; if behavior persists, block the IP to prevent resource exhaustion.

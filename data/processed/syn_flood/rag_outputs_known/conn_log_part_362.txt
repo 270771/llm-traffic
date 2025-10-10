@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.106.60 on port 1741 show a high number of SYN packets with no corresponding ACKs, indicated by the S0 flag and 44 SYN packets with zero completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the pattern of numerous SYN packets without handshake completion (S0 state) is a classic signature of a SYN flood attack.
+  → Action: Block or rate-limit incoming SYN packets from 93.81.158.106 to mitigate the SYN flood and protect the target server.

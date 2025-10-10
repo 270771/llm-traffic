@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.123.28 on port 55443 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero completed connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and apply rate-limiting on incoming connections from this IP to mitigate possible denial-of-service impact.

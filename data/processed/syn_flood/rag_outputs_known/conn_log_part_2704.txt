@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 133.118.140.62 on port 12308 shows a single SYN packet with no response (flag S0), indicating a half-open connection typical of SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for repeated SYN attempts and consider rate-limiting or blocking if pattern persists, as the observed behavior aligns with SYN flood characteristics despite lack of anomaly data.

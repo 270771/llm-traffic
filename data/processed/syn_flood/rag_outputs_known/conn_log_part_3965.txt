@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 163.21.189.73 on port 1883 show SYN packets with no corresponding ACKs, indicating incomplete handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the S0 flag (SYN sent, no response) and high count of SYN packets without completion is a classic signature of a SYN flood attack.
+  → Action: Block IP 93.81.158.106 at the firewall and implement rate-limiting on port 1883 to mitigate potential SYN flood impact.

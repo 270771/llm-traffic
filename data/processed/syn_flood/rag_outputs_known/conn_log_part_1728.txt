@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from 107.81.9.228 to 202.152.173.202 on port 23 with a high connection attempt rate (2.99 seconds interval) and flags indicating SYN flood behavior (SH, F).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Despite lack of anomaly data, the observed rapid SYN attempts targeting port 23 (commonly Telnet) with suspicious TCP flags strongly indicate a SYN flood attack. Immediately block IP 107.81.9.228 to prevent service disruption and investigate source for further malicious activity.

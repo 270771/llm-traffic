@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 157.161.40.85 to destination 8.34.37.255 on port 80 with high SYN packet rate (490 SYNs, no ACKs).
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately block source IP 157.161.40.85 at the firewall to prevent further SYN flood traffic and protect the web server on port 80. Initiate investigation on the source for potential compromise or malicious intent.

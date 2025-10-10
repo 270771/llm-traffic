@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 on high ephemeral port 59836 sending TCP SYN packets to destination 202.152.173.202 port 23 (Telnet), with flags indicating SYN flood behavior (SH, F, F).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data and heuristic context, the pattern of repeated SYN packets to port 23 strongly indicates a SYN flood attempt targeting Telnet service. Recommend immediate rate-limiting on source IP 107.81.9.228 and blocking if traffic persists to protect the Telnet service from denial-of-service impact.

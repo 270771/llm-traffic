@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.112.170 on port 631 show SYN packets with no corresponding ACKs, indicating incomplete handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to prevent resource exhaustion and investigate source for potential SYN flood activity.

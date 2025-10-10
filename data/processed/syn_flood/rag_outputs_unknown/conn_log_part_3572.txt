@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 163.21.29.29 on port 55443 show a high number of SYN packets with no corresponding ACKs (S0 flag set), indicating incomplete TCP handshakes typical of a SYN flood attack.  
+  Justified by anomaly: No anomaly data or heuristic context available to directly match this event. However, the pattern of numerous SYN packets without handshake completion (S0) is a well-established indicator of SYN flood attacks in network security taxonomy.  
+  → Action: Immediately block or rate-limit incoming traffic from IP 93.81.158.106 to prevent resource exhaustion and protect the target server from denial-of-service impact. Investigate the source for potential malicious activity.

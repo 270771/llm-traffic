@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 202.44.247.20 on port 8089 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the S0 flag pattern is a classic signature of SYN flood attacks, where numerous SYN requests are sent without completing the handshake, overwhelming the target.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; if persistent, block the IP to prevent denial-of-service impact.

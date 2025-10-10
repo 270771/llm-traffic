@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 29011 sent a TCP SYN packet to destination 163.21.66.83 port 1741, resulting in a connection state S0 (SYN sent, no response), with 1 SYN packet and no established connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the connection state S0 with a single SYN and no response is a classic indicator of a SYN flood attempt. Immediately rate-limit connections from 93.81.158.106 and monitor for repeated SYN-only traffic to prevent resource exhaustion. If traffic persists, block the IP to protect the target system.

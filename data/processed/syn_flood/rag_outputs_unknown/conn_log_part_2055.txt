@@ -1,0 +1,5 @@
+- SYN flood alert: TCP SYN flood attempt from 107.81.9.228 to 202.152.173.202 on port 23, showing multiple connection attempts with RSTR flags and high connection rate (0.577554).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 107.81.9.228 for suspicious activity and apply rate-limiting on port 23 to mitigate potential SYN flood impact.
+
+**Explanation:** Although no anomaly data or heuristic context is provided, the alert shows classic SYN flood indicators—high connection attempts with reset flags on a sensitive port (Telnet, port 23). Immediate investigation and rate-limiting are warranted to prevent service disruption.

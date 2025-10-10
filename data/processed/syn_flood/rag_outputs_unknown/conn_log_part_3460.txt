@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 202.44.246.248 on port 55553 show SYN packets with no corresponding ACKs, flagged as S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Despite lack of anomaly data, the S0 flag indicates incomplete TCP handshakes typical of SYN flood attacks. Immediately rate-limit connections from 93.81.158.106 to mitigate potential denial-of-service impact and investigate source for further malicious activity.

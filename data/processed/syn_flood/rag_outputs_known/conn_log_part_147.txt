@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 163.21.223.145 on port 2222 show multiple SYN packets with no completion of handshake (S0 state, 1 SYN sent, 0 ACKs).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Block IP 93.81.158.106 or apply rate-limiting on incoming SYN packets from this source to prevent potential SYN flood impact.
+
+**Explanation:** Despite the absence of anomaly records or heuristic context, the alert indicates classic SYN flood behavior—numerous SYN packets without handshake completion (S0 state). This pattern is a well-known indicator of SYN flood attacks aimed at exhausting server resources. Immediate mitigation by blocking or rate-limiting is warranted to protect the target system.

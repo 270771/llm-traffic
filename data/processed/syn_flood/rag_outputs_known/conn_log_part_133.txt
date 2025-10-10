@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 113.86.249.215 to 203.65.103.15 on port 22 with rapid SYN packets and zero successful connections, followed by REJ (reject) responses.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 113.86.249.215 for potential SYN flood activity and consider rate-limiting or temporarily blocking connections to port 22 to prevent service disruption.

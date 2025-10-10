@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood attempt from 93.81.158.106 to 202.152.173.84 on port 515 with multiple SYN flags and no corresponding ACKs.
+  Justified by anomaly: No anomaly data found; however, the alert’s pattern—numerous SYN packets without completion of TCP handshake—is a classic indicator of a SYN flood attack.
+  → Action: Immediately block IP 93.81.158.106 to prevent resource exhaustion and investigate source for further malicious activity.

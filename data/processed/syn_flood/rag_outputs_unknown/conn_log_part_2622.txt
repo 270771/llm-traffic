@@ -1,0 +1,3 @@
+- SYN flood alert: Connection attempt from 163.21.201.193:52793 to 192.103.164.17:636 showing rapid RSTO flags with minimal response time (0.008s), indicative of abnormal TCP handshake behavior consistent with SYN flood patterns.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Investigate source IP 163.21.201.193 for potential SYN flood activity and apply rate-limiting on port 636 to mitigate possible attack impact.

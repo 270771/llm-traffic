@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 202.129.9.200 on port 8545 with rapid SYN packets and zero successful connections, resulting in REJ (reject) responses.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:** Although no anomaly data or heuristic context is provided, the alert shows classic SYN flood characteristics—numerous SYN packets with no successful handshake and connection rejections. This behavior is consistent with SYN flood attacks designed to exhaust server resources. Immediate investigation and proactive mitigation are warranted.

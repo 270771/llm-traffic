@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 163.21.254.65 on port 4369 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero bytes transferred.
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued SYN flood behavior. If sustained, block the IP to protect the target server from resource exhaustion.

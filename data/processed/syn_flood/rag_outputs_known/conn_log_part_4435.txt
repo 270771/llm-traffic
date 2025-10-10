@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood attempt from 167.249.133.167 to 203.65.112.49 on port 16030 with rapid connection attempts and zero successful handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for suspicious activity and consider rate-limiting or blocking if further SYN flood patterns emerge.

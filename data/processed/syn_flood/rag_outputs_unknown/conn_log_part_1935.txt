@@ -1,0 +1,3 @@
+- SYN flood alert: At timestamp 1641790892.431234, source IP 163.21.64.150 on port 58060 sent a high volume of TCP SYN packets to destination 13.111.136.41 on port 443, consistent with SYN flood behavior (flag SF, high packet counts).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from source IP 163.21.64.150 and initiate investigation to verify if this is a coordinated SYN flood attack, as the volume and flags strongly indicate a SYN flood despite lack of anomaly metadata.

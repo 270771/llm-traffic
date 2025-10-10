@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on port 5685 is generating suspicious TCP traffic towards 202.152.173.119 on port 9410, with a high rejection rate (REJ) and no successful connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood based on known patterns.
+  → Action: Investigate source IP 167.249.133.167 for unusual connection attempts and consider rate-limiting or blocking if traffic volume persists or escalates.

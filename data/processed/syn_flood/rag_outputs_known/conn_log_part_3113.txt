@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from 93.81.158.106 to 163.21.86.204 on port 19 with S0 flag indicating connection attempts without completion.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for suspicious activity and consider rate-limiting or blocking if SYN flood behavior persists, as the S0 flag and single SYN packet pattern strongly indicate a SYN flood attempt despite lack of anomaly data.

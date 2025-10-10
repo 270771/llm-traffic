@@ -1,0 +1,5 @@
+- SYN flood alert: Source IP 203.65.7.46 on port 52115 targeting 192.103.164.17 port 636 shows a single TCP connection attempt with OTH flag and minimal packet count, consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 203.65.7.46 for repeated connection attempts and consider rate-limiting or blocking if further SYN flood patterns emerge.
+
+Since no anomaly data or heuristic context is available, the alert alone suggests suspicious SYN-like behavior but lacks corroborating evidence for definitive action beyond investigation and monitoring.

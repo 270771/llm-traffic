@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 initiated a TCP connection to destination 163.21.33.118 on port 135 with a SYN packet, resulting in a connection state S0 (SYN sent, no response), indicating a likely SYN flood attempt.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm this event.
+  → Action: Block IP 93.81.158.106 immediately due to repeated SYN packets without handshake completion, consistent with SYN flood behavior and to prevent resource exhaustion on the target.

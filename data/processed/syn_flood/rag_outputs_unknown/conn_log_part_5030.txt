@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 202.152.168.202 on port 12515 show repeated SYN packets with no successful handshake completion, resulting in connection rejections (REJ).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a known SYN flood pattern.
+  → Action: Investigate source IP 167.249.133.167 for suspicious activity and consider rate-limiting or temporarily blocking connections to port 12515 to mitigate potential SYN flood impact.

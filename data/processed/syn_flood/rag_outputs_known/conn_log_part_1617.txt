@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.45.131 on port 221 show SYN packets with no corresponding ACKs, indicated by S0 flag and zero successful connections.
+  Justified by anomaly: No anomaly data found; however, the pattern of numerous SYN packets without completion (S0) is a classic signature of a SYN flood attack, where the attacker exhausts server resources by initiating connections without completing the handshake.
+  → Action: Block IP 93.81.158.106 immediately to prevent resource exhaustion and investigate source for further malicious activity.

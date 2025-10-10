@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 202.152.169.184 on port 9869 with multiple connection attempts and zero successful handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately block IP 93.81.158.106 at the firewall and initiate network traffic monitoring to prevent potential denial-of-service impact.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 163.21.64.150 on port 58097 targeting 13.111.136.41 port 443 with a high number of SYN packets (1530) and a large volume of half-open connections (5479).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit incoming SYN packets from 163.21.64.150 and initiate investigation of the source to prevent potential denial-of-service impact.

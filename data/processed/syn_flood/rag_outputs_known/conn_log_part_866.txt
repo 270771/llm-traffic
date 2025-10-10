@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 28693 targeting 203.65.126.39 port 79 generated multiple TCP SYN packets with no corresponding connection establishment (S0 state), indicating half-open connections typical of SYN flood attacks.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the alert’s TCP flag pattern (S0) and connection behavior align with standard SYN flood characteristics documented in cybersecurity practice.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and block if the behavior persists to mitigate the SYN flood attack.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.59.16 on ports 29011 → 25105 show SYN packets with no completion (S0 flag), indicating half-open connections typical of SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate. However, the presence of numerous SYN packets without established connections (S0) is a classic signature of SYN flood attacks.  
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity. If attack persists, block the source IP to protect the target system.

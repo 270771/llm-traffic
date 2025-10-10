@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 78.77.120.10:51161 to 203.65.103.15:80 with rapid SYN packets and zero successful connections, resulting in REJ (rejected) responses.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 78.77.120.10 for potential SYN flood behavior and consider rate-limiting or blocking if traffic persists, as the pattern of repeated SYNs with no established connections is consistent with SYN flood attack characteristics.

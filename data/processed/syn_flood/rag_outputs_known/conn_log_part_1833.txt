@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 157.161.40.85 to 192.222.97.253 on port 3478 show a high number of SYN packets with no corresponding ACKs, resulting in many half-open connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately rate-limit or block incoming SYN packets from 157.161.40.85 to prevent resource exhaustion on the target server, and initiate investigation of the source IP for malicious activity.
+
+Despite the lack of anomaly records or heuristic context, the observed pattern of numerous SYN packets without completion is a classic signature of a SYN flood attack, justifying proactive mitigation.

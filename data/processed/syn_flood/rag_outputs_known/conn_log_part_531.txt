@@ -1,0 +1,3 @@
+- SYN flood alert: CrIocK3WJwKwYSsDE7 detected a TCP SYN flood from 93.81.158.106 to 163.21.242.156 on port 37777, showing numerous SYN packets without completing handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately block IP 93.81.158.106 at the firewall and rate-limit incoming SYN packets on port 37777 to prevent resource exhaustion and protect service availability. Initiate further investigation on the source IP for potential malicious activity.

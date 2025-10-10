@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 93.81.158.106 to 163.21.199.155 on port 16993 shows SYN packets with no completion (S0 state), indicating connection attempts without handshake completion.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if traffic volume persists or escalates.

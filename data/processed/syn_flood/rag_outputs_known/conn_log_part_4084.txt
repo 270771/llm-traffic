@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 targeting destination 202.152.173.202 on port 23 with TCP SYN flags and no corresponding ACKs, indicating incomplete connection attempts consistent with SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm. However, the alert’s characteristics—high volume of SYN packets without completion—are textbook indicators of a SYN flood attack.  
+  → Action: Immediately rate-limit incoming SYN packets from 107.81.9.228 and block if the behavior persists to prevent resource exhaustion on the target server. Initiate investigation on the source IP for further malicious activity.

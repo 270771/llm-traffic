@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 133.118.49.56 to 192.103.164.17 on port 636 with 3 SYN packets sent in 180 seconds, no established connections, and flags indicating incomplete handshakes (OTH).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 133.118.49.56 for potential SYN flood behavior due to repeated incomplete TCP handshakes; consider rate-limiting connections from this IP pending further analysis.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 93.81.158.106 targeting destination IP 133.118.183.21 on port 789, characterized by a single SYN packet with no corresponding ACK (flag S0), indicating incomplete TCP handshake attempts.
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate this event.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 93.81.158.106 to prevent potential resource exhaustion and protect the target system from denial-of-service impact. Initiate further investigation to confirm attack scope and source intent.

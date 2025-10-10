@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 202.44.235.95 on port 9051 shows a single SYN packet with no response (flag S0), indicating a half-open connection typical of SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential malicious activity and implement rate-limiting on incoming SYN packets to 202.44.235.95 port 9051 to mitigate possible SYN flood impact.

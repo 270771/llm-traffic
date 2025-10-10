@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 133.118.24.195 to 192.103.164.17 on port 636 show multiple SYN packets with no corresponding ACKs, indicating incomplete handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this event.
+  → Action: Immediately rate-limit incoming SYN packets from 133.118.24.195 and monitor for continued suspicious activity; if persistence is observed, block the IP to prevent denial-of-service impact.

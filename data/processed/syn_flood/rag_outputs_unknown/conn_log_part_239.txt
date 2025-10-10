@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 on port 44308 targeting 202.152.173.202 port 23 shows suspicious TCP behavior with RSTR flags and rapid connection attempts.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood.
+  → Action: Investigate source IP 107.81.9.228 for unusual connection patterns and consider rate-limiting connections to port 23 to mitigate potential SYN flood risk.

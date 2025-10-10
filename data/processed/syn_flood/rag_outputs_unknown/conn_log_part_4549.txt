@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:8108 to 133.118.93.232:9999 showing S0 flag (SYN sent, no response), with 44 attempts and 0 completions.
+  Justified by anomaly: No anomaly data found; however, the S0 flag with high SYN count and zero completions is a classic indicator of a SYN flood attack, consistent with known TCP SYN flood behavior where the attacker sends numerous SYN packets without completing handshakes.
+  → Action: Block or rate-limit IP 93.81.158.106 to prevent resource exhaustion on target 133.118.93.232 port 9999.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 107.81.9.228:54455 to 202.152.173.202:23 with RSTR flag and zero successful connections, indicating abnormal TCP handshake behavior consistent with SYN flood patterns.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm this event.
+  → Action: Investigate source IP 107.81.9.228 for suspicious activity and apply rate-limiting on incoming connections to port 23 to mitigate potential SYN flood impact.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 80.209.130.107:4006 to 163.21.148.140:6000 showing S0 flag with 44 attempts and zero completions, indicating SYN packets sent without handshake completion.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Despite lack of anomaly data, the pattern of numerous incomplete TCP handshakes (S0 state) is a classic SYN flood signature. Immediately rate-limit connections from 80.209.130.107 and monitor for escalation. If attack persists, block the IP to protect service availability.

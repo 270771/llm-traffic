@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167:22142 to 163.21.149.186:9198 show multiple SYN packets with no corresponding ACKs, indicated by TCP flag S0 and only 1 connection attempt with 44 packets sent.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately block IP 167.249.133.167 at the firewall to prevent further SYN flood attempts, as the pattern of repeated SYN packets without handshake completion is a classic SYN flood signature.

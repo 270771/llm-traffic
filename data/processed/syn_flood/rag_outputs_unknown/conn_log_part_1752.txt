@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 107.81.9.228:57333 to 202.152.173.202:23 showing OTH flag with 1 SYN packet and no established connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 107.81.9.228 for unusual SYN traffic patterns and consider rate-limiting connections to port 23 to mitigate potential SYN flood risk.

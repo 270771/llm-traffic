@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 targeting destination 202.152.168.83 on port 102 with TCP SYN packets at high frequency (2.785881 seconds interval), flags indicating SYN flood behavior.
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to further validate.
+  → Action: Investigate source IP 93.81.158.106 for suspicious activity and implement rate-limiting on incoming SYN packets from this IP to mitigate potential SYN flood impact.

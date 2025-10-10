@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 93.81.158.106 on port 29011 is sending TCP SYN packets to destination 133.118.168.200 port 7989, with connection state S0 (SYN sent, no response), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm this pattern.
+  → Action: Immediately rate-limit or block incoming SYN packets from 93.81.158.106 to prevent resource exhaustion on destination 133.118.168.200, as the connection state S0 and repeated SYNs without completion are definitive indicators of a SYN flood attack.

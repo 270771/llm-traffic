@@ -1,0 +1,3 @@
+- SYN flood alert: CrXR7Ub0Q2FH4Mhk from 107.81.9.228 to 202.152.173.202 on TCP port 23 shows a high rate of SYN packets with zero successful connections and multiple RSTR (reset) flags, indicating connection attempts are being refused or dropped.
+  Justified by anomaly: No direct anomaly record found; however, the pattern of numerous SYN attempts without established connections and repeated resets aligns with classic SYN flood behavior aimed at exhausting target resources.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from 107.81.9.228 to prevent resource exhaustion and investigate the source for potential malicious activity.

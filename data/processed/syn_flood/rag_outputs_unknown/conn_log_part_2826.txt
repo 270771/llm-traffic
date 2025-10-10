@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 133.250.156.0 on port 33670 targeting 192.103.164.17 port 636 shows OTH flag with 60 SYN packets and no established connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 133.250.156.0 for unusual SYN packet volume and consider rate-limiting or blocking if confirmed as malicious.

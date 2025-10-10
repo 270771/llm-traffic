@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 203.65.48.40 on port 3310, showing a high number of SYN packets with no corresponding ACKs (S0 flag, connection attempts without completion).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and initiate investigation of the source IP for potential blocking if malicious activity persists.

@@ -1,0 +1,3 @@
+- SYN flood alert: 1641790922.400353	CCjobZ2CYvaDveLTbj	107.81.9.228	56306	202.152.173.202	23	tcp	-	-	-	-	SH	F	F	0	F	1	40	0	0	-	6  
+  Justified by anomaly: No matching anomaly record found, and no heuristic context available to further validate this detection.  
+  → Action: Investigate source IP 107.81.9.228 for unusual connection patterns and consider rate-limiting or blocking if SYN flood behavior persists, given the alert indicates a SYN flood targeting port 23 (Telnet), a commonly exploited service.

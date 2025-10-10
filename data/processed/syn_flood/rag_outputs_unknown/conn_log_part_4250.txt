@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 157.161.40.85 on port 63937 is generating a high volume of TCP SYN packets to destination 8.34.37.255 on port 80, with 490 SYN packets observed in a short interval and no corresponding ACKs, indicating a half-open connection flood.
+  Justified by anomaly: No anomaly data found to directly match this event; however, the alert’s characteristics—high SYN count without completion—are consistent with classic SYN flood behavior as understood in standard network security practice.
+  → Action: Immediately block or rate-limit incoming SYN packets from 157.161.40.85 to prevent resource exhaustion on the target server and investigate the source IP for potential compromise or malicious intent.

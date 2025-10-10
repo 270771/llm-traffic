@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 20.221.234.86 to 163.21.148.140 on port 3392 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the pattern of repeated SYNs without handshake completion is a classic SYN flood signature. Immediately rate-limit connections from 20.221.234.86 to 163.21.148.140 and monitor for further suspicious activity. If volume persists, block the source IP to protect the target server.

@@ -1,0 +1,6 @@
+- SYN flood alert: TCP session from 93.81.158.106 to 202.152.168.40 on port 4782 shows rapid connection attempts with zero successful handshakes and multiple RSTR (Reset) flags.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for suspicious activity and consider rate-limiting or blocking if further SYN flood patterns emerge.
+
+**Explanation:**  
+Although no anomaly data or heuristic context is provided, the alert indicates classic SYN flood characteristics: numerous connection attempts with no established sessions and reset flags, which disrupt normal TCP handshake completion. Immediate investigation and proactive mitigation are warranted to prevent potential denial-of-service impact.

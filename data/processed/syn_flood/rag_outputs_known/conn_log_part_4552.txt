@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167:22180 to 203.65.112.253:9305 shows SYN flood characteristics with multiple SYN packets and no established connections (S0 flag, 44 attempts, 0 completions).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data and heuristic context, the observed pattern of repeated SYN packets without connection establishment is a classic SYN flood signature. Immediately rate-limit connections from source IP 167.249.133.167 and monitor for further suspicious activity. If flooding persists, block the IP to protect the target system.

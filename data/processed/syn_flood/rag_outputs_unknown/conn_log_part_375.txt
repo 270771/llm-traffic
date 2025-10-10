@@ -1,0 +1,5 @@
+- SYN flood alert: Source IP 107.81.9.228 targeting destination 202.152.173.202 on port 23 with TCP flags indicating RSTR (Reset).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood.
+  → Action: Investigate source IP 107.81.9.228 for suspicious activity and monitor traffic patterns; consider rate-limiting connections to port 23 pending further data.
+
+**Explanation:** Without anomaly records or heuristic context, the alert alone is insufficient to definitively confirm a SYN flood attack. The presence of RSTR flags suggests connection resets rather than SYN floods. Therefore, proactive investigation and monitoring are warranted before taking blocking actions.

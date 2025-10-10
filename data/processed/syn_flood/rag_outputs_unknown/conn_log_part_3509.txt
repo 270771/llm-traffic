@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 202.152.173.131 on port 9100, showing 17 SYN packets with zero ACK responses over ~36.86 seconds.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for suspicious activity and apply rate-limiting on incoming SYN packets to port 9100 to mitigate potential SYN flood impact.

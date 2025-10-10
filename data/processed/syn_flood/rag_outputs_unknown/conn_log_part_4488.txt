@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 157.161.40.85 on high port 63936 sending 490 SYN packets to destination 8.34.37.255 port 80 with no corresponding ACKs, flagged with SH (SYN+ACK) and F (FIN) flags, indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No anomaly data found to directly match this event; however, the volume of SYN packets without completion and the presence of SYN flood indicators (SADF flag) strongly align with known SYN flood attack patterns.
+  → Action: Block IP 157.161.40.85 immediately to prevent further resource exhaustion and investigate source for potential compromise or malicious intent.

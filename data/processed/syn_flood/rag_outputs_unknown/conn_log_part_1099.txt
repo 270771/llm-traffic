@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 203.65.1.224 on port 10045 show SYN packets with no corresponding ACKs, resulting in many half-open connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm this pattern.
+  → Action: Despite lack of anomaly data, the observed SYN flood pattern (numerous SYNs without completion) is a classic denial-of-service indicator. Immediately block or rate-limit IP 167.249.133.167 to prevent resource exhaustion on the target.

@@ -3,250 +3,312 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
-## Overview
+## Abstract
 
-**ReGAIN** (Retrieval-Grounded AI Framework for Network Traffic Analysis) is a novel LLM-driven framework for intelligent network traffic analysis that combines structured preprocessing, semantic embeddings, vector-based retrieval, and large language model reasoning to deliver high-accuracy, explainable network security analysis.
+**ReGAIN** (Retrieval-Grounded AI Framework for Network Traffic Analysis) is a retrieval-augmented generation (RAG) system designed for automated network security threat detection and analysis. The framework integrates vector-based semantic search with large language model reasoning to identify network attacks with high accuracy while providing explainable, evidence-backed diagnostics. Our evaluation on ICMP ping flood and TCP SYN flood attacks demonstrates strong detection performance (AUC 0.91-0.99, accuracy 95.95-98.82%) on real-world backbone traffic from the MAWILab dataset.
 
-### Performance Highlights
+## Key Contributions
 
-- **99.3% accuracy** and **99.2% recall** on annotated logs  
-- **97.6% accuracy** with **perfect recall** on unseen logs  
-- **Evidence-backed explanations** reducing hallucinations and improving operator trust  
-- **Human-in-the-loop interaction** for iterative forensic analysis  
+1. **Hybrid RAG Architecture**: Combines semantic embeddings (ChromaDB), metadata filtering, and GPT-4 reasoning for explainable threat detection
+2. **Multi-Source Knowledge Integration**: Ingests heterogeneous data (anomaly records, heuristic rules, network logs) into unified vector store
+3. **State-Based Classification**: Leverages TCP connection states and ICMP patterns for definitive attack identification
+4. **High Performance**: Achieves 95.95-98.82% accuracy with AUC 0.91-0.99 across automated and expert-validated evaluations
+5. **Expert Validation**: Independent manual labeling confirms robustness with 95.95% accuracy and 97.20% precision on SYN floods
 
-Unlike traditional traffic analysis systems—whether rule-based or machine learning–driven—ReGAIN provides transparent, interpretable diagnoses by explicitly citing supporting evidence from a semantic knowledge base. This addresses critical limitations: high false positives, limited explainability, and slow incident response.
-
-**Paper**: _ReGAIN: Retrieval-Grounded AI Framework for Network Traffic Analysis_ (2025)  
-**Code & Data**: [github.com/270771/llm-traffic](https://github.com/270771/llm-traffic)
 
 ---
 
 ## System Architecture
 
-ReGAIN comprises four main components:
+The ReGAIN framework consists of four primary components:
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    1. Data Ingestion & Summarization            │
-│  MAWILab Dataset (.csv, .log, pcap) → Normalized Records        │
-│              → Natural Language Summaries                       │
-└──────────────────────────┬──────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────────┐
-│         2. Semantic Vectorization & Knowledge Base Builder      │
-│  Summaries → Embeddings (all-MiniLM-L6-v2)                      │
-│           → ChromaDB Vector Store + Metadata                    │
-└──────────────────────────┬──────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────────┐
-│           3. Retrieval-Augmented Reasoning (LLM)                │
-│  User Query → Semantic Search → MMR + Cross-Encoder             │
-│            → Evidence Retrieval → GPT-4 Analysis                │
-└──────────────────────────┬──────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────────┐
-│              4. Human-in-the-Loop Interaction                   │
-│  Diagnosis + Citations + Actions → Analyst Refinement           │
-│              → Iterative Forensic Investigation                 │
-└─────────────────────────────────────────────────────────────────┘
-```
+### 1. Data Ingestion Pipeline
+- Processes heterogeneous network data (Zeek logs, CSV anomaly records, heuristic rules)
+- Generates natural language summaries for semantic encoding
+- Normalizes multi-source telemetry into unified format
 
-### Component Descriptions
+### 2. Vector Knowledge Base
+- Encodes summaries using Sentence Transformers (`all-MiniLM-L6-v2`, 384-D embeddings)
+- Stores vectors in ChromaDB with rich metadata (IP addresses, protocols, timestamps, heuristic codes)
+- Supports efficient similarity search and metadata filtering
 
-1. **Data Ingestion & Summarization**: Normalizes heterogeneous traffic telemetry (logs, CSVs, pcaps) into structured records and natural-language summaries
+### 3. Retrieval-Augmented Generation
+- Semantic search: Identifies relevant historical patterns via cosine similarity
+- Cross-encoder reranking: Refines retrieval precision
+- LLM reasoning: GPT-4 analyzes retrieved context and generates explanations
+- Evidence citation: Returns grounded responses with supporting data
 
-2. **Semantic Vectorization**: Encodes summaries into 384-D dense embeddings and stores them with rich metadata in ChromaDB for efficient retrieval
-
-3. **Retrieval-Augmented Reasoning**: Employs hybrid retrieval (semantic + metadata filtering), MMR diversity, cross-encoder reranking, and GPT-4-based explanation generation with evidence citations
-
-4. **Human-in-the-Loop**: Supports iterative query refinement and forensic workflows with transparent, evidence-backed outputs
+### 4. Evaluation Framework
+- Automated ground truth generation from connection states (S0 = attack, SH/SF/RSTR/OTH = normal)
+- Expert label validation for verification
+- Comprehensive metrics: Accuracy, Precision, Recall, F1-Score, AUC-ROC
+- Visualization: Confusion matrices and ROC curves
 
 ---
 
-## Quick Start
+## Installation
 
-### 1. Environment Setup
+### Prerequisites
+- Python 3.11 or higher
+- OpenAI API key (for GPT-4 access)
+
+### Setup
 
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/270771/llm-traffic.git
 cd llm-traffic
 
-# Create and activate virtual environment
+# Create virtual environment
 python -m venv venv
-source venv/bin/activate   # macOS/Linux
-venv\Scripts\activate      # Windows
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate     # Windows
 
 # Install dependencies
 pip install -r requirements.txt
-```
 
-### 2. Configure API Key
-
-Create a `.env` file in the project root:
-
-```bash
-OPENAI_API_KEY=your_openai_api_key_here
-```
-
-### 3. Build Knowledge Base
-
-Execute the ingestion scripts in order:
-
-```bash
-# Step 1: Ingest MAWILab anomaly records
-python ingestion_anomaly.py
-
-# Step 2: Ingest heuristic and taxonomy information
-python ingestion_heur_tax
-
-# Step 3: Detect and ingest historical ping flood patterns
-python ingestion_pingflood.py
-```
-
-This populates three ChromaDB collections:
-- `anomaly_csv_logsc01`: Structured anomaly records  
-- `heuristic_info_txt4`: Detection rules and behavioral taxonomy  
-- `ping_flood_alerts2`: Historical ping flood events  
-
-### 4. Run ReGAIN Analysis
-
-**Interactive Mode** (Natural language queries):
-```bash
-python rag_query.py
-```
-
-Example queries:
-```
-"Heavy ICMP ping storm to 3.30.218.60 at midnight"
-"Explain unusual ICMP activity toward 203.0.113.5 around 10:05"
-"DoS attack on port 443 involving 192.168.1.1"
-```
-
-**Batch Mode** (Process multiple log files):
-```bash
-python rag_query.py <input_folder> <output_folder>
-```
-
-Example:
-```bash
-python rag_query.py ./c101split/test1 ./rag_outputs_c101
-```
-
-**Help**:
-```bash
-python rag_query.py --help
+# Configure API key
+echo "OPENAI_API_KEY=your_key_here" > .env
 ```
 
 ---
 
-## Performance Evaluation
+## Usage
 
-ReGAIN was evaluated on ICMP ping flood detection using the MAWILab v1.1 dataset with chronological train/test split.
+### Building the Knowledge Base
 
-### Results: Known Logs (Training Data)
+Execute ingestion scripts to populate ChromaDB:
 
-| Metric | Ground Truth | Expert Review |
-|--------|--------------|---------------|
-| Accuracy | **99.26%** | **98.00%** |
-| Precision | 98.74% | 99.12% |
-| Recall | 99.24% | 95.63% |
-| F1 Score | 98.99% | 97.34% |
-| AUC-ROC | 0.99 | 0.98 |
+```bash
+# Ingest MAWILab anomaly records
+python src/ingestion/ingestion_anomaly.py
 
-### Results: Unknown Logs (Unseen Test Data - c101)
+# Ingest heuristic rules and taxonomy
+python src/ingestion/ingestion_heur_tax.py
 
-| Metric | Ground Truth | Expert Review |
-|--------|--------------|---------------|
-| Accuracy | **97.56%** | **97.74%** |
-| Precision | 74.48% | 76.36% |
-| Recall | **100.0%** | **100.0%** |
-| F1 Score | 85.35% | 86.58% |
-| AUC-ROC | 0.99 | 0.99 |
+# Ingest ping flood patterns
+python src/ingestion/ingestion_pingflood.py
+
+# Ingest SYN flood patterns  
+python src/ingestion/ingestion_synflood.py
+```
+
+**Output**: Three ChromaDB collections containing ~10K+ embedded anomaly records, detection rules, and attack patterns.
+
+### Running Detection Queries
+
+**Ping Flood Detection**:
+```bash
+python src/query/rag_query.py
+```
+
+**SYN Flood Detection**:
+```bash
+python src/query/rag_query_syn.py
+```
+
+**Batch Processing**:
+```bash
+python src/query/rag_query.py <input_logs_folder> <output_results_folder>
+```
+
+### Evaluation
+
+Run comprehensive evaluation on both attack types:
+
+```bash
+# Ping flood evaluation
+python src/run_all_evaluations.py
+
+# SYN flood evaluation
+python src/run_syn_evaluations.py
+```
+
+**Outputs**: 
+- Confusion matrices (`results/{attack_type}/{expert|ground_truth}/confusion_matrix.png`)
+- ROC curves (`results/{attack_type}/{expert|ground_truth}/roc_curve.png`)
+- Metrics summary (`results/FINAL_EVALUATION_SUMMARY.txt`)
+
+---
+
+## Performance Results
+
+### ICMP Ping Flood Detection
+
+| Evaluation Set | Accuracy | Precision | Recall | F1-Score | AUC |
+|----------------|----------|-----------|--------|----------|-----|
+| Ground Truth   | 97.56%   | 74.48%    | 100.0% | 85.37%   | 0.99|
+| Expert Labels  | 97.74%   | 76.36%    | 100.0% | 86.60%   | 0.99|
+
+**Confusion Matrix (Ground Truth)**: TP=356, TN=4522, FP=122, FN=0  
+**Confusion Matrix (Expert Labels)**: TP=365, TN=4522, FP=113, FN=0
+
+### TCP SYN Flood Detection
+
+| Evaluation Set | Accuracy | Precision | Recall | F1-Score | AUC |
+|----------------|----------|-----------|--------|----------|-----|
+| Ground Truth   | 98.82%   | 100.0%    | 98.64% | 99.32%   | 0.99|
+| Expert Labels  | 95.95%   | 97.20%    | 98.07% | 97.63%   | 0.91|
+
+**Confusion Matrix (Ground Truth)**: TP=4075, TN=609, FP=0, FN=56  
+**Confusion Matrix (Expert Labels)**: TP=3960, TN=587, FP=114, FN=78
 
 ### Key Findings
 
-✅ **Near-perfect sensitivity**: 100% recall ensures no ping floods are missed  
-✅ **High precision on known data**: Controlled false positive rates  
-✅ **Perfect recall on unseen data**: Maintained even on chronologically-split test set  
-✅ **Expert validation**: Confirms robustness and generalization capability  
-✅ **Strong discriminative power**: AUC-ROC ≥ 0.98 across all scenarios  
-
-The precision-recall trade-off on unseen data reflects a conservative design: the system prioritizes sensitivity to ensure no attacks are missed, accepting a moderate increase in false positives that can be efficiently triaged given the transparent, evidence-backed explanations.
+✅ **Perfect Recall on Ping Floods**: 100% detection rate ensures no ping flood attacks are missed  
+✅ **Perfect Precision on SYN Floods (GT)**: Zero false positives with automated ground truth  
+✅ **High Accuracy**: >95% across all evaluation scenarios  
+✅ **Expert Validation**: Manual expert labels provide independent verification with 95-98% accuracy  
+✅ **Strong Discriminative Power**: AUC-ROC of 0.91-0.99 indicates excellent classification capability  
+✅ **State-Based Ground Truth**: Connection state analysis (S0 vs. SH/SF/RSTR/OTH) provides definitive automated labeling  
+✅ **Robustness**: Consistent performance across different labeling methodologies demonstrates system reliability
 
 ---
 
 ## Dataset
 
-### MAWILab v1.1 Backbone Traffic
+### MAWILab v1.1
 
-ReGAIN uses the [MAWILab v1.1 dataset](http://www.fukuda-lab.org/mawilab/), which provides labeled backbone traffic anomalies from the WIDE backbone network.
+We use the [MAWILab v1.1 dataset](http://www.fukuda-lab.org/mawilab/), a collection of labeled network anomalies from the WIDE backbone network in Japan.
 
-**Data Components**:
-1. **Packet Captures (pcap)**: Raw network traffic traces  
-2. **Anomaly CSVs**: Dual-labeled structured annotations:
-   - **Heuristic labels**: Signature/flag/port/type-code driven  
-   - **Taxonomy labels**: Behavioral categories (DoS, scans, tunneling)  
+**Data Sources**:
+1. **Anomaly Records (CSV)**: Dual-labeled annotations with heuristic codes and behavioral taxonomy
+2. **Network Logs (Zeek format)**: Connection-level telemetry with TCP states and protocol metadata
+3. **Traffic Captures (pcap)**: Raw packet data for validation
 
-**Record Schema**:
-- **5-tuple**: Source/destination IP:port, protocol  
-- **Heuristic codes**: Attack-specific signatures  
-  - `20`: ICMP ping flood  
-  - `10`: SYN attack  
-  - Others: Port scans, tunneling, etc.  
-- **Taxonomy**: Behavioral classification (e.g., `ntscICecrqICecrprp`)  
-- **Severity**: `anomalous`, `suspicious`, `notice`, `benign`  
+**Key Features**:
+- 10K+ labeled anomalies (ping floods, SYN floods, port scans, DoS attacks)
+- Real-world backbone traffic (not synthetic)
+- Temporal diversity for train/test splitting
+- Rich metadata: 5-tuple, protocol, connection states, timestamps
 
-**Example Record**:
+**Attack Types Evaluated**:
+- **ICMP Ping Flood** (Heuristic code: 20): Volumetric ICMP echo request attacks
+- **TCP SYN Flood** (Heuristic code: 10): Half-open connection exhaustion attacks
+
+**Connection State Indicators**:
+- `S0`: SYN sent, no response → **Attack signature**
+- `SH`, `SF`, `RSTR`, `RSTO`, `OTH`: Responses received → **Normal traffic**
+
+---
+
+## Project Structure
+
 ```
-Anomaly ID: anomaly_53
-Label: anomalous
-Source: unknown:unknown → Destination: 18.158.38.252:unknown
-Protocol: ICMP | Taxonomy: ntscICecrqICecrprp | Heuristic: 20
+llm-traffic/
+├── src/
+│   ├── analysis/              # Protocol and TCP state analyzers
+│   │   ├── analyze_protocols.py
+│   │   └── analyze_tcp_states.py
+│   ├── ingestion/             # Data ingestion and vectorization
+│   │   ├── ingestion_anomaly.py
+│   │   ├── ingestion_heur_tax.py
+│   │   ├── ingestion_pingflood.py
+│   │   └── ingestion_synflood.py
+│   ├── preprocessing/         # Log preprocessing utilities
+│   │   ├── label_ping_flood_logs.py
+│   │   └── split_conn_log.py
+│   ├── query/                 # RAG query interfaces
+│   │   ├── rag_query.py       # Ping flood detection
+│   │   └── rag_query_syn.py   # SYN flood detection
+│   ├── evaluate_rag.py        # Legacy evaluation script
+│   ├── filter.py              # Log filtering utility
+│   ├── run_all_evaluations.py     # Ping flood evaluation
+│   ├── run_syn_evaluations.py     # SYN flood evaluation
+│   └── run_syn_rag_batches.py     # Batch processing utility
+├── data/
+│   ├── raw/                   # Original MAWILab data
+│   ├── processed/             # Preprocessed logs and splits
+│   └── ground_truth/          # Expert labels and annotations
+├── database/
+│   └── chroma_db/             # ChromaDB vector store
+├── results/
+│   ├── ping_flood/            # Evaluation results for ping floods
+│   ├── syn_flood/             # Evaluation results for SYN floods
+│   └── FINAL_EVALUATION_SUMMARY.txt
+├── requirements.txt           # Python dependencies
+├── README.md                  # This file
+└── LICENSE                    # MIT License
 ```
 
-### Chronological Train/Test Split
+---
 
-To assess generalization and prevent temporal leakage:
-- **Known/Training Data (inragsplit)**: Earlier days for framework development  
-- **Unknown/Test Data (c101split)**: Later days held out for unseen traffic evaluation  
+## Technical Details
 
-This methodology ensures performance metrics reflect real-world deployment where the system encounters novel attack patterns.
+### Embedding Model
+- **Model**: `sentence-transformers/all-MiniLM-L6-v2`
+- **Dimensions**: 384
+- **Advantages**: Fast inference, strong semantic similarity, low computational cost
+
+### Vector Database
+- **System**: ChromaDB
+- **Collections**: 
+  - `anomaly_csv_logsc01`: Anomaly records
+  - `heuristic_info_txt4`: Detection rules
+  - `ping_flood_alerts2`: Ping flood patterns
+  - `syn_flood_alerts`: SYN flood patterns
+- **Search**: Cosine similarity with metadata filtering
+
+### Language Model
+- **Model**: GPT-4 (gpt-4.1-nano, gpt-4.1-mini variants)
+- **Role**: Evidence-based reasoning and explanation generation
+- **Prompting**: Few-shot with retrieval context and explicit citation requirements
+
+### Evaluation Methodology
+1. **Automated Labeling**: Extract connection states from Zeek logs (field 11)
+2. **Expert Validation**: Manual review by domain experts
+3. **Metrics**: Sklearn implementations of accuracy, precision, recall, F1, AUC
+4. **Visualization**: Matplotlib confusion matrices and ROC curves
 
 ---
 
-## Knowledge Base Construction
+## Citation
 
-### 1. Anomaly CSV Ingestion (`ingestion_anomaly.py`)
+If you use this work in your research, please cite:
 
-**Purpose**: Convert MAWILab anomaly records into semantically searchable documents.
-
-**Process**:
-1. Load anomaly CSV and handle missing values  
-2. Generate natural-language summaries for each anomaly  
-3. Create 384-D embeddings using `all-MiniLM-L6-v2`  
-4. Store in ChromaDB collection `anomaly_csv_logsc01` with metadata  
-
-**Output**: Semantic knowledge base of 10K+ historical anomaly patterns.
-
----
-
-### 2. Heuristic & Taxonomy Ingestion (`ingestion_heur_tax`)
-
-**Purpose**: Encode detection logic and attack categorization rules.
-
-**Process**:
-1. Parse heuristic codes (e.g., `20: Ping flood attack`)  
-2. Extract taxonomy group definitions with behavioral prefixes  
-3. Embed descriptions and store in `heuristic_info_txt4`  
-
-**Output**: Searchable repository of detection criteria for LLM grounding.
+```bibtex
+@article{regain2025,
+  title={ReGAIN: Retrieval-Grounded AI Framework for Network Traffic Analysis},
+  author={[Authors]},
+  journal={[Conference/Journal]},
+  year={2025}
+}
+```
 
 ---
 
-### 3. Ping Flood Detection (`ingestion_pingflood.py`)
+## License
 
-**Purpose**: Identify historical ping flood attacks in Zeek connection logs.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+
+- **MAWILab** for providing the labeled backbone traffic dataset
+- **WIDE Project** for maintaining the traffic monitoring infrastructure
+- **Sentence Transformers** for efficient semantic embedding models
+- **ChromaDB** for scalable vector storage and retrieval
+- **OpenAI** for GPT-4 API access
+
+---
+
+## Contact
+
+For questions, issues, or collaboration opportunities:
+- **GitHub Issues**: [https://github.com/270771/llm-traffic/issues](https://github.com/270771/llm-traffic/issues)
+- **Repository**: [https://github.com/270771/llm-traffic](https://github.com/270771/llm-traffic)
+
+---
+
+## Future Work
+
+- **Multi-Attack Detection**: Extend framework to port scans, DDoS, and tunneling attacks
+- **Real-Time Analysis**: Integrate streaming data pipelines for live detection
+- **Explainability Enhancement**: Generate natural language incident reports
+- **Human-in-the-Loop**: Interactive refinement and forensic investigation workflows
+- **Model Optimization**: Fine-tune embedding models on network-specific terminology
+
 
 **Process**:
 1. Parse Zeek `conn.log` files for ICMP traffic  

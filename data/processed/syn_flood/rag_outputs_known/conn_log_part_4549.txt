@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 133.118.160.145 to 192.103.164.17 on port 636 show 180 SYN packets with zero completions over a short interval, indicating a high volume of half-open connections consistent with a SYN flood.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the alert’s characteristics—numerous SYN packets without corresponding ACKs—align with classic SYN flood behavior, which exhausts server resources by leaving connections half-open.
+  → Action: Immediately block or rate-limit IP 133.118.160.145 to mitigate the SYN flood and prevent denial of service on port 636. Initiate investigation on source to confirm intent and assess further risk.

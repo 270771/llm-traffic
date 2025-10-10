@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 133.250.125.188:60673 to 192.103.164.17:636 with 11.81 seconds duration, zero successful completions, and multiple failed connection states (OTH flag).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a SYN flood.
+  → Action: Despite lack of explicit anomaly data, the pattern of repeated incomplete TCP handshakes with zero completions and OTH flag strongly indicates a SYN flood attempt. Immediately rate-limit connections from 133.250.125.188 and monitor for further suspicious activity. If attack persists, block the source IP to protect the target server.

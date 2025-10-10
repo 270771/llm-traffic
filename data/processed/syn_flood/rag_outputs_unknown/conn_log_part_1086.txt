@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167:21717 to 163.21.180.17:11681 shows S0 flag with zero bytes transferred, indicating SYN packets sent without completing handshake.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately rate-limit or block IP 167.249.133.167 to prevent potential SYN flood, as the S0 flag and zero data transfer strongly indicate incomplete TCP handshakes typical of SYN flood attacks. Investigate source for further malicious activity.

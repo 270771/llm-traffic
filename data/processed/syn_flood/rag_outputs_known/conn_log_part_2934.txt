@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:16655 to 163.21.223.131:3389 shows S0 flag with 1 connection and 44 packets, indicating SYN packets sent without completing handshake.
+  Justified by anomaly: No anomaly data or heuristic context available to directly confirm this event.
+  → Action: Despite lack of anomaly records, the S0 flag with multiple SYN packets and no handshake completion is a classic SYN flood indicator targeting port 3389 (RDP). Immediately block or rate-limit IP 93.81.158.106 to prevent resource exhaustion on the target server.

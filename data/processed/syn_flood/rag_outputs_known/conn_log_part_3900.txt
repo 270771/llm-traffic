@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.85.164 on port 12452 show SYN packets with no corresponding ACKs, indicating half-open connections (flag S0, count 44).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Block IP 167.249.133.167 immediately due to clear SYN flood pattern (numerous SYNs without handshake completion), preventing resource exhaustion on target.

@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 202.44.200.136 on port 30111 show numerous SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued suspicious activity. If SYN flood persists, block the IP to protect service availability.
+
+**Explanation:** Despite the absence of anomaly records or heuristic context, the presence of multiple SYN packets without handshake completion (S0 flag) is a classic signature of a SYN flood attack, which aims to exhaust server resources by initiating but not completing TCP connections. Proactive rate-limiting and blocking are standard defensive measures.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 163.21.66.100 on port 12512 showing S0 flag (SYN sent, no response), with 44 attempts and no established connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity; implement rate-limiting on port 12512 to mitigate possible SYN flood impact until further data is available.

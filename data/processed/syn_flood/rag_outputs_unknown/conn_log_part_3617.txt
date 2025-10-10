@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.183.47 on port 9465 show a high number of SYN packets with no corresponding ACK responses (S0 state), indicating incomplete TCP handshakes consistent with a SYN flood attack.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the observed pattern of numerous SYN packets without handshake completion (S0) is a well-established indicator of SYN flood attacks in network security taxonomy.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 167.249.133.167 to mitigate the SYN flood and protect the target server.

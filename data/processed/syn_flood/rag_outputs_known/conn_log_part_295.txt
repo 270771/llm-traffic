@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 93.81.158.106 targeting 133.118.101.255 on port 3542, characterized by numerous SYN packets with no corresponding ACKs (flag S0), indicating half-open connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately block IP 93.81.158.106 at the firewall to prevent further SYN flood traffic and protect the target network from resource exhaustion. Initiate investigation to confirm source legitimacy and monitor for additional suspicious activity.

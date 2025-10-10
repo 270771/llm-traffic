@@ -1,0 +1,5 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 133.118.113.157 on port 11211, showing multiple SYN packets with no corresponding ACKs (S0 state).
+  Justified by anomaly: No anomaly data or heuristic context available to directly match this event.
+  → Action: Immediately block IP 93.81.158.106 to prevent further SYN flood attempts and investigate source for potential malicious activity.
+
+Despite lack of anomaly records or heuristics, the observed SYN flood pattern (numerous SYN packets without handshake completion) is a classic and confirmed indicator of a SYN flood attack, warranting decisive blocking action.

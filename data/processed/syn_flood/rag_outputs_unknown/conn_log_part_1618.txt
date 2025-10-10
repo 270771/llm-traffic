@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.54.134 on port 45886 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No anomaly data found to directly match this event. However, the presence of multiple SYN packets without completion (S0 flag) is a well-known indicator of SYN flood behavior, consistent with standard TCP/IP attack heuristics.  
+  → Action: Immediately rate-limit or block incoming SYN packets from IP 167.249.133.167 to prevent resource exhaustion and investigate the source for potential malicious activity.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 133.250.150.21 on port 1234 shows a single SYN packet with no response (flag S0), indicating a half-open connection typical of SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for repeated attempts; if sustained, block the IP to prevent resource exhaustion.

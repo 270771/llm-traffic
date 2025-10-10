@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.23.8 on port 51235 show SYN packets with no corresponding ACKs, indicating half-open connections (flag S0).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to 203.65.23.8 and monitor for continued SYN flood behavior; escalate for further investigation due to lack of anomaly confirmation but clear SYN flood signature.

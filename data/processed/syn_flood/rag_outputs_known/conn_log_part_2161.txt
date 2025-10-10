@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167:13244 to 202.44.255.53:12238 shows SYN flood characteristics with S0 flag and 44 SYN packets sent without completion.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and apply rate-limiting on incoming SYN packets from this IP to mitigate risk.

@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167 to 203.65.48.186 on port 9899 with SYN packets sent but no established connections (S0 state, 44 SYN packets, 0 completions).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:** Although no anomaly record or heuristic context is provided, the alert shows classic SYN flood characteristics—numerous SYN packets without connection completion (S0 state). This behavior is consistent with SYN flood attacks that exhaust server resources by half-opening connections. Immediate investigation and mitigation are warranted.

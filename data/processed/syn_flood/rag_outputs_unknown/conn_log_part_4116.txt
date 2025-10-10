@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 183.116.47.244 targeting 157.161.144.77 on port 8003, characterized by numerous SYN packets with no corresponding ACKs (flag OTH, F, F, R).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit incoming SYN packets from 183.116.47.244 and initiate investigation of the source IP for potential malicious activity. Implement temporary blocking if SYN flood traffic persists to protect the target system.

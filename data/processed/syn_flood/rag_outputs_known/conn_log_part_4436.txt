@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.177.178 on port 902 show SYN packets with no corresponding ACKs (S0 state), indicating incomplete TCP handshakes consistent with SYN flood behavior.  
+  Justified by anomaly: No anomaly data found to directly match this event. However, the SYN flood pattern is evident from the connection state (S0) and packet counts (1 SYN, 0 ACK), which aligns with standard SYN flood characteristics.  
+  → Action: Immediately rate-limit or block incoming SYN packets from 93.81.158.106 to prevent resource exhaustion on the target server. Initiate investigation on the source IP for potential malicious activity.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.233.95 on port 9527 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero successful connections.
+  Justified by anomaly: No anomaly data or heuristic context available to directly confirm this alert.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and implement rate-limiting on port 9527 to mitigate possible denial-of-service impact.

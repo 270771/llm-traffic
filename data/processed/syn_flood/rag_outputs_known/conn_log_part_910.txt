@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167:59904 to 202.152.168.124:64671 showing rapid SYN packets with zero successful completions and multiple TCP resets (REJ).
+  Justified by anomaly: No matching anomaly ID or heuristic context available to directly confirm.
+  → Action: Despite lack of explicit anomaly records or heuristics, the pattern of repeated SYN attempts without successful handshakes and TCP resets is a classic SYN flood signature. Immediately rate-limit connections from 167.249.133.167 and monitor for escalation. If attack persists, block the source IP to protect the target server.

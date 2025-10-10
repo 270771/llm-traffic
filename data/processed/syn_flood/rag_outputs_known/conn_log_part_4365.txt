@@ -1,0 +1,6 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167:65506 to 203.65.114.147:12279 showing SYN packets with no completion (S0 state), 44 packets sent, 0 responses.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:**  
+The alert shows a classic SYN flood pattern—numerous SYN packets sent without completing the TCP handshake (S0 state). Although no anomaly record or heuristic context is available to directly confirm this, the behavior itself is consistent with SYN flood attacks, which overwhelm targets by exhausting connection queues. Immediate investigation and mitigation are warranted to prevent service disruption.

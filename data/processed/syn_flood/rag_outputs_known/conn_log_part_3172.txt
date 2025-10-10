@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 167.249.133.167:55109 to 133.250.65.66:12366 showing SYN packets with no completion (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Despite lack of anomaly data, the observed SYN flood pattern (numerous SYNs without handshake completion) is a classic denial-of-service indicator. Immediately block IP 167.249.133.167 to prevent resource exhaustion on 133.250.65.66.

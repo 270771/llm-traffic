@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from 93.81.158.106 to 163.21.100.14 on port 2222 with S0 flag indicating connection attempts without completion.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to port 2222 and initiate investigation of source IP for potential SYN flood activity.

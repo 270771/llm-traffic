@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 202.44.246.108 on port 23424 show a high number of SYN packets with no corresponding ACKs, indicated by the S0 flag and zero bytes transferred.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this pattern.
+  → Action: Despite lack of anomaly records, the presence of numerous SYN packets without completion is a classic SYN flood signature. Immediately rate-limit connections from 93.81.158.106 to mitigate potential denial-of-service impact and investigate the source for further malicious activity.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP session from 167.249.133.167:13363 to 133.118.137.220:20060 shows SYN flood pattern with multiple SYN packets and no established connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately rate-limit connections from source IP 167.249.133.167 and initiate investigation to verify if this is a coordinated SYN flood attack. Implement SYN cookies or other SYN flood mitigation techniques on the affected server.

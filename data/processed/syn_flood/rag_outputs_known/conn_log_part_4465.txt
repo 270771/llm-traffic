@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 133.118.90.155 on port 5006 shows a SYN packet with no corresponding ACK or completion (flag S0), indicating a half-open connection.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Note:** Due to lack of anomaly data and heuristic context, confirmation is limited; however, the observed S0 flag pattern is a classic indicator of SYN flood behavior and warrants proactive mitigation.

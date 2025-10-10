@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.250.111.20 on port 12459 show SYN packets with no established connections (S0 state), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No anomaly data or heuristic context available to directly match this event. However, the SYN flood pattern is evident from the connection state (S0) and packet behavior (SYN sent, no ACK received).  
+  → Action: Immediately rate-limit incoming SYN packets from 167.249.133.167 and monitor for continued suspicious activity. If the pattern persists, block the source IP to prevent denial-of-service impact.

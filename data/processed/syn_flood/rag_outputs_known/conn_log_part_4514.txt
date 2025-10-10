@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 133.118.245.197:14536 to 192.103.164.17:636 showing OTH flag with 1 SYN packet and 60 bytes.
+  Justified by anomaly: No matching anomaly record found; no heuristic context available to confirm.
+  → Action: Investigate source IP 133.118.245.197 for unusual connection patterns and consider rate-limiting connections to port 636 pending further data.
+
+Explanation: Without anomaly records or heuristic context, confirmation is limited. However, the presence of a SYN packet with OTH flag and no established connection suggests a potential SYN flood attempt. Proactive investigation and rate-limiting are prudent to mitigate risk.

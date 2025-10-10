@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:30909 to 133.118.195.37:21 showing S0 flag (SYN sent, no response), with 44 attempts and 0 completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the pattern of numerous SYN packets without completion to port 21 (FTP) is a classic SYN flood signature. Immediately rate-limit connections from 93.81.158.106 and monitor for further suspicious activity. If volume persists, block the IP to protect the FTP service from denial-of-service impact.

@@ -1,0 +1,3 @@
+- SYN flood alert: Unusually high number of TCP connection attempts from 133.250.134.52 to 192.103.164.17 on port 636 within a short time frame, with flags indicating incomplete handshakes (OTH flag).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 133.250.134.52 for potential SYN flood activity and consider rate-limiting or temporarily blocking connections from this IP to protect the target service on port 636.

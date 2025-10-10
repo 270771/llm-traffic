@@ -1,0 +1,6 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.155.118 on port 9611 show multiple SYN packets with no corresponding ACKs, resulting in numerous half-open connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 167.249.133.167 to mitigate potential SYN flood impact and investigate source for further malicious activity.
+
+**Explanation:**  
+Despite the absence of anomaly records or heuristic context, the alert details a classic SYN flood pattern—many SYN packets without completing the TCP handshake (S0 state). This behavior is a well-known denial-of-service technique that exhausts server resources. Proactive rate-limiting and source investigation are necessary to prevent service disruption.

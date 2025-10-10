@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 203.65.94.87 on port 9189 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately rate-limit connections from source IP 167.249.133.167 to port 9189 and monitor for continued SYN flood behavior; escalate for further investigation due to lack of anomaly context but clear SYN flood signature.

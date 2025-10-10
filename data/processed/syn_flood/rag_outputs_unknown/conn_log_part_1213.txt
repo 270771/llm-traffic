@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 107.81.9.228:41806 to 202.152.173.202:23 with RSTR response and zero successful handshakes.
+  Justified by anomaly: No anomaly data found to directly match this event; heuristic context unavailable to provide formal justification.
+  → Action: Investigate source IP 107.81.9.228 for suspicious activity and consider rate-limiting or blocking connections to port 23 to prevent potential SYN flood exploitation on the Telnet service.

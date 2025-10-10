@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106:6707 to 133.118.97.82:503 showing SYN packets with no completion (S0 flag), indicating half-open connections typical of SYN flood behavior.  
+  Justified by anomaly: No anomaly data found to directly match this event.  
+  → Action: Block IP 93.81.158.106 immediately due to clear SYN flood signature (numerous SYN packets without handshake completion), which exhausts server resources and disrupts service availability.

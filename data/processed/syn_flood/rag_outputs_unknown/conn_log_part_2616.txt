@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 93.81.158.106 targeting destination IP 202.152.168.83 on port 102 with rapid connection attempts and zero successful completions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit connections from 93.81.158.106 and initiate investigation to verify malicious intent due to absence of anomaly confirmation data.

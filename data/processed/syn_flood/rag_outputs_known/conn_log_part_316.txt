@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 202.152.169.198 on port 9289 show rapid SYN packets with zero successful completions and multiple rejections within a short interval (0.207 seconds).
+  Justified by anomaly: No matching anomaly ID or heuristic context available to directly confirm.
+  → Action: Despite lack of explicit anomaly records or heuristics, the pattern of repeated SYN attempts with zero completions and REJ flags strongly indicates a SYN flood attack. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity. If attack persists, block the source IP to protect the target system.

@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 203.65.39.203 on port 9200 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero data transferred.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+Since no anomaly data or heuristic context is available, the alert alone shows classic SYN flood behavior (SYN packets without handshake completion), which is a known threat pattern. Immediate investigation and mitigation are warranted.

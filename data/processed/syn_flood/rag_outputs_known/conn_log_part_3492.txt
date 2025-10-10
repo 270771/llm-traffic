@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.41.62 on port 10052 show SYN packets with no corresponding ACKs, indicating incomplete TCP handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Block IP 167.249.133.167 immediately to prevent potential SYN flood impact, as the pattern of SYN packets without handshake completion is a classic indicator of SYN flood attacks.

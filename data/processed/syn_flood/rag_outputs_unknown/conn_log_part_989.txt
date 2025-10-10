@@ -1,0 +1,5 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 133.118.161.58 on port 3000, characterized by numerous SYN packets without completing handshakes (S0 flag).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Immediately block IP 93.81.158.106 and rate-limit incoming SYN packets on port 3000 to prevent service disruption, then investigate source further.
+
+Despite lack of anomaly data or heuristics, the presence of multiple incomplete TCP handshakes (S0 state) is a classic signature of SYN flood attacks, warranting decisive mitigation.

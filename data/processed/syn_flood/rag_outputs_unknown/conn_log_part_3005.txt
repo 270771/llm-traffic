@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 203.65.63.195 to destination IP 192.103.164.17 on port 636, showing multiple SYN packets with no corresponding ACKs, indicative of an OTH (other) TCP flag pattern and a high count of incomplete connections.
+  Justified by anomaly: No matching anomaly record found; however, the alert’s characteristics—numerous SYN packets without completion—align with classic SYN flood behavior as per standard TCP connection heuristics.
+  → Action: Block source IP 203.65.63.195 immediately to prevent further resource exhaustion and investigate the source for potential compromise or malicious intent.

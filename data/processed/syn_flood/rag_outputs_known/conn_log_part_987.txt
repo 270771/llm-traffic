@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167:54961 to 133.250.156.78:12180 showing SYN packets with no established connections (S0 state), indicating incomplete TCP handshakes consistent with SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm. However, the SYN flood signature (S0 state with many SYNs and zero completions) is a well-known indicator of SYN flood attacks.  
+  → Action: Immediately rate-limit or block incoming TCP SYN packets from source IP 167.249.133.167 to prevent resource exhaustion on target 133.250.156.78 port 12180. Investigate source for potential malicious activity.

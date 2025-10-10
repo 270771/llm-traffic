@@ -1,0 +1,6 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 163.21.109.140 on port 16010 with SYN flag set and no response (S0 state), indicating incomplete TCP handshake.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.
+
+**Explanation:**  
+The alert shows a SYN packet with no corresponding ACK or connection completion (S0 state), a classic sign of a SYN flood attack. Although no anomaly record or heuristic context is provided, the behavior aligns with known SYN flood patterns where attackers send numerous SYN packets without completing handshakes to exhaust server resources. Immediate investigation and mitigation are warranted to prevent service disruption.

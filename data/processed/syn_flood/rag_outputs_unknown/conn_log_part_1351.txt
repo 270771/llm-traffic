@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 203.65.109.250 on port 18245 shows SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm. However, the presence of multiple SYN packets without completion (S0 flag) is a well-known indicator of SYN flood behavior.  
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity. If attack persists, block the IP to protect the target system from resource exhaustion.

@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 initiated a TCP connection flood against destination 133.118.179.111 on port 18095, sending numerous SYN packets without completing handshakes (S0 state, 44 SYNs, 0 ACKs).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately rate-limit or block IP 167.249.133.167 to prevent resource exhaustion, as the pattern of repeated SYN packets without handshake completion is a classic SYN flood signature. Initiate further investigation on this source for potential malicious intent.

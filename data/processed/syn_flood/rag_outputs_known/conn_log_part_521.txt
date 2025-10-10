@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.190.254 on port 24510 show SYN packets with no corresponding ACKs (flag S0), indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the observed pattern of SYN packets without completion (S0 flag) is a well-known indicator of SYN flood attacks.
+  → Action: Immediately rate-limit or block incoming SYN packets from 167.249.133.167 to prevent resource exhaustion on 163.21.190.254 and investigate the source for potential malicious activity.

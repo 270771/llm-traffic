@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 157.161.144.77:8088 to 60.184.226.227:54917 showing OTH flag with rapid retransmissions and zero payload.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 157.161.144.77 for unusual connection patterns and consider rate-limiting connections from this IP pending further analysis.

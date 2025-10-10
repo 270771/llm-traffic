@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 (source port 13443) to 203.65.118.191 (dest port 5984) show repeated SYN packets with zero successful completions, resulting in REJ (rejected) responses and a high rate of connection attempts (0.0067 seconds between attempts).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a known pattern.
+  → Action: Despite lack of explicit anomaly data, the pattern of rapid SYN attempts with no completions and repeated rejections is a classic indicator of a SYN flood attack. Immediately rate-limit connections from 93.81.158.106 and monitor for further suspicious activity. If attack persists, block the IP to protect the target service.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 202.44.229.122 on port 32764 showing SYN packets without completion (flag S0, indicating SYN sent but no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Immediately rate-limit connections from 93.81.158.106 to prevent potential SYN flood impact and initiate investigation on this source IP for further suspicious activity.

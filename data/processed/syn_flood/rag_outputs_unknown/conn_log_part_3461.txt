@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 157.161.40.85 on high port 63849 sending TCP SYN packets to destination 8.34.37.255 on port 80 with a high packet count (507) and a SYN flag ratio indicating a SYN flood pattern.
+  Justified by anomaly: No matching anomaly record found; no heuristic or taxonomy context available to further validate.
+  → Action: Immediately rate-limit connections from 157.161.40.85 and monitor for continued SYN flood behavior; escalate for manual investigation due to lack of anomaly context.

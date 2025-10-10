@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 202.44.230.178 on port 8545 shows SYN packets with no established connections (S0 flag), indicating incomplete TCP handshakes consistent with SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the presence of multiple SYN packets without completion (S0) is a classic indicator of SYN flood attacks as it exhausts server resources by leaving half-open connections.  
+  → Action: Immediately block IP 93.81.158.106 to prevent further SYN flood attempts and protect the target server from resource exhaustion.

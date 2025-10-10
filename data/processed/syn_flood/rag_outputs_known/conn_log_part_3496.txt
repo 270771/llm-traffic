@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 133.250.78.223 on port 32937 sending TCP SYN packets to destination 192.103.164.17 port 636 with OTH flag and 60 packets observed.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood.
+  → Action: Investigate source IP 133.250.78.223 for unusual connection patterns and monitor traffic volume; consider rate-limiting connections from this IP pending further evidence.

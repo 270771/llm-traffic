@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 157.161.40.85 on high source port 63846 targeting destination 8.34.37.255 port 80 with TCP flags indicating SYN flood behavior (SH flags, high packet count 490, low ACKs).
+  Justified by anomaly: No matching anomaly record found; however, the alert’s characteristics—high volume of SYN packets without corresponding ACKs—are consistent with SYN flood attack patterns.
+  → Action: Immediately rate-limit or block traffic from source IP 157.161.40.85 to destination port 80 to mitigate the SYN flood attack. Initiate investigation on source IP for further malicious activity.

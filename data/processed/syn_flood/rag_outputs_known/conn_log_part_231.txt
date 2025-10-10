@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on port 43165 is initiating numerous TCP SYN packets to destination 133.118.60.35 port 9704, resulting in multiple S0 (SYN sent, no response) flags, indicating incomplete TCP handshakes consistent with SYN flood behavior.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm this pattern.
+  → Action: Immediately rate-limit connections from 167.249.133.167 and monitor for continued SYN flood activity; if sustained, block the source IP to protect the target server from resource exhaustion.

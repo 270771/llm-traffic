@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on port 37609 sending TCP SYN packets to destination 163.21.53.153 port 18111, with connection state S0 (SYN sent, no response), indicating incomplete TCP handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the pattern of numerous SYN packets without completion (S0 state) is a classic SYN flood signature. Immediately rate-limit connections from 167.249.133.167 and monitor for further suspicious activity. If volume persists, block the IP to protect the target.

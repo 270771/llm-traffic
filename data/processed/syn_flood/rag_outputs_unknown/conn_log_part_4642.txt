@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.250.150.31 on port 52869 show SYN packets with no corresponding ACKs, flagged as S0 state (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for potential SYN flood activity; implement rate-limiting on incoming SYN packets from this IP to mitigate possible denial-of-service impact.

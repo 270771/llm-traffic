@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106:29011 to 133.118.32.123:5901 showing SYN packets with no completion (S0 state), indicating half-open connections typical of SYN flood behavior.  
+  Justified by anomaly: No anomaly data found to directly match this event. However, the S0 TCP flag state (SYN sent, no response) is a well-known indicator of SYN flood attacks, as it reflects numerous incomplete TCP handshakes overwhelming the target.  
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 93.81.158.106 to prevent resource exhaustion on 133.118.32.123 port 5901. Investigate source for further malicious activity.

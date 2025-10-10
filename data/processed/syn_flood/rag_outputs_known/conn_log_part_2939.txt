@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.250.88.9 on port 19776 show SYN packets with no corresponding ACKs, indicated by TCP flag S0 and zero successful connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately block IP 167.249.133.167 to prevent further SYN flood attempts, as the pattern of SYN packets without completion is a classic indicator of SYN flood attacks. Initiate investigation on source and monitor for additional suspicious activity.

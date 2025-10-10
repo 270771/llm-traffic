@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.83.33 on port 4506 show SYN packets with no completion (S0 state), indicating half-open connections typical of SYN flood attacks.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm. However, the S0 flag and connection pattern alone are strong indicators of a SYN flood.  
+  → Action: Immediately rate-limit or block incoming SYN packets from 93.81.158.106 to protect the target server from resource exhaustion. Initiate further investigation on this source IP.

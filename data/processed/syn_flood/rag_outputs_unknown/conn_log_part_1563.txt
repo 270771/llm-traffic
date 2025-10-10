@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN packets from 167.249.133.167:15028 to 163.21.115.116:55555 with S0 flag and only 1 packet sent, indicating incomplete TCP handshake.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack is found.

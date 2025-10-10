@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on port 35365 is sending TCP SYN packets to destination 133.118.143.110 port 48019, resulting in numerous half-open connections (S0 state) with no established sessions.
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm this pattern. However, the presence of multiple S0 states (SYN sent, no response) and a high count of initial SYN packets (44) with zero completions strongly aligns with classic TCP SYN flood behavior, which exhausts server resources by leaving connections half-open.
+  → Action: Immediately block or rate-limit IP 167.249.133.167 to prevent resource exhaustion and investigate the source for potential malicious activity.

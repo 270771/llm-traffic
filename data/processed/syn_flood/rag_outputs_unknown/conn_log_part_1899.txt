@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 93.81.158.106 to 163.21.19.188 on port 3306 with multiple SYN packets and no completed connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm.
+  → Action: Immediately rate-limit incoming SYN packets from 93.81.158.106 and monitor for continued suspicious activity; consider blocking if attack persists due to the classic SYN flood pattern (many SYNs, no ACKs) targeting a critical service port (MySQL 3306).

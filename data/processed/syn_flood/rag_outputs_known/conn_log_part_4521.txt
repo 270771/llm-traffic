@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 133.118.163.164 on port 18007 show SYN packets with no corresponding ACKs, indicated by flag S0 and only 1 connection attempt with 44 packets sent.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood based on known patterns.
+  → Action: Investigate source IP 167.249.133.167 for unusual connection behavior and monitor traffic to port 18007; consider rate-limiting connections if SYN flood symptoms persist.

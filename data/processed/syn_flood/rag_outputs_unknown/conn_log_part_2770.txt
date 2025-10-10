@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood attempt from 93.81.158.106 to 202.152.169.19 on ports 38266 → 51106, showing SYN-ACK flags with no response, duration 1.5 seconds, 333 packets sent.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 93.81.158.106 for suspicious activity and apply rate-limiting on incoming SYN packets from this IP to mitigate potential SYN flood impact.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 130.69.251.105 to 192.103.164.17 on port 636 showing OTH flag with rapid retransmissions and zero payload.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 130.69.251.105 for unusual connection patterns and consider rate-limiting connections to port 636 pending further analysis.

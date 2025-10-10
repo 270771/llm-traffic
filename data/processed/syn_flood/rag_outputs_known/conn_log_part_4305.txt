@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from source IP 167.249.133.167 to destination IP 203.65.116.253 on port 18888 show SYN packets with no corresponding ACKs, indicating incomplete TCP handshakes (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to explicitly confirm.
+  → Action: Immediately rate-limit connections from 167.249.133.167 to 203.65.116.253:18888 and monitor for continued SYN-only traffic to prevent resource exhaustion. Investigate source IP for potential malicious activity.

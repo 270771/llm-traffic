@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.250.117.25 on port 4064 show a high number of SYN packets with no corresponding ACKs (S0 flag), indicating incomplete TCP handshakes consistent with a SYN flood attack.
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the alert’s pattern of numerous SYN packets without handshake completion (S0) is a classic and well-documented indicator of SYN flood behavior.
+  → Action: Immediately block or rate-limit incoming TCP SYN packets from source IP 93.81.158.106 to prevent resource exhaustion and protect the target system.

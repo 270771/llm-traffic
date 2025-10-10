@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 107.81.9.228 on port 47775 targeting 202.152.173.202 port 23 with TCP flags indicating repeated SYN attempts and RSTR responses within a short interval (0.312 seconds).
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this as a SYN flood based on structured data or taxonomy.
+  → Action: Despite lack of anomaly records, the rapid repeated SYN attempts with RSTR responses on a sensitive port (23, typically Telnet) strongly indicate a SYN flood attempt. Recommend immediate rate-limiting on source IP 107.81.9.228 and initiating investigation to prevent potential service disruption or exploitation.

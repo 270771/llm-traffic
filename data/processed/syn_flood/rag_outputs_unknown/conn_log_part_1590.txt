@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source IP 167.249.133.167 to destination IP 163.21.144.162 on port 10007, characterized by numerous SYN packets with no corresponding ACKs (S0 flag), indicating half-open connections.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately block source IP 167.249.133.167 to prevent further SYN flood traffic and investigate upstream for potential compromised hosts or misconfigurations.

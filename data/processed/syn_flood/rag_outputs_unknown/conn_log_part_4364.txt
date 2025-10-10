@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 47.41.151.4 to 163.21.148.140 on port 23 with 400 SYN packets and zero completions (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to cross-validate.
+  → Action: Immediately block IP 47.41.151.4 to prevent further SYN flood attempts and investigate source for potential compromise or malicious intent.

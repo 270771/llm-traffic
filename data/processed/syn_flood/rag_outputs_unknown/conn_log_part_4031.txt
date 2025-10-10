@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from source 163.21.202.126:54328 targeting 91.197.168.37:80 with high SYN packet rate and incomplete handshakes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm this detection.
+  → Action: Immediately rate-limit incoming SYN packets from 163.21.202.126 and initiate investigation on the source IP to prevent potential denial-of-service impact.

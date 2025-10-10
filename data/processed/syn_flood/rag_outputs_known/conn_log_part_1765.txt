@@ -1,0 +1,3 @@
+- SYN flood alert: Source IP 167.249.133.167 on high port 64607 sending TCP SYN packets to destination 163.21.63.240 port 9253, resulting in multiple half-open connections (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately block IP 167.249.133.167 at the firewall to prevent further SYN flood attempts, as the presence of numerous half-open connections (S0) is a classic indicator of a SYN flood attack.

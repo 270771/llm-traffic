@@ -1,0 +1,6 @@
+- SYN flood alert: TCP session from 167.249.133.167 to 163.21.76.0 on ports 28482 → 12231 shows S0 flag with 1 connection attempt and 44 packets, indicating incomplete TCP handshake.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 167.249.133.167 for potential SYN flood activity and consider rate-limiting or blocking if further evidence of attack emerges.
+
+**Explanation:**  
+The alert shows a TCP connection attempt with S0 flag (SYN sent, no response), which is a classic indicator of SYN flood behavior. However, without anomaly records or heuristic context, confirmation is limited. Given the nature of SYN floods, proactive investigation and cautious mitigation are warranted.

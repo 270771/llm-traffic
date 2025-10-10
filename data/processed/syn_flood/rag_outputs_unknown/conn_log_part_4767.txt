@@ -1,0 +1,3 @@
+- SYN flood alert: TCP SYN flood detected from 117.135.248.29 to 203.65.103.15 on port 6379, characterized by multiple SYN packets with no corresponding connection establishment (S0 state).
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the SYN flood pattern is evident from the alert details showing repeated SYN packets without completion, consistent with known SYN flood behavior.
+  → Action: Immediately block or rate-limit incoming connections from 117.135.248.29 to protect the target server on port 6379 and investigate the source for further malicious activity.

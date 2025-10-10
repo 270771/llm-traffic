@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.41.158 on port 32400 show SYN packets with no completion of handshake (S0 flag), indicating half-open connections typical of SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to directly confirm, but the SYN flood signature (S0 state with multiple SYNs and zero completions) is a well-known indicator of SYN flood attacks.  
+  → Action: Immediately rate-limit or block incoming SYN packets from 93.81.158.106 to prevent resource exhaustion and investigate the source IP for further malicious activity.

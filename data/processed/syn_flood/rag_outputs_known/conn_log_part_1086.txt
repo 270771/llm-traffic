@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 203.65.125.17 on ports 18514 to 12120 show repeated SYN packets with zero successful completions, resulting in REJ (reject) responses.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a known SYN flood pattern.
+  → Action: Investigate source IP 167.249.133.167 for suspicious activity and consider rate-limiting or blocking if further SYN flood behavior is confirmed through additional monitoring.

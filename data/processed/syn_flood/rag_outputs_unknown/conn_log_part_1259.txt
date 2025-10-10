@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 107.81.9.228:37461 to 202.152.173.202:23 with RSTR flag and high connection rate (0.532990 connections/sec).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 107.81.9.228 for unusual connection patterns and consider rate-limiting or blocking if further SYN flood indicators emerge.
+
+**Note:** Due to lack of anomaly data and heuristic context, confirmation is not possible; however, the high connection rate and RSTR response suggest suspicious behavior warranting proactive investigation.

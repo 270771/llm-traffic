@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 93.81.158.106 to 133.118.129.73 on port 70 show multiple SYN packets with no corresponding ACKs, indicated by TCP flag S0 (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available; however, the TCP flag pattern S0 is a well-known indicator of SYN flood attacks, where numerous SYN requests are sent without completing the handshake, overwhelming the target.
+  → Action: Immediately block or rate-limit incoming connections from IP 93.81.158.106 to prevent resource exhaustion and mitigate the SYN flood attack.

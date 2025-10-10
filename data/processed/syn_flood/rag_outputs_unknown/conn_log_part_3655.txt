@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106 to 133.118.222.245 on port 8200 shows a single SYN packet with no response (S0 flag), indicating a half-open connection typical of SYN flood behavior.  
+  Justified by anomaly: No matching anomaly record or heuristic context available to further confirm. However, the presence of S0 flag with no handshake completion is a classic indicator of SYN flood attacks.  
+  → Action: Rate-limit incoming SYN packets from 93.81.158.106 and monitor for repeated attempts; consider blocking if attack volume persists.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 163.21.172.86:7291 to 192.103.164.17:636 showing OTH flag with 1 SYN packet and 60 bytes.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm this as a SYN flood.
+  → Action: Investigate source IP 163.21.172.86 for unusual connection patterns and monitor traffic to port 636; apply rate-limiting if SYN packet volume increases.

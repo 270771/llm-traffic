@@ -1,0 +1,5 @@
+- SYN flood alert: TCP connection attempt from 163.21.253.196:30295 to 192.103.164.17:636 showing OTH flag with 60 SYN packets and 1 ACK.
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Investigate source IP 163.21.253.196 for unusual SYN packet volume and consider rate-limiting connections to port 636 pending further analysis.
+
+**Explanation:** Although no anomaly record or heuristic context is provided, the alert shows a high number of SYN packets (60) with minimal ACKs (1), consistent with SYN flood behavior. Without explicit anomaly data, a cautious approach is to investigate and apply rate-limiting to mitigate potential impact.

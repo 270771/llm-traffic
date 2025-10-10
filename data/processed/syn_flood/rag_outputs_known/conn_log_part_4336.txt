@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempts from 167.249.133.167 to 163.21.59.4 on port 46443 show SYN packets with no corresponding ACKs, flagged as S0 state (SYN sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to further validate.
+  → Action: Immediately rate-limit or block IP 167.249.133.167 to prevent potential SYN flood, as repeated SYN packets without handshake completion indicate a classic SYN flood pattern. Investigate source for further malicious activity.

@@ -1,0 +1,3 @@
+- SYN flood alert: TCP connection attempt from 93.81.158.106:20012 to 133.118.91.169:443 with SYN packets resulting in S0 state (connection attempt sent, no response).
+  Justified by anomaly: No matching anomaly record or heuristic context available to confirm.
+  → Action: Despite lack of anomaly data, the S0 flag with zero successful connections and only one SYN packet indicates a failed handshake consistent with SYN flood behavior. Recommend rate-limiting connections from 93.81.158.106 to mitigate potential SYN flood impact while further monitoring is conducted.
