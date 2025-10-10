@@ -432,39 +432,6 @@ Filters Zeek logs to extract connections matching MAWILab signatures:
 
 ---
 
-## Project Structure
-
-```
-llm-traffic/
-├── ingestion_anomaly.py           # MAWILab CSV → ChromaDB
-├── ingestion_heur_tax             # Heuristic/taxonomy → ChromaDB
-├── ingestion_pingflood.py         # Ping flood detection → ChromaDB
-├── rag_query.py                   # ReGAIN analysis engine (interactive + batch)
-├── evaluate_rag.py                # Evaluation framework
-├── filter.py                      # Zeek log filtering
-├── preprocessing/
-│   ├── split_conn_log.py          # Log file splitter
-│   └── label_ping_flood_logs.py   # Automated labeling
-├── chroma_db/                     # ChromaDB vector store
-│   ├── anomaly_csv_logsc01/       # Anomaly records collection
-│   ├── heuristic_info_txt4/       # Heuristics/taxonomy collection
-│   └── ping_flood_alerts2/        # Ping flood alerts collection
-├── inragsplit/                    # Known/training log files
-│   └── ping_flood_labels.json     # Automated ground truth (known)
-├── c101split/test1/               # Unknown/test log files  
-│   └── ping_flood_labels.json     # Automated ground truth (unknown)
-├── manual_gt_labels.txt           # Expert labels (known data)
-├── c101_manual_gt_labels.txt      # Expert labels (unknown data)
-├── rag_outputs_inragsplit2/       # RAG outputs (known data)
-├── rag_outputs_c101split1/        # RAG outputs (unknown data)
-├── requirements.txt               # Python dependencies
-├── README.md                      # This file
-├── BATCH_PROCESSING_GUIDE.md      # Detailed batch mode documentation
-└── EVALUATION_SETUP.md            # Complete evaluation configuration guide
-```
-
----
-
 ## Technical Stack
 
 ### Models & Embeddings
@@ -511,9 +478,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - **NSF**: Grants 2113945, 2200538, 2416992, 2230610 at NC A&T SU  
-- **MAWILab**: WIDE project for traffic anomaly dataset  
-- **LangChain & ChromaDB**: RAG infrastructure  
-- **Sentence Transformers**: Semantic embedding framework  
 
 ---
 

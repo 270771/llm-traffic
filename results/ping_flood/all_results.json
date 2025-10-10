@@ -1,0 +1,32 @@
+{
+  "ping_gt": {
+    "name": "Ping Flood Detection - Ground Truth",
+    "metrics": {
+      "accuracy": 0.9756,
+      "precision": 0.7448,
+      "recall": 1.0000,
+      "f1_score": 0.8537
+    },
+    "confusion": {
+      "tp": 356,
+      "tn": 4522,
+      "fp": 122,
+      "fn": 0
+    }
+  },
+  "ping_expert": {
+    "name": "Ping Flood Detection - Expert Labels",
+    "metrics": {
+      "accuracy": 0.9774,
+      "precision": 0.7636,
+      "recall": 1.0000,
+      "f1_score": 0.8660
+    },
+    "confusion": {
+      "tp": 365,
+      "tn": 4522,
+      "fp": 113,
+      "fn": 0
+    }
+  }
+}
